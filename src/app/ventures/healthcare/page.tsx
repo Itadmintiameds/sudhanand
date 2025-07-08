@@ -26,7 +26,7 @@ export default function HealthcareVenturesPage() {
           />
         </div>
         <div className="w-full max-w-[1180px] mx-auto relative z-10">
-          <h1 className="text-orange-950 text-4xl md:text-6xl font-semibold leading-[1.1]">
+          <h1 className="text-blue-950 text-4xl md:text-6xl font-semibold leading-[1.1]">
             Healthcare Services
           </h1>
           <p className="text-black text-2xl md:text-4xl font-medium mt-4 max-w-[502px]">
@@ -36,120 +36,59 @@ export default function HealthcareVenturesPage() {
       </div>
 
       {/* Stats Section */}
-      <div className="px-10 lg:px-40 py-10 bg-orange-50">
-        <div className="w-full max-w-[1180px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8 md:gap-0">
-          <div className="flex flex-col gap-14 w-full md:w-auto">
-            <span className="text-orange-950 text-6xl md:text-[144px] font-normal leading-[114px]">
-              15+
-            </span>
-            <span className="text-orange-950 text-2xl font-normal leading-relaxed">
-              Hospitals
-            </span>
-          </div>
-          <div className="flex flex-col gap-14 w-full md:w-auto">
-            <span className="text-orange-950 text-6xl md:text-[144px] font-normal leading-[114px]">
-              5L+
-            </span>
-            <span className="text-orange-950 text-2xl font-normal leading-relaxed">
-              Patients served
-            </span>
-          </div>
-          <div className="flex flex-col gap-14 w-full md:w-auto">
-            <span className="text-orange-950 text-6xl md:text-[144px] font-normal leading-[114px]">
-              15+
-            </span>
-            <span className="text-orange-950 text-2xl font-normal leading-relaxed">
-              Years in service
-            </span>
-          </div>
+      <div className="self-stretch px-40 py-10 bg-orange-50 inline-flex flex-col justify-start items-center gap-2.5">
+    <div className="w-full max-w-[1180px] inline-flex justify-between items-start">
+        <div className="w-52 inline-flex flex-col justify-start items-start gap-14">
+            <div className="self-stretch justify-start text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]">15+</div>
+            <div className="self-stretch justify-start text-slate-500 text-2xl font-normal font-['Geist'] leading-relaxed">Hospitals</div>
         </div>
-      </div>
+        <div className="inline-flex flex-col justify-start items-start gap-14">
+            <div className="justify-start text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]">5l+</div>
+            <div className="justify-start text-slate-500 text-2xl font-normal font-['Geist'] leading-relaxed">Patients served</div>
+        </div>
+        <div className="w-64 inline-flex flex-col justify-start items-start gap-14">
+            <div className="self-stretch justify-start text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]">15+</div>
+            <div className="self-stretch h-8 justify-start text-slate-500 text-2xl font-normal font-['Geist'] leading-relaxed">Years in service</div>
+        </div>
+    </div>
+</div>
 
      {/* Ventures Section */}
-<div
-  className="relative px-10 lg:px-36 pt-20 lg:pt-40 pb-40 lg:pb-56 bg-stone-950/50 overflow-hidden"
-  style={{
-    backgroundImage: "url('/red.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  {/* Reflection effect */}
-  <div
-    style={{
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: "100px",
-      backgroundImage: "url('/red.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      transform: "scaleY(-1)",
-      opacity: 0.2,
-      filter: "blur(4px)",
-    }}
-  ></div>
-  <div className="w-full max-w-[1180px] mx-auto border-b border-white/50 relative z-10">
-    {/* Venture 1 */}
-    <div className="flex flex-col lg:flex-row justify-between items-start py-12 border-t border-white/50">
-      <span className="text-white text-8xl lg:text-[300px] font-extralight leading-[327px] lg:mr-8">
-        1.
-      </span>
-      <div className="lg:w-[640px] mt-8 lg:mt-0">
-        <div className="flex justify-between items-end">
-          <Link 
-            href="/ventures/healthcare/sudhanand-healthcare" 
-            className="group flex items-center gap-3"
-          >
-            <h2 className="text-white text-3xl font-normal capitalize leading-loose group-hover:text-white group-hover:underline transition-all">
-              Sudhanand Healthcare Solutions Pvt. Ltd.
-            </h2>
-            <Image
-              src="/link.png"
-              alt="View details"
-              width={24}
-              height={24}
-              className="opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6"
-            />
-          </Link>
+<div className="self-stretch px-28 pt-40 pb-56 bg-orange-50 inline-flex flex-col justify-center items-center gap-56">
+    <div className="w-[1040px] pb-10 border-b-[0.50px] border-black inline-flex justify-between items-start">
+        <div className="w-[480px] pt-8 border-t-[0.50px] border-black flex justify-start items-center gap-64">
+            <div className="flex-1 inline-flex flex-col justify-center items-start gap-14">
+                <img className="w-52 h-24" src="/hospitality-page/cureplus.png" />
+                <div className="self-stretch flex flex-col justify-start items-start gap-8">
+                    <div className="self-stretch inline-flex justify-start items-start gap-6">
+                        <div className="flex-1 flex justify-start items-end gap-2.5">
+                            <div className="flex-1 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">Sudhanand Healthcare Solutions Pvt. Ltd. </div>
+                        </div>
+                        <div className="w-6 h-6">
+                          <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                          </div>
+                    </div>
+                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">Cureplus Hospitals is a growing network across Mysore, Chamarajanagar & Kodagu, led by the 40-bed NABH-accredited Cureplus Disha Hospital in Mysuru. The network includes 20-bed hospitals in T. Narasipura, Bherya, H.D. Kote, Halli Mysuru, Hosur, Ramapura & Terakanambi, plus facilities in Santhemarahalli, Kushalnagar & Bettadapura. Offering affordable, quality care with modern diagnostics, Cureplus combines clinical excellence with compassion across urban & rural communities.</div>
+                </div>
+            </div>
         </div>
-        <p className="text-white text-lg font-medium mt-8 leading-normal">
-          Cureplus Hospitals is a growing network across Mysore, Chamarajanagar & Kodagu, led by the 40-bed NABH-accredited Cureplus Disha Hospital in Mysuru. The network includes 20-bed hospitals in T. Narasipura, Bherya, H.D. Kote, Halli Mysuru, Hosur, Ramapura & Terakanambi, plus facilities in Santhemarahalli, Kushalnagar & Bettadapura. Offering affordable, quality care with modern diagnostics, Cureplus combines clinical excellence with compassion across urban & rural communities.
-        </p>
-      </div>
-    </div>
-
-    {/* Venture 2 */}
-    <div className="flex flex-col lg:flex-row justify-between items-start py-12 border-t border-white/50">
-      <span className="text-white text-8xl lg:text-[300px] font-extralight leading-[327px] lg:mr-8">
-        2.
-      </span>
-      <div className="lg:w-[640px] mt-8 lg:mt-0">
-        <div className="flex justify-between items-end">
-          <Link 
-            href="/ventures/healthcare/sudhanand-pharmacies" 
-            className="group flex items-center gap-3"
-          >
-            <h2 className="text-white text-3xl font-normal capitalize leading-loose group-hover:text-white group-hover:underline transition-all">
-              Sudhanand Pharmacies Pvt. Ltd.
-            </h2>
-            <Image
-              src="/link.png"
-              alt="View details"
-              width={24}
-              height={24}
-              className="opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6"
-            />
-          </Link>
+        <div className="w-[480px] pt-8 border-t-[0.50px] border-black flex justify-start items-center gap-64">
+            <div className="flex-1 self-stretch inline-flex flex-col justify-start items-start gap-14">
+                <img className="w-24 h-24" src="/hospitality-page/SUDHANAND PHARMACIES 1.png" />
+                <div className="self-stretch flex flex-col justify-start items-start gap-8">
+                    <div className="self-stretch inline-flex justify-between items-start">
+                        <div className="w-80 flex justify-start items-end gap-2.5">
+                            <div className="flex-1 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">Sudhanand Pharmacies Pvt. Ltd.</div>
+                        </div>
+                        <div className="w-6 h-6">
+                          <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                          </div>
+                    </div>
+                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">Sudhanand Pharmacies Pvt. Ltd. (SPPL), founded in 2023, is the pharmaceutical arm of the Sudhanand Group, committed to delivering high-quality, effective, and affordable medicines. Currently offering 31 products across key therapeutic areas, SPPL continues to expand its portfolio with more in development. Our focus is on balancing efficacy and affordability to make reliable healthcare accessible to all, reinforcing our mission to become a trusted name in the pharmaceutical industry.</div>
+                </div>
+            </div>
         </div>
-        <p className="text-white text-lg font-normal mt-8 leading-normal">
-          Sudhanand Pharmacies Pvt. Ltd. (SPPL), founded in 2023, is the pharmaceutical arm of the Sudhanand Group, committed to delivering high-quality, effective, and affordable medicines. Currently offering 31 products across key therapeutic areas, SPPL continues to expand its portfolio with more in development. Our focus is on balancing efficacy and affordability to make reliable healthcare accessible to all, reinforcing our mission to become a trusted name in the pharmaceutical industry.
-        </p>
-      </div>
     </div>
-  </div>
 </div>
 
 

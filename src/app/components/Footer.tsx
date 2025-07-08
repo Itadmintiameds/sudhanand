@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className="self-stretch px-36 py-16 bg-orange-50 flex flex-col justify-start items-start gap-20 overflow-hidden">
       {/* Logo and Group Name */}
-      <div className="self-stretch flex justify-between items-center">
+      <div className="self-stretch inline-flex justify-start items-center gap-10">
         {/* Company Logo */}
         <div className="w-28 h-28 relative">
           <Image
@@ -19,9 +19,7 @@ const Footer = () => {
             className="object-contain"
           />
         </div>
-        <div className="text-black text-6xl font-normal font-geist leading-[60.80px]">
-          Sudhanand Group
-        </div>
+        <div className="justify-start text-black text-5xl font-normal font-['Geist'] leading-10">Sudhanand Group</div>
       </div>
 
       {/* Tagline */}
@@ -68,7 +66,7 @@ const Footer = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col justify-center items-start gap-0.5">
+        <div className="inline-flex flex-col justify-center items-start gap-0.5">
           <Link href="/" className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline">
             Home
           </Link>

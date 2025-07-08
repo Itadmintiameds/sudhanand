@@ -16,29 +16,32 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full flex items-center justify-between px-12 py-6 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-black/20 backdrop-blur-[2px] shadow-sm' 
-        : 'bg-black/5 backdrop-blur-[1px]'
-    }`}>
-      {/* Logo */}
-      <div className="flex items-center space-x-3">
-        <Image
-          src="/logo2.svg"
-          alt="Sudhanand Group Logo"
-          width={50}
-          height={50}
-          className="object-contain"
-        />
-      </div>
+    <header
+      className={`fixed top-0 left-0 w-full h-16 px-12 py-4 z-50 transition-all duration-300
+        bg-gradient-to-r from-white/80 to-slate-500/80 backdrop-blur-[20px]
+        ${isScrolled ? 'shadow-md' : ''}
+      `}
+    >
+      <div className="w-full h-full flex justify-between items-center">
+        {/* Pixel Logo on the left */}
+        <Link href="/" className="relative w-10 h-10">
+          <Image
+            src="/logo.svg"
+            alt="Sudhanand Group Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </Link>
 
-      {/* Navigation */}
-      <nav className="flex space-x-10 text-sm font-medium">
-        <Link href="/" className="text-white/90 hover:text-white transition-colors">Home</Link>
-        <Link href="/business-ventures" className="text-white/90 hover:text-white transition-colors">Business Ventures</Link>
-        <Link href="/business-partners" className="text-white/90 hover:text-white transition-colors">Business Partners</Link>
-        <Link href="/about" className="text-white/90 hover:text-white transition-colors">About Us</Link>
-      </nav>
+        {/* Nav Links on the right */}
+        <nav className="flex gap-9 text-base text-white font-['Geist'] leading-none">
+          <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
+          <Link href="/business-ventures" className="hover:text-white/80 transition-colors">Our Ventures</Link>
+          <Link href="/business-partners" className="hover:text-white/80 transition-colors">Partners</Link>
+          <Link href="/about" className="hover:text-white/80 transition-colors">About Us</Link>
+        </nav>
+      </div>
     </header>
   );
 };
