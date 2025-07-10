@@ -243,7 +243,7 @@ const BusinessVentures = () => {
                 {/* Third row */}
                 <div className="self-stretch flex flex-col lg:flex-row justify-start items-start gap-10 lg:gap-20">
                   {ventures.slice(4, 5).map((venture, index) => (
-                    <Link href={`/ventures/${venture.id}`} key={index} className="w-full lg:w-[384px]">
+                    <Link href={`/ventures/${venture.id}`} key={index} className="w-full lg:w-[529px]">
                       <motion.div 
                         className="opacity-80 hover:opacity-100 transition-opacity border-t border-white/50 flex flex-col justify-start items-start"
                         variants={textVariants}

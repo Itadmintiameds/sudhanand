@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
@@ -15,7 +16,7 @@ export default function About() {
         <div className="self-stretch h-[750px] px-12 pt-12 pb-16 inline-flex flex-col justify-end items-start gap-10">
     <div className="self-stretch inline-flex justify-between items-end">
         <div className="w-[523px] justify-start text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]">Company Profile</div>
-        <div className="w-96 justify-start text-zinc-700 text-lg font-normal font-['Geist'] leading-normal">Empowering communities and enriching lives through impactful initiatives in healthcare, education, and well-being. We strive to ensure access to quality care, support learning, and create sustainable change for a brighter, more inclusive future</div>
+        <div className="w-96 justify-start text-zinc-700 text-lg font-normal font-['Geist'] leading-normal">Empowering communities and enriching lives through impactful initiatives in healthcare, education, and well-being. We strive to ensure access to quality care, support learning, and create sustainable change for a brighter, more inclusive future lifelong.</div>
     </div>
 </div>
       </section>
@@ -91,9 +92,9 @@ export default function About() {
     </div>
     <div className="w-[544px] self-stretch inline-flex flex-col justify-center items-start gap-12">
         <div className="self-stretch flex flex-col justify-start items-start gap-6">
-            <div className="self-stretch justify-center text-zinc-700 text-2xl font-medium font-['Inter'] leading-7">VP - Internal Finance</div>
+            <div className="self-stretch justify-center text-zinc-700 text-2xl font-medium font-['Inter'] leading-7">Chief Administrative Officer</div>
             <div className="self-stretch justify-center text-black text-4xl font-bold font-['Inter'] leading-10">Vijay Asrani</div>
-            <div className="self-stretch justify-center text-zinc-700 text-lg font-medium font-['Inter'] leading-relaxed">As Vice President – Internal Finance at Sudhanand Group, Vijay Asrani oversees financial controls, compliance, and internal audits across all verticals. He ensures effective budgeting, reporting, and cost management while maintaining financial discipline. With deep expertise in corporate finance, he supports strategic growth and decision-making, playing a key role in the group’s stability, transparency, and long-term success.</div>
+            <div className="self-stretch justify-center text-zinc-700 text-lg font-medium font-['Inter'] leading-relaxed">As Chief Administrative Officer at Sudhanand Group, Vijay Asrani oversees financial controls, compliance, and internal audits across all verticals. He ensures effective budgeting, reporting, and cost management while maintaining financial discipline. With deep expertise in corporate finance, he supports strategic growth and decision-making, playing a key role in the group’s stability, transparency, and long-term success.</div>
         </div>
     </div>
 </div>
@@ -136,28 +137,67 @@ export default function About() {
 
       </section>
 
-      {/* <motion.div
-  className="w-[1280px] bg-black/5 inline-flex justify-start items-start gap-4 overflow-hidden"
-  animate={{ x: ['0%', '-100%'] }}
-  transition={{
-    repeat: Infinity,
-    duration: 20,
-    ease: 'linear',
-  }}
->
-  {[...Array(2)].map((_, i) => (
-    <div key={i} className="inline-flex justify-start items-start gap-4">
-      <div className="w-[640px] self-stretch bg-black/5" />
-      <div className="inline-flex flex-col justify-center items-start gap-5">
-        <img className="w-[630px] h-80" src="/about/pic1.png" alt="pic1" />
-        <img className="w-[630px] h-80" src="/about/pic2.png" alt="pic2" />
-      </div>
-      <img className="w-96 h-[625px]" src="/about/pic3.png" alt="pic3" />
-      <img className="w-[972px] h-[625px]" src="/about/pic4.png" alt="pic4" />
-      <img className="w-[972px] h-[625px]" src="/about/pic5.png" alt="pic5" />
+<section className="w-full bg-orange-50 overflow-hidden py-8">
+  <style>{`
+    @keyframes scrollTrack {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+  `}</style>
+
+  <div className="relative overflow-hidden w-full">
+    <div
+      className="flex gap-4"
+      style={{
+        animation: 'scrollTrack 20s linear infinite',
+        width: 'max-content',
+      }}
+    >
+      {[...Array(2)].map((_, i) => (
+        <div
+          key={i}
+          className="inline-flex justify-start items-start gap-4 flex-shrink-0"
+          style={{ width: '2603px' }} // Total width of all elements
+        >
+          {/* 1. Replaced placeholder with Pic 5 */}
+          <img
+            className="w-[640px] h-[625px] object-cover"
+            src="/about/Rectangle 52.png"
+            alt="Pic 5"
+          />
+
+          {/* 2. Pic 1 & Pic 2 */}
+          <div className="w-[630px] h-[625px] flex flex-col justify-between gap-4">
+            <img
+              src="/about/Rectangle 54.png"
+              alt="Pic 1"
+              className="w-full h-[308px] object-cover"
+            />
+            <img
+              src="/about/Rectangle 55.png"
+              alt="Pic 2"
+              className="w-full h-[308px] object-cover"
+            />
+          </div>
+
+          {/* 3. Pic 3 */}
+          <img
+            className="w-[361px] h-[625px] object-cover"
+            src="/about/Rectangle 57.png"
+            alt="Pic 3"
+          />
+
+          {/* 4. Pic 4 */}
+          <img
+            className="w-[972px] h-[625px] object-cover"
+            src="/about/Rectangle 58.png"
+            alt="Pic 4"
+          />
+        </div>
+      ))}
     </div>
-  ))}
-</motion.div> */}
+  </div>
+</section>
 
       <Footer />
     </div>

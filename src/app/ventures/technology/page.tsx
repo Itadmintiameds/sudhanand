@@ -51,6 +51,8 @@ export default function TechnologyPage() {
         </div>
       </div>
 
+      {/* Technology Section */}
+
       <div className="self-stretch px-36 pt-40 pb-56 bg-orange-50 inline-flex flex-col justify-center items-center gap-56">
     <div className="w-[1040px] pb-10 border-b-[0.50px] border-black inline-flex justify-between items-start">
         <div className="w-[480px] pt-8 border-t-[0.50px] border-black flex justify-start items-center gap-64">
@@ -58,14 +60,28 @@ export default function TechnologyPage() {
                 <img className="w-28 h-24" src="/technology-page/SBPL 2 2.png" />
                 <div className="self-stretch flex flex-col justify-start items-start gap-8">
                     <div className="self-stretch inline-flex justify-start items-start gap-6">
-                        <div className="flex-1 flex justify-start items-end gap-2.5">
-                            <div className="flex-1 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">Sudhanand Business Solutions Pvt. Ltd.</div>
-                        </div>
-                        <div className="w-6 h-6">
-                          <img src="/technology-page/link-icon.png" alt="Link" className="w-full h-full" />
-                          </div>
+                        <a 
+                            href="https://www.sudhanandbusinesssolutions.com/" 
+                            className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div className="flex-1 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">
+                                Sudhanand Business Solutions Pvt. Ltd.
+                            </div>
+                        </a>
+                        <a 
+                            href="https://www.sudhanandbusinesssolutions.com/" 
+                            className="w-6 h-6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                        </a>
                     </div>
-                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">Sudhanand Business Solutions Pvt. Ltd., is a growing IT and ITES company with presence in India and the USA. Since 2019, SBPL has built a strong reputation, growing from 4 employees to over 100 professionals. Our IT wing, launched in 2022, specializes in Software Testing and Data Science using Agile, Selenium, Jira, and RPA. In ITES, SBPL supports pre-underwriting, claims, bookrolls & policy binding, and accounting, serving top home insurance providers like Cabrillo Coastal General Insurance LLC in the USA.</div>
+                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">
+                        Sudhanand Business Solutions Pvt. Ltd., is a growing IT and ITES company with presence in India and the USA. Since 2019, SBPL has built a strong reputation, growing from 4 employees to over 100 professionals. Our IT wing, launched in 2022, specializes in Software Testing and Data Science using Agile, Selenium, Jira, and RPA. In ITES, SBPL supports pre-underwriting, claims, bookrolls & policy binding, and accounting, serving top home insurance providers like Cabrillo Coastal General Insurance LLC in the USA.
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,14 +90,28 @@ export default function TechnologyPage() {
                 <img className="w-64 h-24" src="/technology-page/tiameds.png" />
                 <div className="self-stretch flex flex-col justify-start items-start gap-8">
                     <div className="self-stretch inline-flex justify-start items-start gap-6">
-                        <div className="flex-1 flex justify-start items-end gap-2.5">
-                            <div className="w-80 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">TiaMeds Technologies Pvt. Ltd.</div>
-                        </div>
-                          <div className="w-6 h-6">
-                          <img src="/technology-page/link-icon.png" alt="Link" className="w-full h-full" />
-                          </div>
-                        </div>
-                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">TiaMeds Technologies Pvt. Ltd., founded in early 2024, is the tech arm of the Sudhanand Group, focused on developing cutting-edge, in-house software solutions for the healthcare and pharma sectors. With expertise in development, testing, data science, BI, analytics, and digital marketing, our team delivers end-to-end products built for impact. While healthcare is our current focus, our tech capabilities are industry-agnostic, ready to drive innovation across sectors.</div>
+                        <a 
+                            href="https://www.tiameds.ai/" 
+                            className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div className="w-80 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">
+                                TiaMeds Technologies Pvt. Ltd.
+                            </div>
+                        </a>
+                        <a 
+                            href="https://www.tiameds.ai/" 
+                            className="w-6 h-6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                        </a>
+                    </div>
+                    <div className="self-stretch justify-start text-black text-base font-normal font-['Geist'] leading-snug">
+                        TiaMeds Technologies Pvt. Ltd., founded in early 2024, is the tech arm of the Sudhanand Group, focused on developing cutting-edge, in-house software solutions for the healthcare and pharma sectors. With expertise in development, testing, data science, BI, analytics, and digital marketing, our team delivers end-to-end products built for impact. While healthcare is our current focus, our tech capabilities are industry-agnostic, ready to drive innovation across sectors.
+                    </div>
                 </div>
             </div>
         </div>
