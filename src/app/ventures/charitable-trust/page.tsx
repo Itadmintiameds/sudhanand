@@ -58,7 +58,7 @@ export default function CharitableTrustPage() {
               <div className="self-stretch flex flex-col justify-start items-start gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-6">
                   <a 
-                    href="https://smt.help/educational-trust/" 
+                    href="https://www.smt.help/" 
                     className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -68,7 +68,7 @@ export default function CharitableTrustPage() {
                     </div>
                   </a>
                   <a 
-                    href="https://smt.help/educational-trust/" 
+                    href="https://www.smt.help/" 
                     className="w-6 h-6"
                     target="_blank"
                     rel="noopener noreferrer"

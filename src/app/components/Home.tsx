@@ -48,15 +48,16 @@
           <div className="w-full max-w-[1008px] flex flex-col justify-center items-start gap-6">
             <div className="flex items-center gap-3">
               {/* <img src="/Group.png" alt="Left icon" className="w-5 h-5" /> */}
+              <img src="/Group.png" alt="Right icon" className="w-5 h-5" />
               <h2 className="text-black text-3xl font-medium font-['Geist'] leading-9">
-                Our Businesses
+                Who We Are
               </h2>
               <img src="/Group (1).png" alt="Right icon" className="w-5 h-5" />
             </div>
             <div className="w-full pl-0 md:pl-10 flex flex-col md:flex-row justify-between items-center gap-8">
               <div className="flex-1 max-w-[560px]">
                 <p className="text-black text-lg font-normal font-geist leading-normal">
-                  Sudhanand Group, headquartered in Mysuru, is a dynamic and diversified conglomerate with a strong foundation in healthcare. Over the years, it has expanded into sectors including hospitality, education, IT-BPO, organic farming, and sports. Its healthcare division operates multiple hospitals across Karnataka, delivering affordable and accessible medical services to underserved communities. In the hospitality sector, the group manages a boutique hotel in Mysuru, while its educational initiatives span kindergartens and charitable trusts dedicated to supporting underprivileged children.
+                  We excel across multiple industries, driven by a strong foundation in ethical, community-focused, and socially responsible business practices. Our commitment to integrity and sustainable growth guides every decision we make, ensuring that our operations positively impact society. With a deep-rooted belief in the power of entrepreneurship and strategic diversification, we actively explore opportunities across sectors such as healthcare, technology, pharmaceuticals, hospitality, and beyond.
                 </p>
               </div>
               <div className="px-0 md:px-10 flex flex-col justify-center items-center gap-4">
@@ -80,8 +81,9 @@
           <a href="https://www.tiameds.ai/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1 (1).png" /></a>
           <a href="https://www.cureplushospitals.com/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1.png" /></a>
           <a href="https://www.cureplusbloodbank.com/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 3.png" /></a>
-          <a href="#"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/CUREPLUS PHARMA 1.png" /></a>
+          <a href="https://www.cureplushospitals.com/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/CUREPLUS PHARMA 1.png" /></a>
           <a href="https://www.arcsportzone.com/"><div className="w-20 h-28 relative opacity-60"><img className="w-16 h-24 absolute top-[6.11px] left-[7.71px] transition-opacity cursor-pointer" src="/home/ARC.png" /></div></a>
+          <a href="https://smt.help/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/smt.png" /></a>
           <a href="https://sudhanandnovacandolim.com/"><img className="w-28 h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/NOVA.png" /></a>
           <a href="https://sudhanandfourseasons.com/"><img className="w-48 h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/FOUR SEASONS.png" /></a>
         </div>
@@ -250,15 +252,15 @@
         { year: '2010', img: '/home/humble.png', special: true },
         { year: '2011', desc: 'Started our journey with SAS Poorna Arogya Healthcare' },
         { year: '2012', desc: 'Started Sachidananda Organic Farm – Nanjangud' },
-        { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\nSudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
+        { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\n\n Sudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
         { year: '2017', desc: 'Our first hospital "Disha Hospital" – Mysuru\nOpened Dharani Hospital – Chamaarajanagara' },
         { year: '2018', desc: 'Started Kaveri Hospital – Kodagu\n& ARC Sportzone – Mysuru' },
-        { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
+        { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\n\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
         { year: '2021', desc: 'Opened our hotel\nSudhanand Four Seasons – Mysuru' },
-        { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\nSudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
-        { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\nSudhanand Distributors – Mysuru\nNarasegowda Memorial Hospital – Mandya' },
-        { year: '2024', desc: 'Started Idea Gateway Inc. – New York\nTiameds Technologies Pvt. Ltd. – Mysuru' },
-        { year: '2025', desc: 'Started our 4 New Spoke Hospitals\n Sini Meds' },
+        { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\n\n Sudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
+        { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\n\n Sudhanand Distributors – Mysuru\n\n Narasegowda Memorial Hospital – Mandya' },
+        { year: '2024', desc: 'Started Idea Gateway Inc. – New York\n\n Tiameds Technologies Pvt. Ltd. – Mysuru' },
+        { year: '2025', desc: 'Started our 4 New Spoke Hospitals\n\n Started Sini Meds' },
       ].map((item, i) => (
         <div 
           key={i} 
@@ -321,7 +323,7 @@
           'right',
           { year: '2012', desc: 'Started Sachidananda Organic Farm – Nanjangud' },
           'right',
-          { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\nSudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
+          { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\n\n Sudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
         ].map((item, i, arr) => {
           const isLast = i === arr.length - 1;
           if (item === 'right') {
@@ -394,11 +396,11 @@
         {[
           { year: '2021', desc: 'Opened our hotel\nSudhanand Four Seasons – Mysuru' },
           'left',
-          { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
+          { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\n\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
           'left',
           { year: '2018', desc: 'Started Kaveri Hospital – Kodagu\n& ARC Sportzone – Mysuru' },
           'left',
-          { year: '2017', desc: 'Our first hospital "Disha Hospital" – Mysuru\nOpened Dharani Hospital – Chamaarajanagara' },
+          { year: '2017', desc: 'Our first hospital "Disha Hospital" – Mysuru\n\n Opened Dharani Hospital – Chamaarajanagara' },
         ].map((item, i) => {
           const isFirst = i === 0;
           if (item === 'left') {
@@ -455,13 +457,13 @@
       {/* Row 3 */}
       <div className="flex items-center justify-center gap-4">
         {[
-          { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\nSudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
+          { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\n\n Sudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
           'right',
-          { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\nSudhanand Distributors – Mysuru\nNarasegowda Memorial Hospital – Mandya' },
+          { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\n\n Sudhanand Distributors – Mysuru\n\n Narasegowda Memorial Hospital – Mandya' },
           'right',
-          { year: '2024', desc: 'Started Idea Gateway Inc. – New York\nTiameds Technologies Pvt. Ltd. – Mysuru' },
+          { year: '2024', desc: 'Started Idea Gateway Inc. – New York\n\n Tiameds Technologies Pvt. Ltd. – Mysuru' },
           'right',
-          { year: '2025', desc: 'Started our 4 New Spoke Hospitals' },
+          { year: '2025', desc: 'Started our 4 New Spoke Hospitals\n\n Started Sini Meds' },
         ].map((item, i) => {
           if (item === 'right') {
             return (

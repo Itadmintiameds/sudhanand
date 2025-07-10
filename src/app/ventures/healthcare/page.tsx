@@ -62,10 +62,10 @@ export default function HealthcareVenturesPage() {
                 <img className="w-52 h-24" src="/hospitality-page/cureplus.png" />
                 <div className="self-stretch flex flex-col justify-start items-start gap-8">
                     <div className="self-stretch inline-flex justify-start items-start gap-6">
-                        <a href="https://www.sudhanandbusinesssolutions.com/" className="flex-1 flex justify-start items-end gap-2.5 hover:underline">
+                        <a href="https://www.cureplushospitals.com/" className="flex-1 flex justify-start items-end gap-2.5 hover:underline">
                             <div className="flex-1 justify-start text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose">Sudhanand Healthcare Solutions Pvt. Ltd.</div>
                         </a>
-                        <a href="https://www.sudhanandbusinesssolutions.com/" className="w-6 h-6">
+                        <a href="https://www.cureplushospitals.com/" className="w-6 h-6">
                             <img src="/link-icon.png" alt="Link" className="w-full h-full" />
                         </a>
                     </div>
