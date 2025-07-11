@@ -68,90 +68,78 @@ const HomePage = () => {
       </section>
 
       {/* Brand Logos Section - Infinite Scrolling */}
-      <div className="self-stretch pb-20 md:pb-28 bg-orange-50 overflow-x-auto scrollbar-hide">
-        <div className="marquee-wrapper">
-          <div className="marquee-track flex w-max animate-scroll-marquee">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="marquee-group flex items-center gap-8 px-6">
-                <a href="https://www.sudhanandbusinesssolutions.com/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/SBPL 2 1.png" alt="SBPL Logo" width={112} height={112} />
-                </a>
-                <a href="https://www.sudhanandpharmacies.com/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 4.png" alt="Pharmacies Logo" width={112} height={112} />
-                </a>
-                <a href="https://www.tiameds.ai/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1 (1).png" alt="Tiameds Logo" width={112} height={112} />
-                </a>
-                <a href="https://www.cureplushospitals.com/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1.png" alt="Hospitals Logo" width={112} height={112} />
-                </a>
-                <a href="https://www.cureplusbloodbank.com/">
-                  <Image 
-                    className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-60 hover:opacity-100 transition-opacity cursor-pointer" 
-                    src="/home/Rectangle 3.png" 
-                    alt="Blood Bank Logo" 
-                    width={80}
-                    height={80}
-                  />
-                </a>
-                <a href="https://www.cureplushospitals.com/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/CUREPLUS PHARMA 1.png" alt="Pharma Logo" width={112} height={112} />
-                </a>
-                <a href="https://www.arcsportzone.com/">
-                  <div className="w-16 h-28 relative opacity-60">
-                    <Image className="w-12 h-20 absolute top-[6.11px] left-[7.71px] transition-opacity cursor-pointer" src="/home/ARC.png" alt="ARC Logo" width={48} height={80} />
-                  </div>
-                </a>
-                <a href="https://smt.help/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/smt.png" alt="SMT Logo" width={112} height={112} />
-                </a>
-                <a href="https://sudhanandnovacandolim.com/">
-                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/NOVA.png" alt="Nova Logo" width={112} height={112} />
-                </a>
-                <a href="https://sudhanandfourseasons.com/">
-                  <Image className="w-36 h-7 md:w-48 md:h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/FOUR SEASONS.png" alt="Four Seasons Logo" width={192} height={36} />
-                </a>
-              </div>
-            ))}
-          </div>
+      {/* Brand Logos Section - Infinite Scrolling */}
+<div className="self-stretch py-16 md:py-20 bg-orange-50 overflow-hidden">
+  <div className="marquee-wrapper h-[140px] md:h-[160px] flex items-center">
+    <div className="marquee-track flex w-max animate-scroll-marquee items-center">
+      {[...Array(3)].map((_, i) => (
+        <div key={i} className="marquee-group flex items-center gap-8 md:gap-10 px-6 md:px-8 h-full">
+          {[
+            // Standard logos
+            { src: "/home/SBPL 2 1.png", alt: "SBPL Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            { src: "/home/Rectangle 4.png", alt: "Pharmacies Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            { src: "/home/Rectangle 1 (1).png", alt: "Tiameds Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            { src: "/home/Rectangle 1.png", alt: "Hospitals Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            
+            // Smaller logo
+            { src: "/home/Rectangle 3.png", alt: "Blood Bank Logo", size: "w-20 h-20 md:w-24 md:h-24" },
+            
+            // Standard logos
+            { src: "/home/CUREPLUS PHARMA 1.png", alt: "Pharma Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            { src: "/home/smt.png", alt: "SMT Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            { src: "/home/NOVA.png", alt: "Nova Logo", size: "w-24 h-24 md:w-28 md:h-28" },
+            
+            // Special cases
+            { src: "/home/ARC.png", alt: "ARC Logo", size: "w-16 h-28 md:w-20 md:h-32" },
+            { src: "/home/FOUR SEASONS.png", alt: "Four Seasons Logo", size: "w-40 h-10 md:w-48 md:h-12" }
+          ].map((logo, index) => (
+            <div 
+              key={index}
+              className={`relative ${logo.size} mx-1 md:mx-2 flex items-center justify-center transition-all duration-300 hover:scale-125 hover:z-10`}
+            >
+              <Image
+                className="object-contain w-full h-full opacity-80 hover:opacity-100"
+                src={logo.src}
+                alt={logo.alt}
+                width={200}
+                height={100}
+              />
+            </div>
+          ))}
         </div>
-        <style jsx>{`
-          .marquee-wrapper {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-          }
-          .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: scroll-marquee 20s linear infinite;
-          }
-          .marquee-wrapper:hover .marquee-track {
-            animation-play-state: paused;
-          }
-          @keyframes scroll-marquee {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          .marquee-group {
-            flex-shrink: 0;
-            display: flex;
-          }
-          /* Hide scrollbar for Chrome, Safari and Opera */
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-          /* Hide scrollbar for IE, Edge and Firefox */
-          .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-          }
-        `}</style>
-      </div>
+      ))}
+    </div>
+  </div>
+  <style jsx>{`
+    .marquee-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-marquee 35s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-track {
+      animation-play-state: paused;
+    }
+    @keyframes scroll-marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .marquee-group {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  `}</style>
+</div>
 
       {/* Business Section */}
       <section
@@ -553,39 +541,39 @@ const HomePage = () => {
 
       {/* Founder Section */}
       <div
-        className="w-full h-auto md:h-[788px] py-20 md:py-28 flex flex-col justify-center items-center gap-16 overflow-hidden bg-cover bg-center bg-no-repeat px-4 md:px-0"
-        style={{
-          backgroundImage: "url('/updfound.png')",
-        }}
-      >
-        <div className="h-auto md:h-96 px-6 md:px-20 py-10 bg-zinc-100/50 rounded-3xl outline outline-8 outline-offset-[-4px] backdrop-blur-md flex flex-col md:flex-row justify-center items-center gap-10 max-w-5xl w-full">
-          <img className="w-64 md:w-80 max-w-full relative" src="/home/arjunsir.png" alt="Founder" />
-          <div className="w-full md:w-[493px] p-6 rounded-2xl backdrop-blur-md flex flex-col justify-center items-start gap-8 md:gap-10">
-            <div className="p-4 md:p-6 rounded-2xl flex flex-col justify-start items-start gap-4">
-              <div className="text-center md:text-left text-zinc-800 text-xl md:text-2xl font-medium font-['Geist'] leading-relaxed">
-                Hear from our founder
-              </div>
-              <div className="text-neutral-600 text-sm md:text-base font-normal font-['Geist'] leading-tight">
-                Sudhanand started as a dream to serve with purpose. Today, across industries, we grow with compassion, innovation, and integrity—building lasting impact, not just businesses.
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['Innovation', 'Trust', 'Quality', 'Sustainability'].map((tag) => (
-                  <div key={tag} className="px-4 py-1 bg-slate-300/20 rounded-2xl backdrop-blur-md flex justify-center items-center">
-                    <div className="text-slate-500 text-xs md:text-sm font-normal font-['Geist'] leading-none">
-                      {tag}
-                    </div>
-                  </div>
-                ))}
+  className="w-full h-auto md:h-[788px] py-20 md:py-28 flex flex-col justify-center items-center gap-16 overflow-hidden bg-cover bg-center bg-no-repeat px-4 md:px-0"
+  style={{
+    backgroundImage: "url('/updfound.png')",
+  }}
+>
+  <div className="h-auto md:h-96 px-6 md:px-20 py-10 bg-zinc-100/50 rounded-3xl outline outline-8 outline-white outline-offset-[-4px] backdrop-blur-md flex flex-col md:flex-row justify-center items-center gap-10 max-w-5xl w-full">
+    <img className="w-64 md:w-80 max-w-full relative" src="/home/arjunsir.png" alt="Founder" />
+    <div className="w-full md:w-[493px] p-6 rounded-2xl backdrop-blur-md flex flex-col justify-center items-start gap-8 md:gap-10">
+      <div className="p-4 md:p-6 rounded-2xl flex flex-col justify-start items-start gap-4">
+        <div className="text-center md:text-left text-zinc-800 text-xl md:text-2xl font-medium font-['Geist'] leading-relaxed">
+          Hear from our founder
+        </div>
+        <div className="text-neutral-600 text-sm md:text-base font-normal font-['Geist'] leading-tight">
+          Sudhanand started as a dream to serve with purpose. Today, across industries, we grow with compassion, innovation, and integrity—building lasting impact, not just businesses.
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {['Innovation', 'Trust', 'Quality', 'Sustainability'].map((tag) => (
+            <div key={tag} className="px-4 py-1 bg-slate-300/20 rounded-2xl backdrop-blur-md flex justify-center items-center">
+              <div className="text-slate-500 text-xs md:text-sm font-normal font-['Geist'] leading-none">
+                {tag}
               </div>
             </div>
-            <div className="px-4 flex justify-center items-center w-full">
-              <div className="flex-1 text-slate-500 text-lg md:text-xl font-medium font-['Geist'] leading-snug text-center md:text-left">
-                Dr. Arjun Sachidanand
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+      <div className="px-4 flex justify-center items-center w-full">
+        <div className="flex-1 text-slate-500 text-lg md:text-xl font-medium font-['Geist'] leading-snug text-center md:text-left">
+          Dr. Arjun Sachidanand
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Background Image Section */}
       <div
