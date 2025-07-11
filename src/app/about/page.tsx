@@ -82,9 +82,13 @@ export default function About() {
             <div className="self-stretch justify-center text-zinc-700 text-lg font-medium font-['Inter'] leading-relaxed">Capt. Raghu is a strategic planner with a focus on operational excellence and efficiency. His military background has instilled in him a strong sense of discipline and leadership, which he applies to managing the day-to-day operations of the organization. Capt. Raghu is dedicated to optimizing processes and ensuring that all teams work cohesively towards common goals.</div>
         </div>
     </div>
-    <div className="self-stretch inline-flex flex-col justify-start items-start gap-2">
-        <img className="w-[484px] h-96 rounded-2xl" src="/about/capt.png" />
-    </div>
+    <div className="w-[484px] aspect-[4/3] rounded-2xl overflow-hidden">
+  <img
+    src="/about/capt.png"
+    alt="About"
+    className="w-full h-full object-cover object-[center_30%]"
+  />
+</div>
 </div>
 <div className="self-stretch px-16 py-10 inline-flex justify-center items-center gap-16">
     <div className="inline-flex flex-col justify-start items-start gap-2">
