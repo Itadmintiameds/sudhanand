@@ -69,43 +69,48 @@ const HomePage = () => {
 
       {/* Brand Logos Section - Infinite Scrolling */}
       {/* Brand Logos Section - Infinite Scrolling */}
-<div className="self-stretch py-16 md:py-20 bg-orange-50 overflow-hidden">
-  <div className="marquee-wrapper h-[140px] md:h-[160px] flex items-center">
+<div className="self-stretch pb-20 md:pb-28 bg-orange-50 overflow-x-auto scrollbar-hide">
+  <div className="marquee-wrapper">
     <div className="marquee-track flex w-max animate-scroll-marquee items-center">
-      {[...Array(3)].map((_, i) => (
-        <div key={i} className="marquee-group flex items-center gap-8 md:gap-10 px-6 md:px-8 h-full">
-          {[
-            // Standard logos
-            { src: "/home/SBPL 2 1.png", alt: "SBPL Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            { src: "/home/Rectangle 4.png", alt: "Pharmacies Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            { src: "/home/Rectangle 1 (1).png", alt: "Tiameds Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            { src: "/home/Rectangle 1.png", alt: "Hospitals Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            
-            // Smaller logo
-            { src: "/home/Rectangle 3.png", alt: "Blood Bank Logo", size: "w-20 h-20 md:w-24 md:h-24" },
-            
-            // Standard logos
-            { src: "/home/CUREPLUS PHARMA 1.png", alt: "Pharma Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            { src: "/home/smt.png", alt: "SMT Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            { src: "/home/NOVA.png", alt: "Nova Logo", size: "w-24 h-24 md:w-28 md:h-28" },
-            
-            // Special cases
-            { src: "/home/ARC.png", alt: "ARC Logo", size: "w-16 h-28 md:w-20 md:h-32" },
-            { src: "/home/FOUR SEASONS.png", alt: "Four Seasons Logo", size: "w-40 h-10 md:w-48 md:h-12" }
-          ].map((logo, index) => (
-            <div 
-              key={index}
-              className={`relative ${logo.size} mx-1 md:mx-2 flex items-center justify-center transition-all duration-300 hover:scale-125 hover:z-10`}
-            >
-              <Image
-                className="object-contain w-full h-full opacity-80 hover:opacity-100"
-                src={logo.src}
-                alt={logo.alt}
-                width={200}
-                height={100}
-              />
+      {[...Array(2)].map((_, i) => (
+        <div key={i} className="marquee-group flex items-center gap-8 px-6">
+          <a href="https://www.sudhanandbusinesssolutions.com/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/SBPL 2 1.png" alt="SBPL Logo" />
+          </a>
+          <a href="https://www.sudhanandpharmacies.com/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 4.png" alt="Pharmacies Logo" />
+          </a>
+          <a href="https://www.tiameds.ai/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 1 (1).png" alt="Tiameds Logo" />
+          </a>
+          <a href="https://www.cureplushospitals.com/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 1.png" alt="Hospitals Logo" />
+          </a>
+          <a href="https://www.cureplusbloodbank.com/">
+            {/* Fix smaller logo by matching size to others */}
+            <img 
+              className="w-20 h-20 md:w-28 md:h-28 object-contain opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" 
+              src="/home/Rectangle 3.png" 
+              alt="Blood Bank Logo" 
+            />
+          </a>
+          <a href="https://www.cureplushospitals.com/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/CUREPLUS PHARMA 1.png" alt="Pharma Logo" />
+          </a>
+          <a href="https://www.arcsportzone.com/">
+            <div className="w-20 h-28 relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-105 transform-gpu transition-opacity duration-300 flex items-center justify-center">
+              <img className="w-16 h-20 absolute top-[6px] left-[8px]" src="/home/ARC.png" alt="ARC Logo" />
             </div>
-          ))}
+          </a>
+          <a href="https://smt.help/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/smt.png" alt="SMT Logo" />
+          </a>
+          <a href="https://sudhanandnovacandolim.com/">
+            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/NOVA.png" alt="Nova Logo" />
+          </a>
+          <a href="https://sudhanandfourseasons.com/">
+            <img className="w-36 h-7 md:w-48 md:h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/FOUR SEASONS.png" alt="Four Seasons Logo" />
+          </a>
         </div>
       ))}
     </div>
@@ -119,7 +124,9 @@ const HomePage = () => {
     .marquee-track {
       display: flex;
       width: max-content;
-      animation: scroll-marquee 35s linear infinite;
+      animation: scroll-marquee 30s linear infinite;
+      align-items: center;
+      will-change: transform;
     }
     .marquee-wrapper:hover .marquee-track {
       animation-play-state: paused;
@@ -136,10 +143,21 @@ const HomePage = () => {
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      height: 100%;
+      gap: 2rem; /* equal gaps */
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
   `}</style>
 </div>
+
+
 
       {/* Business Section */}
       <section
