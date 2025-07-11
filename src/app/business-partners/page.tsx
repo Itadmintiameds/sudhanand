@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -5,6 +6,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const BusinessPartnersPage: React.FC = () => {
+  // Scroll handler for button
+  const scrollToFooter = () => {
+    const footerElement = document.getElementById('page-footer');
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -88,7 +97,10 @@ const BusinessPartnersPage: React.FC = () => {
             <div className="w-full md:w-auto text-neutral-600 text-2xl md:text-3xl font-normal font-['Geist'] leading-9 text-center md:text-left">
               Discover how we can help
             </div>
-            <button className="w-full md:w-auto px-6 py-4 bg-slate-500 rounded-full flex justify-center items-center gap-2.5 hover:bg-slate-600 transition-colors">
+            <button
+              className="w-full md:w-auto px-6 py-4 bg-slate-500 rounded-full flex justify-center items-center gap-2.5 hover:bg-slate-600 transition-colors"
+              onClick={scrollToFooter}
+            >
               <span className="text-white text-lg font-normal font-['Geist'] leading-snug">
                 Contact Us
               </span>
@@ -97,7 +109,10 @@ const BusinessPartnersPage: React.FC = () => {
         </div>
       </main>
 
-      <Footer />
+      {/* Wrap Footer with a div having id for scrolling */}
+      <div id="page-footer">
+        <Footer />
+      </div>
     </>
   );
 };

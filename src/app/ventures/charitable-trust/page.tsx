@@ -137,17 +137,17 @@ export default function CharitableTrustPage() {
               <div className="self-stretch flex flex-col justify-start items-start gap-4 lg:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 lg:gap-6">
                   <a
-                    href="https://smt.help/educational-trust/"
+                    href="https://www.smt.help/sav"
                     className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <div className="w-full lg:w-96 justify-start text-slate-500 text-xl lg:text-3xl font-normal font-['Geist'] capitalize leading-relaxed lg:leading-loose">
-                      Dr. M. D. Sachidananda Murthy Memorial Educational Trust
+                      Sudhanand Arogya Vahini
                     </div>
                   </a>
                   <a
-                    href="https://smt.help/educational-trust/"
+                    href="https://www.smt.help/sav"
                     className="w-5 lg:w-6 h-5 lg:h-6"
                     target="_blank"
                     rel="noopener noreferrer"

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const mapsUrl =
-  'https://www.google.com/maps/search/?api=1&query=Murthy+Towers,Devanooru,Rajeevnagara+2nd+Stage,Udayagiri,Mysore+570019';
+  'https://maps.app.goo.gl/TYASLtgbvsTEduedA';
 
 const Footer: React.FC = () => {
   return (
@@ -35,10 +35,10 @@ const Footer: React.FC = () => {
         {/* Contact Info */}
         <div className="flex flex-col gap-1.5">
           <a
-            href="mailto:hello@figma.com?subject=Inquiry%20from%20Website"
+            href="mailto:info@sudhanandgroup.com?subject=Inquiry%20from%20Website"
             className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline break-words"
           >
-            hello@figma.com
+            info@sudhanandgroup.com
           </a>
           <a
             href="mailto:hello@sudhanandgroup.com?subject=Inquiry%20from%20Website"
