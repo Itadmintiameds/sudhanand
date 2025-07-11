@@ -69,52 +69,118 @@ const HomePage = () => {
 
       {/* Brand Logos Section - Infinite Scrolling */}
       {/* Brand Logos Section - Infinite Scrolling */}
-<div className="self-stretch pb-20 md:pb-28 bg-orange-50 overflow-x-auto scrollbar-hide">
+<div className="self-stretch pb-20 md:pb-28 bg-orange-50 overflow-x-hidden scrollbar-hide">
   <div className="marquee-wrapper">
-    <div className="marquee-track flex w-max animate-scroll-marquee items-center">
+    <div className="marquee-track flex items-center">
       {[...Array(2)].map((_, i) => (
         <div key={i} className="marquee-group flex items-center gap-8 px-6">
           <a href="https://www.sudhanandbusinesssolutions.com/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/SBPL 2 1.png" alt="SBPL Logo" />
+            <img
+              src="/home/SBPL 2 1.png"
+              alt="SBPL Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
           </a>
           <a href="https://www.sudhanandpharmacies.com/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 4.png" alt="Pharmacies Logo" />
+            <img
+              src="/home/Rectangle 4.png"
+              alt="Pharmacies Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
           </a>
           <a href="https://www.tiameds.ai/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 1 (1).png" alt="Tiameds Logo" />
-          </a>
-          <a href="https://www.cureplushospitals.com/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/Rectangle 1.png" alt="Hospitals Logo" />
-          </a>
-          <a href="https://www.cureplusbloodbank.com/">
-            {/* Fix smaller logo by matching size to others */}
-            <img 
-              className="w-20 h-20 md:w-28 md:h-28 object-contain opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" 
-              src="/home/Rectangle 3.png" 
-              alt="Blood Bank Logo" 
+            <img
+              src="/home/Rectangle 1 (1).png"
+              alt="Tiameds Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
             />
           </a>
           <a href="https://www.cureplushospitals.com/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/CUREPLUS PHARMA 1.png" alt="Pharma Logo" />
+            <img
+              src="/home/Rectangle 1.png"
+              alt="Hospitals Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
+          </a>
+          <a href="https://www.cureplusbloodbank.com/">
+            <img
+              src="/home/Rectangle 3.png"
+              alt="Blood Bank Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
+          </a>
+          <a href="https://www.cureplushospitals.com/">
+            <img
+              src="/home/CUREPLUS PHARMA 1.png"
+              alt="Pharma Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
           </a>
           <a href="https://www.arcsportzone.com/">
             <div className="w-20 h-28 relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-105 transform-gpu transition-opacity duration-300 flex items-center justify-center">
-              <img className="w-16 h-20 absolute top-[6px] left-[8px]" src="/home/ARC.png" alt="ARC Logo" />
+              <img
+                src="/home/ARC.png"
+                alt="ARC Logo"
+                width={64}
+                height={80}
+                className="absolute top-[6px] left-[8px] object-contain"
+                style={{ width: '64px', height: '80px' }}
+              />
             </div>
           </a>
           <a href="https://smt.help/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/smt.png" alt="SMT Logo" />
+            <img
+              src="/home/smt.png"
+              alt="SMT Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
           </a>
           <a href="https://sudhanandnovacandolim.com/">
-            <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/NOVA.png" alt="Nova Logo" />
+            <img
+              src="/home/NOVA.png"
+              alt="Nova Logo"
+              width={112}
+              height={112}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '112px', height: '112px' }}
+            />
           </a>
           <a href="https://sudhanandfourseasons.com/">
-            <img className="w-36 h-7 md:w-48 md:h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu" src="/home/FOUR SEASONS.png" alt="Four Seasons Logo" />
+            <img
+              src="/home/FOUR SEASONS.png"
+              alt="Four Seasons Logo"
+              width={192}
+              height={36}
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+              style={{ width: '192px', height: '36px' }}
+            />
           </a>
         </div>
       ))}
     </div>
   </div>
+
   <style jsx>{`
     .marquee-wrapper {
       overflow: hidden;
@@ -143,7 +209,7 @@ const HomePage = () => {
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 2rem; /* equal gaps */
+      gap: 2rem;
     }
     /* Hide scrollbar for Chrome, Safari and Opera */
     .scrollbar-hide::-webkit-scrollbar {
@@ -151,11 +217,12 @@ const HomePage = () => {
     }
     /* Hide scrollbar for IE, Edge and Firefox */
     .scrollbar-hide {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   `}</style>
 </div>
+
 
 
 
