@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -44,15 +45,18 @@ const BusinessPartnersPage: React.FC = () => {
             {/* Partner 1 */}
             <div className="w-full md:w-1/2 py-10 md:py-14 border-t-[0.5px] border-neutral-600 flex flex-col justify-start items-center gap-8 md:gap-10">
               <div className="w-full max-w-[320px] h-auto relative">
-                <img
+                <Image
                   className="w-full h-auto object-contain"
                   src="/cc.png"
                   alt="Cabrillo Coastal Logo"
+                  width={320}
+                  height={100}
+                  priority
                 />
               </div>
               <div className="w-full max-w-[400px] flex flex-col justify-center items-start gap-8 md:gap-14 px-4 md:px-0">
                 <p className="text-neutral-600 text-base md:text-lg font-normal font-['Geist'] leading-relaxed md:leading-normal">
-                  Sudhanand Group, a leader in healthcare, IT, and education services, has partnered with Cabrillo Coastal, a specialist in property insurance for high-risk coastal areas. Together, they enhance claims processing, customer support, and service efficiency by combining Sudhanand's operational expertise with Cabrillo's commitment to quality insurance solutions.
+                  Sudhanand Group, a leader in healthcare, IT, and education services, has partnered with Cabrillo Coastal, a specialist in property insurance for high-risk coastal areas. Together, they enhance claims processing, customer support, and service efficiency by combining Sudhanand&apos;s operational expertise with Cabrillo&apos;s commitment to quality insurance solutions.
                   <br /><br />
                   This collaboration provides integrated, reliable offerings in healthcare and property protection, ensuring accessibility and efficiency for clients. Their joint efforts drive innovation and excellence, setting new standards across both critical sectors.
                 </p>
@@ -62,10 +66,13 @@ const BusinessPartnersPage: React.FC = () => {
             {/* Partner 2 */}
             <div className="w-full md:w-1/2 py-10 md:py-14 border-t-[0.5px] border-neutral-600 flex flex-col justify-start items-center gap-8 md:gap-10">
               <div className="w-full max-w-[320px] h-auto relative">
-                <img
+                <Image
                   className="w-full h-auto object-contain"
                   src="/creditgram.png"
                   alt="CreditAccess Grameen Logo"
+                  width={320}
+                  height={100}
+                  priority
                 />
               </div>
               <div className="w-full max-w-[400px] flex flex-col justify-center items-center gap-8 md:gap-14 px-4 md:px-0">

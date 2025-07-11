@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Technology Frontier | Sudhanand Group',
@@ -66,11 +65,17 @@ export default function TechnologyPage() {
         <div className="w-full max-w-[1040px] pb-5 md:pb-10 border-b-[0.50px] border-black inline-flex flex-col lg:flex-row justify-between items-start gap-10 md:gap-0">
           <div className="w-full lg:w-[480px] pt-5 md:pt-8 border-t-[0.50px] border-black flex justify-start items-center gap-5 lg:gap-64">
             <div className="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-8 md:gap-14">
-              <img className="w-20 md:w-28 h-16 md:h-24" src="/technology-page/SBPL 2 2.png" alt="SBPL Logo" />
+              <Image
+                src="/technology-page/SBPL 2 2.png"
+                alt="SBPL Logo"
+                width={112}
+                height={96}
+                className="w-20 md:w-28 h-16 md:h-24"
+              />
               <div className="self-stretch flex flex-col justify-start items-start gap-4 md:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 md:gap-6">
-                  <a 
-                    href="https://www.sudhanandbusinesssolutions.com/" 
+                  <a
+                    href="https://www.sudhanandbusinesssolutions.com/"
                     className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -79,13 +84,19 @@ export default function TechnologyPage() {
                       Sudhanand Business Solutions Pvt. Ltd.
                     </div>
                   </a>
-                  <a 
-                    href="https://www.sudhanandbusinesssolutions.com/" 
+                  <a
+                    href="https://www.sudhanandbusinesssolutions.com/"
                     className="w-5 h-5 md:w-6 md:h-6"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                    <Image
+                      src="/link-icon.png"
+                      alt="Link"
+                      width={24}
+                      height={24}
+                      className="w-full h-full"
+                    />
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm md:text-base font-normal font-['Geist'] leading-snug">
@@ -96,11 +107,17 @@ export default function TechnologyPage() {
           </div>
           <div className="w-full lg:w-[480px] pt-5 md:pt-8 border-t-[0.50px] border-black flex justify-start items-center gap-5 lg:gap-64">
             <div className="flex-1 inline-flex flex-col justify-center items-start gap-8 md:gap-14">
-              <img className="w-48 md:w-64 h-16 md:h-24" src="/technology-page/tiameds.png" alt="TiaMeds Logo" />
+              <Image
+                src="/technology-page/tiameds.png"
+                alt="TiaMeds Logo"
+                width={256}
+                height={96}
+                className="w-48 md:w-64 h-16 md:h-24"
+              />
               <div className="self-stretch flex flex-col justify-start items-start gap-4 md:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 md:gap-6">
-                  <a 
-                    href="https://www.tiameds.ai/" 
+                  <a
+                    href="https://www.tiameds.ai/"
                     className="flex-1 flex justify-start items-end gap-2.5 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -109,13 +126,19 @@ export default function TechnologyPage() {
                       TiaMeds Technologies Pvt. Ltd.
                     </div>
                   </a>
-                  <a 
-                    href="https://www.tiameds.ai/" 
+                  <a
+                    href="https://www.tiameds.ai/"
                     className="w-5 h-5 md:w-6 md:h-6"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                    <Image
+                      src="/link-icon.png"
+                      alt="Link"
+                      width={24}
+                      height={24}
+                      className="w-full h-full"
+                    />
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm md:text-base font-normal font-['Geist'] leading-snug">

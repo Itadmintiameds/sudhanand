@@ -66,12 +66,14 @@ export default function HospitalityPage() {
         <div className="w-full max-w-[1040px] pb-8 sm:pb-10 border-b border-black flex flex-col sm:flex-row justify-between items-start gap-10 sm:gap-0">
           {/* Venture 1 */}
           <div className="w-full sm:w-[480px] pt-6 sm:pt-8 border-t border-black flex flex-col items-center sm:items-start gap-8 sm:gap-14">
-            <img
-              className="w-20 h-24 object-contain"
-              src="/hospitality-page2/NOVA CANDOLIM BY SUDHANAND 2.png"
-              alt="Sudhanand Candolim In Goa"
-              loading="lazy"
-            />
+            <div className="relative w-20 h-24">
+              <Image
+                src="/hospitality-page2/NOVA CANDOLIM BY SUDHANAND 2.png"
+                alt="Sudhanand Candolim In Goa"
+                fill
+                className="object-contain"
+              />
+            </div>
             <div className="flex flex-col gap-4 sm:gap-8 max-w-full">
               <div className="flex justify-between items-center gap-4 w-full">
                 <a
@@ -81,7 +83,14 @@ export default function HospitalityPage() {
                   Sudhanand Candolim In Goa
                 </a>
                 <a href="https://sudhanandnovacandolim.com/" className="w-6 h-6 flex-shrink-0">
-                  <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                  <div className="relative w-full h-full">
+                    <Image 
+                      src="/link-icon.png" 
+                      alt="Link" 
+                      fill 
+                      className="object-contain"
+                    />
+                  </div>
                 </a>
               </div>
               <p className="text-black text-base font-normal font-['Geist'] leading-snug">
@@ -92,12 +101,14 @@ export default function HospitalityPage() {
 
           {/* Venture 2 */}
           <div className="w-full sm:w-[480px] pt-6 sm:pt-16 border-t border-black flex flex-col items-center sm:items-start gap-8 sm:gap-14">
-            <img
-              className="w-80 h-16 object-contain"
-              src="/hospitality-page2/FOUR SEASONS 2.png"
-              alt="Sudhanand Four Seasons in Mysore"
-              loading="lazy"
-            />
+            <div className="relative w-80 h-16">
+              <Image
+                src="/hospitality-page2/FOUR SEASONS 2.png"
+                alt="Sudhanand Four Seasons in Mysore"
+                fill
+                className="object-contain"
+              />
+            </div>
             <div className="flex flex-col gap-4 sm:gap-8 max-w-full">
               <div className="flex justify-between items-center gap-4 w-full">
                 <a
@@ -107,11 +118,18 @@ export default function HospitalityPage() {
                   Sudhanand Four Seasons in Mysore
                 </a>
                 <a href="https://sudhanandfourseasons.com/" className="w-6 h-6 flex-shrink-0">
-                  <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                  <div className="relative w-full h-full">
+                    <Image 
+                      src="/link-icon.png" 
+                      alt="Link" 
+                      fill 
+                      className="object-contain"
+                    />
+                  </div>
                 </a>
               </div>
               <p className="text-black text-base font-normal font-['Geist'] leading-snug">
-                Sudhanand Four Seasons is a deluxe boutique hotel in Mysore, offering luxury, comfort, and exceptional service. Located near Mysore Palace and Nexus Mall, it's ideal for both leisure and business travelers. Our stylish rooms provide a serene environment for a peaceful stay. We offer top amenities, including complimentary Wi-Fi, 24/7 room service, and in-house dining, ensuring the highest standards of hospitality for relaxation or exploration.
+                Sudhanand Four Seasons is a deluxe boutique hotel in Mysore, offering luxury, comfort, and exceptional service. Located near Mysore Palace and Nexus Mall, it&apos;s ideal for both leisure and business travelers. Our stylish rooms provide a serene environment for a peaceful stay. We offer top amenities, including complimentary Wi-Fi, 24/7 room service, and in-house dining, ensuring the highest standards of hospitality for relaxation or exploration.
               </p>
             </div>
           </div>

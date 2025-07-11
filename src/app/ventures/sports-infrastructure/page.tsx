@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Sports Infrastructure | Sudhanand Group',
@@ -67,33 +66,41 @@ export default function SportsInfrastructurePage() {
           <div className="self-stretch flex flex-col justify-start items-start gap-5">
             <div className="self-stretch py-8 md:py-12 border-t-[0.50px] border-black inline-flex flex-col md:flex-row justify-start items-start gap-6">
               <div className="inline-flex flex-col justify-center items-center gap-4 md:gap-6">
-                <img 
-                  className="w-full max-w-[300px] md:w-72 h-auto md:h-80" 
-                  src="/sports-page/ARC 1.png" 
+                <Image
+                  src="/sports-page/ARC 1.png"
                   alt="ARC Sportzone"
+                  width={288}
+                  height={320}
+                  className="w-full max-w-[300px] md:w-72 h-auto md:h-80"
                 />
                 <div className="inline-flex justify-start items-center gap-3 md:gap-5">
-                  <a 
-                    href="https://www.arcsportzone.com/" 
+                  <a
+                    href="https://www.arcsportzone.com/"
                     className="justify-start text-slate-500 text-3xl md:text-4xl lg:text-6xl font-normal font-['Geist'] capitalize leading-tight md:leading-[53.20px] hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     ARC Sportzone
                   </a>
-                  <a 
-                    href="https://www.arcsportzone.com/" 
+                  <a
+                    href="https://www.arcsportzone.com/"
                     className="w-5 h-5 md:w-6 md:h-6"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link to ARC Sportzone" className="w-full h-full" />
+                    <Image
+                      src="/link-icon.png"
+                      alt="Link to ARC Sportzone"
+                      width={24}
+                      height={24}
+                      className="w-full h-full"
+                    />
                   </a>
                 </div>
               </div>
               <div className="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-5 md:gap-14">
                 <div className="self-stretch justify-start text-black text-sm md:text-base lg:text-lg font-medium font-['Geist'] leading-normal">
-                  ARC SportZone is Mysore's premier destination for sports, fitness, and community. More than just a sports club, we offer world-class facilities for basketball, football, badminton, tennis, cricket, and more. With expert coaches and programs focused on skill development, teamwork, endurance, and sportsmanship, we cater to all ages and skill levels. Recognized as the best in Mysore, ARC SportZone is where goals are set, friendships are made, and victories are celebrated.
+                  ARC SportZone is Mysore’s premier destination for sports, fitness, and community. More than just a sports club, we offer world-class facilities for basketball, football, badminton, tennis, cricket, and more. With expert coaches and programs focused on skill development, teamwork, endurance, and sportsmanship, we cater to all ages and skill levels. Recognized as the best in Mysore, ARC SportZone is where goals are set, friendships are made, and victories are celebrated.
                 </div>
               </div>
             </div>

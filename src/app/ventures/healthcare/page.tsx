@@ -30,7 +30,7 @@ export default function HealthcareVenturesPage() {
             Healthcare Services
           </h1>
           <p className="text-black text-base sm:text-2xl md:text-4xl font-medium mt-2 sm:mt-4 max-w-[502px]">
-            It's all about caring for people
+            It&apos;s all about caring for people
           </p>
         </div>
       </div>
@@ -58,14 +58,21 @@ export default function HealthcareVenturesPage() {
         <div className="w-full max-w-[1040px] pb-8 md:pb-10 border-b border-black flex flex-col md:flex-row justify-between items-start gap-10 md:gap-0">
           {/* Venture 1 */}
           <div className="w-full md:w-[480px] pt-4 md:pt-8 border-t border-black flex flex-col items-center md:items-start gap-6 md:gap-14">
-            <img className="w-32 h-16 md:w-52 md:h-24 object-contain" src="/hospitality-page/cureplus.png" alt="Cureplus Hospitals" />
+            <div className="w-32 h-16 md:w-52 md:h-24 relative">
+              <Image
+                src="/hospitality-page/cureplus.png"
+                alt="Cureplus Hospitals"
+                fill
+                className="object-contain"
+              />
+            </div>
             <div className="flex flex-col gap-2 md:gap-8">
               <div className="flex flex-col md:flex-row items-center md:items-end gap-2 md:gap-6">
                 <a href="https://www.cureplushospitals.com/" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
                   Sudhanand Healthcare Solutions Pvt. Ltd.
                 </a>
-                <a href="https://www.cureplushospitals.com/" className="w-5 h-5 md:w-6 md:h-6">
-                  <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                <a href="https://www.cureplushospitals.com/" className="w-5 h-5 md:w-6 md:h-6 relative">
+                  <Image src="/link-icon.png" alt="Link" fill className="object-contain" />
                 </a>
               </div>
               <div className="text-black text-sm md:text-base font-normal leading-snug">
@@ -75,14 +82,21 @@ export default function HealthcareVenturesPage() {
           </div>
           {/* Venture 2 */}
           <div className="w-full md:w-[480px] pt-4 md:pt-8 border-t border-black flex flex-col items-center md:items-start gap-6 md:gap-14">
-            <img className="w-16 h-16 md:w-24 md:h-24 object-contain" src="/hospitality-page/SUDHANAND PHARMACIES 1.png" alt="Sudhanand Pharmacies" />
+            <div className="w-16 h-16 md:w-24 md:h-24 relative">
+              <Image
+                src="/hospitality-page/SUDHANAND PHARMACIES 1.png"
+                alt="Sudhanand Pharmacies"
+                fill
+                className="object-contain"
+              />
+            </div>
             <div className="flex flex-col gap-2 md:gap-8">
               <div className="flex flex-col md:flex-row items-center md:items-end gap-2 md:gap-6">
                 <a href="https://www.sudhanandpharmacies.com/" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
                   Sudhanand Pharmacies Pvt. Ltd.
                 </a>
-                <a href="https://www.sudhanandpharmacies.com/" className="w-5 h-5 md:w-6 md:h-6">
-                  <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                <a href="https://www.sudhanandpharmacies.com/" className="w-5 h-5 md:w-6 md:h-6 relative">
+                  <Image src="/link-icon.png" alt="Link" fill className="object-contain" />
                 </a>
               </div>
               <div className="text-black text-sm md:text-base font-normal leading-snug">

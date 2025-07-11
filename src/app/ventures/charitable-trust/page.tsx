@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Charitable Trust | Sudhanand Group',
@@ -54,7 +53,13 @@ export default function CharitableTrustPage() {
         <div className="w-full max-w-[1040px] inline-flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-0">
           <div className="w-full lg:w-[480px] py-8 lg:py-12 border-t-[0.50px] border-black flex justify-start items-center gap-5 lg:gap-64">
             <div className="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-8 lg:gap-14">
-              <img className="w-24 lg:w-32 h-20 lg:h-24" src="/trust-page/SMT 2.png" />
+              <Image 
+                src="/trust-page/SMT 2.png" 
+                alt="SMT Educational Trust Logo"
+                width={128}
+                height={96}
+                className="w-24 lg:w-32 h-20 lg:h-24"
+              />
               <div className="self-stretch flex flex-col justify-start items-start gap-4 lg:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 lg:gap-6">
                   <a 
@@ -73,7 +78,7 @@ export default function CharitableTrustPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                    <Image src="/link-icon.png" alt="External Link" width={24} height={24} className="w-full h-full" />
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-base font-normal font-['Geist'] leading-snug">
@@ -84,7 +89,13 @@ export default function CharitableTrustPage() {
           </div>
           <div className="w-full lg:w-[480px] self-stretch pt-2.5 pb-8 lg:pb-12 border-t-[0.50px] border-black flex justify-start items-center gap-5 lg:gap-64">
             <div className="flex-1 inline-flex flex-col justify-center items-start gap-8 lg:gap-14">
-              <img className="w-40 lg:w-52 h-20 lg:h-24" src="/trust-page/CUREPLUS BLOOD BANK 1.png" />
+              <Image 
+                src="/trust-page/CUREPLUS BLOOD BANK 1.png" 
+                alt="CurePlus Blood Bank Logo"
+                width={208}
+                height={96}
+                className="w-40 lg:w-52 h-20 lg:h-24"
+              />
               <div className="self-stretch flex flex-col justify-start items-start gap-4 lg:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 lg:gap-6">
                   <a 
@@ -103,7 +114,7 @@ export default function CharitableTrustPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                    <Image src="/link-icon.png" alt="External Link" width={24} height={24} className="w-full h-full" />
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-base font-normal font-['Geist'] leading-snug">
@@ -116,7 +127,13 @@ export default function CharitableTrustPage() {
         <div className="w-full max-w-[1040px] border-b-[0.50px] border-black inline-flex flex-col lg:flex-row justify-between items-center">
           <div className="w-full lg:w-[480px] py-8 lg:py-12 border-t-[0.50px] border-black flex justify-start items-center gap-5 lg:gap-64">
             <div className="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-8 lg:gap-14">
-              <img className="w-24 lg:w-32 h-20 lg:h-24" src="/trust-page/SMT 2.png" />
+              <Image 
+                src="/trust-page/SMT 2.png" 
+                alt="SMT Educational Trust Logo"
+                width={128}
+                height={96}
+                className="w-24 lg:w-32 h-20 lg:h-24"
+              />
               <div className="self-stretch flex flex-col justify-start items-start gap-4 lg:gap-8">
                 <div className="self-stretch inline-flex justify-start items-start gap-4 lg:gap-6">
                   <a
@@ -135,7 +152,7 @@ export default function CharitableTrustPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/link-icon.png" alt="Link" className="w-full h-full" />
+                    <Image src="/link-icon.png" alt="External Link" width={24} height={24} className="w-full h-full" />
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-lg font-normal font-['Geist'] leading-normal">

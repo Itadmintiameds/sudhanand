@@ -3,6 +3,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const HomePage = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -17,7 +18,7 @@ const HomePage = () => {
     "SaaS Solutions"
   ];
 
-  return (
+  return (  
     <main className="bg-white text-black">
       {/* Hero Section */}
       <section
@@ -45,11 +46,11 @@ const HomePage = () => {
       <section className="py-16 md:py-20 bg-orange-50 flex flex-col justify-center items-center gap-10 md:gap-14 overflow-hidden px-4 md:px-0">
         <div className="w-full max-w-[1008px] flex flex-col justify-center items-start gap-6">
           <div className="flex items-center gap-3">
-            <img src="/Group.png" alt="Left icon" className="w-5 h-5" />
+            <Image src="/Group.png" alt="Left icon" width={20} height={20} />
             <h2 className="text-black text-2xl md:text-3xl font-medium font-['Geist'] leading-9">
               Who We Are
             </h2>
-            <img src="/Group (1).png" alt="Right icon" className="w-5 h-5" />
+            <Image src="/Group (1).png" alt="Right icon" width={20} height={20} />
           </div>
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
             <div className="flex-1 max-w-full md:max-w-[560px]">
@@ -59,7 +60,7 @@ const HomePage = () => {
             </div>
             <div className="px-0 md:px-10 flex flex-col justify-center items-center gap-4 max-w-full md:max-w-[320px]">
               <blockquote className="w-full text-center text-orange-950 text-3xl md:text-4xl font-normal font-['Satisfy'] leading-[40px] md:leading-[54px]">
-                "Growing with Purpose, Impacting Lives through Innovation and Responsibility."
+                &ldquo;Growing with Purpose, Impacting Lives through Innovation and Responsibility.&rdquo;
               </blockquote>
             </div>
           </div>
@@ -73,41 +74,42 @@ const HomePage = () => {
             {[...Array(2)].map((_, i) => (
               <div key={i} className="marquee-group flex items-center gap-8 px-6">
                 <a href="https://www.sudhanandbusinesssolutions.com/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/SBPL 2 1.png" alt="SBPL Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/SBPL 2 1.png" alt="SBPL Logo" width={112} height={112} />
                 </a>
                 <a href="https://www.sudhanandpharmacies.com/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 4.png" alt="Pharmacies Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 4.png" alt="Pharmacies Logo" width={112} height={112} />
                 </a>
                 <a href="https://www.tiameds.ai/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1 (1).png" alt="Tiameds Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1 (1).png" alt="Tiameds Logo" width={112} height={112} />
                 </a>
                 <a href="https://www.cureplushospitals.com/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1.png" alt="Hospitals Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/Rectangle 1.png" alt="Hospitals Logo" width={112} height={112} />
                 </a>
                 <a href="https://www.cureplusbloodbank.com/">
-  <img 
-    className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-60 hover:opacity-100 transition-opacity cursor-pointer" 
-    src="/home/Rectangle 3.png" 
-    alt="Blood Bank Logo" 
-  />
-</a>
-
+                  <Image 
+                    className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-60 hover:opacity-100 transition-opacity cursor-pointer" 
+                    src="/home/Rectangle 3.png" 
+                    alt="Blood Bank Logo" 
+                    width={80}
+                    height={80}
+                  />
+                </a>
                 <a href="https://www.cureplushospitals.com/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/CUREPLUS PHARMA 1.png" alt="Pharma Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/CUREPLUS PHARMA 1.png" alt="Pharma Logo" width={112} height={112} />
                 </a>
                 <a href="https://www.arcsportzone.com/">
                   <div className="w-16 h-28 relative opacity-60">
-                    <img className="w-12 h-20 absolute top-[6.11px] left-[7.71px] transition-opacity cursor-pointer" src="/home/ARC.png" alt="ARC Logo" />
+                    <Image className="w-12 h-20 absolute top-[6.11px] left-[7.71px] transition-opacity cursor-pointer" src="/home/ARC.png" alt="ARC Logo" width={48} height={80} />
                   </div>
                 </a>
                 <a href="https://smt.help/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/smt.png" alt="SMT Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/smt.png" alt="SMT Logo" width={112} height={112} />
                 </a>
                 <a href="https://sudhanandnovacandolim.com/">
-                  <img className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/NOVA.png" alt="Nova Logo" />
+                  <Image className="w-20 h-20 md:w-28 md:h-28 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/NOVA.png" alt="Nova Logo" width={112} height={112} />
                 </a>
                 <a href="https://sudhanandfourseasons.com/">
-                  <img className="w-36 h-7 md:w-48 md:h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/FOUR SEASONS.png" alt="Four Seasons Logo" />
+                  <Image className="w-36 h-7 md:w-48 md:h-9 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" src="/home/FOUR SEASONS.png" alt="Four Seasons Logo" width={192} height={36} />
                 </a>
               </div>
             ))}
@@ -255,7 +257,299 @@ const HomePage = () => {
       </section>
 
       {/* Timeline Section */}
-      {/* ... (You can add your timeline code here, unchanged) */}
+      <section
+        className="w-full px-4 md:px-20 py-24 bg-cover bg-center relative"
+        style={{ backgroundImage: "url('/Timeline.png')" }}
+      >
+        {/* Background overlay with blur */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-md z-0"></div>
+        
+        <div className="relative z-10">
+          <h2 className="text-center text-white text-4xl md:text-5xl font-bold mb-12 md:mb-20">
+            Our Journey Through Time
+          </h2>
+
+          {/* Mobile Vertical Timeline */}
+          <div className="md:hidden flex flex-col items-center gap-6">
+            {[
+              { year: '2010', img: '/home/humble.png', special: true },
+              { year: '2011', desc: 'Started our journey with SAS Poorna Arogya Healthcare' },
+              { year: '2012', desc: 'Started Sachidananda Organic Farm – Nanjangud' },
+              { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\n\n Sudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
+              { year: '2017', desc: 'Our first hospital "Disha Hospital" – Mysuru\nOpened Dharani Hospital – Chamaarajanagara' },
+              { year: '2018', desc: 'Started Kaveri Hospital – Kodagu\n& ARC Sportzone – Mysuru' },
+              { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\n\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
+              { year: '2021', desc: 'Opened our hotel\nSudhanand Four Seasons – Mysuru' },
+              { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\n\n Sudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
+              { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\n\n Sudhanand Distributors – Mysuru\n\n Narasegowda Memorial Hospital – Mandya' },
+              { year: '2024', desc: 'Started Idea Gateway Inc. – New York\n\n Tiameds Technologies Pvt. Ltd. – Mysuru' },
+              { year: '2025', desc: 'Started our 4 New Spoke Hospitals\n\n Started Sini Meds' },
+            ].map((item, i) => (
+              <div 
+                key={i} 
+                className="w-full max-w-md flex flex-col justify-start items-center gap-1 group transition-all duration-300"
+              >
+                <div className={`
+                  w-full h-16 px-2.5 py-4 rounded-tl-2xl rounded-tr-2xl 
+                  outline outline-1 outline-white/40 backdrop-blur-md 
+                  flex justify-center items-center
+                  ${item.special ? 'bg-amber-900/30' : 'bg-black/20'}
+                  group-hover:bg-black/30 transition-colors
+                `}>
+                  <div className="text-rose-50 text-2xl font-semibold font-geist">
+                    {item.year}
+                  </div>
+                </div>
+                <div className={`
+                  w-full px-6 py-4 rounded-bl-2xl rounded-br-2xl 
+                  outline outline-1 outline-white/40 backdrop-blur-md 
+                  flex flex-col justify-center items-center gap-2
+                  ${item.special ? 
+                    'bg-gradient-to-b from-amber-200/20 to-amber-300/20' : 
+                    'bg-black/10'}
+                  group-hover:bg-black/20 transition-colors
+                  min-h-[120px]
+                `}>
+                  {item.img ? (
+                    <Image 
+                      src={item.img} 
+                      className="h-28 object-contain group-hover:scale-105 transition-transform" 
+                      alt="Humble beginnings"
+                      width={112}
+                      height={112}
+                    />
+                  ) : (
+                    <div className="text-rose-50 text-sm font-semibold font-geist leading-tight text-center whitespace-pre-line">
+                      {item.desc}
+                    </div>
+                  )}
+                </div>
+                {i < 11 && (
+                  <div className="w-6 h-6 my-2 flex justify-center items-center">
+                    <Image
+                      src="/downarrow.svg"
+                      className="w-6 h-6 opacity-80 group-hover:opacity-100 group-hover:animate-bounce"
+                      alt="Next"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Horizontal Timeline */}
+          <div className="hidden md:flex flex-col items-center gap-8">
+            {/* Row 1 */}
+            <div className="flex items-center justify-center gap-4">
+              {[
+                { year: '2010', img: '/home/humble.png', special: true },
+                'right',
+                { year: '2011', desc: 'Started our journey with SAS Poorna Arogya Healthcare' },
+                'right',
+                { year: '2012', desc: 'Started Sachidananda Organic Farm – Nanjangud' },
+                'right',
+                { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust\n\n Sudhanand Healthcare Solutions Pvt. Ltd. – Mysuru' },
+              ].map((item, i, arr) => {
+                const isLast = i === arr.length - 1;
+                if (item === 'right') {
+                  return (
+                    <Image 
+                      key={i} 
+                      src="/rightarrow.svg" 
+                      className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" 
+                      alt="Right arrow"
+                      width={24}
+                      height={24}
+                    />
+                  );
+                }
+
+                const year = typeof item === 'object' && item.year;
+                const desc = typeof item === 'object' && item.desc;
+                const img = typeof item === 'object' && item.img;
+                const special = typeof item === 'object' && item.special;
+
+                return (
+                  <div 
+                    key={i} 
+                    className="w-56 h-60 flex flex-col justify-start items-center gap-1 relative group transition-all duration-300 hover:scale-105"
+                  >
+                    <div className={`
+                      w-full h-16 px-2.5 py-4 rounded-tl-2xl rounded-tr-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex justify-center items-center
+                      ${special ? 'bg-amber-900/30' : 'bg-black/20'}
+                      group-hover:bg-black/30 transition-colors
+                    `}>
+                      <div className="text-rose-50 text-2xl font-semibold font-geist">
+                        {year}
+                      </div>
+                    </div>
+                    <div className={`
+                      w-full flex-1 px-6 py-4 rounded-bl-2xl rounded-br-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex flex-col justify-center items-center gap-2
+                      ${special ? 
+                        'bg-gradient-to-b from-amber-200/20 to-amber-300/20' : 
+                        'bg-black/10'}
+                      group-hover:bg-black/20 transition-colors
+                    `}>
+                      {img ? (
+                        <Image 
+                          src={img} 
+                          className="h-28 object-contain group-hover:scale-105 transition-transform" 
+                          alt="Timeline image"
+                          width={112}
+                          height={112}
+                        />
+                      ) : (
+                        <div className="text-rose-50 text-sm font-semibold font-geist leading-tight text-center whitespace-pre-line">
+                          {desc}
+                        </div>
+                      )}
+                    </div>
+                    {isLast && (
+                      <Image
+                        src="/downarrow.svg"
+                        className="w-6 h-6 mt-2 absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-80 group-hover:opacity-100 group-hover:animate-bounce"
+                        alt="Down arrow"
+                        width={24}
+                        height={24}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Row 2 */}
+            <div className="flex items-center justify-center gap-4">
+              {[
+                { year: '2021', desc: 'Opened our hotel\nSudhanand Four Seasons – Mysuru' },
+                'left',
+                { year: '2020', desc: 'Opened Krishna Hospital – Bettadapura\n\nStarted Sudhanand Business Solutions Pvt. Ltd. – Mysuru' },
+                'left',
+                { year: '2018', desc: 'Started Kaveri Hospital – Kodagu\n& ARC Sportzone – Mysuru' },
+                'left',
+                { year: '2017', desc: 'Our first hospital "Disha Hospital" – Mysuru\n\n Opened Dharani Hospital – Chamaarajanagara' },
+              ].map((item, i) => {
+                const isFirst = i === 0;
+                if (item === 'left') {
+                  return (
+                    <Image 
+                      key={i} 
+                      src="/leftarrow.svg" 
+                      className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" 
+                      alt="Left arrow"
+                      width={24}
+                      height={24}
+                    />
+                  );
+                }
+
+                const year = typeof item === 'object' && item.year;
+                const desc = typeof item === 'object' && item.desc;
+
+                return (
+                  <div 
+                    key={i} 
+                    className="w-56 h-60 flex flex-col justify-start items-center gap-1 relative group transition-all duration-300 hover:scale-105"
+                  >
+                    <div className="
+                      w-full h-16 px-2.5 py-4 bg-black/20 rounded-tl-2xl rounded-tr-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex justify-center items-center
+                      group-hover:bg-black/30 transition-colors
+                    ">
+                      <div className="text-rose-50 text-2xl font-semibold font-geist">
+                        {year}
+                      </div>
+                    </div>
+                    <div className="
+                      w-full flex-1 px-6 py-4 bg-black/10 rounded-bl-2xl rounded-br-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex flex-col justify-center items-center gap-2
+                      group-hover:bg-black/20 transition-colors
+                    ">
+                      <div className="text-rose-50 text-sm font-semibold font-geist leading-tight text-center whitespace-pre-line">
+                        {desc}
+                      </div>
+                    </div>
+                    {isFirst && (
+                      <Image
+                        src="/downarrow.svg"
+                        className="w-6 h-6 mt-2 absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-80 group-hover:opacity-100 group-hover:animate-bounce"
+                        alt="Down arrow"
+                        width={24}
+                        height={24}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Row 3 */}
+            <div className="flex items-center justify-center gap-4">
+              {[
+                { year: '2022', desc: 'Nova Candolim by Sudhanand – Goa\n\n Sudhanand Arogya Vahini\nKarnataka Sudhanand Animal & Dairy Farms – Yelandur' },
+                'right',
+                { year: '2023', desc: 'Sudhanand Pharmacies Pvt. Ltd – Mysore\n\n Sudhanand Distributors – Mysuru\n\n Narasegowda Memorial Hospital – Mandya' },
+                'right',
+                { year: '2024', desc: 'Started Idea Gateway Inc. – New York\n\n Tiameds Technologies Pvt. Ltd. – Mysuru' },
+                'right',
+                { year: '2025', desc: 'Started our 4 New Spoke Hospitals\n\n Started Sini Meds' },
+              ].map((item, i) => {
+                if (item === 'right') {
+                  return (
+                    <Image 
+                      key={i} 
+                      src="/rightarrow.svg" 
+                      className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" 
+                      alt="Right arrow"
+                      width={24}
+                      height={24}
+                    />
+                  );
+                }
+
+                const year = typeof item === 'object' && item.year;
+                const desc = typeof item === 'object' && item.desc;
+
+                return (
+                  <div 
+                    key={i} 
+                    className="w-56 h-60 flex flex-col justify-start items-center gap-1 group transition-all duration-300 hover:scale-105"
+                  >
+                    <div className="
+                      w-full h-16 px-2.5 py-4 bg-black/20 rounded-tl-2xl rounded-tr-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex justify-center items-center
+                      group-hover:bg-black/30 transition-colors
+                    ">
+                      <div className="text-rose-50 text-2xl font-semibold font-geist">
+                        {year}
+                      </div>
+                    </div>
+                    <div className="
+                      w-full flex-1 px-6 py-4 bg-black/10 rounded-bl-2xl rounded-br-2xl 
+                      outline outline-1 outline-white/40 backdrop-blur-md 
+                      flex flex-col justify-center items-center gap-2
+                      group-hover:bg-black/20 transition-colors
+                    ">
+                      <div className="text-rose-50 text-sm font-semibold font-geist leading-tight text-center whitespace-pre-line">
+                        {desc}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Founder Section */}
       <div
