@@ -93,75 +93,80 @@ const BusinessVentures = () => {
 
             {/* Content */}
             <div className="relative z-10 self-stretch flex flex-col lg:flex-row justify-between items-end gap-8">
-              <div className="w-64 flex flex-col justify-start items-start">
-                <motion.h2 
-                  className="text-gray-700 text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight"
-                  variants={textVariants}
-                >
-                  Our ventures
-                </motion.h2>
-              </div>
-              <div className="w-72 py-2 flex justify-center items-center">
-                <motion.p 
-                  className="text-neutral-800 text-lg md:text-xl font-medium leading-snug"
-                  variants={textVariants}
-                >
-                  Driving innovation across healthcare, technology, and lifestyle through purpose driven ventures.
-                </motion.p>
-              </div>
-            </div>
+    <div className="w-full lg:w-64 flex flex-col justify-start items-start">
+        <motion.h2 
+            className="text-gray-700 text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight"
+            variants={textVariants}
+        >
+            Our ventures
+        </motion.h2>
+    </div>
+    <div className="w-full lg:w-72 py-2 flex justify-start lg:justify-center items-center">
+        <motion.p 
+            className="text-neutral-800 text-lg md:text-xl font-medium leading-snug"
+            variants={textVariants}
+        >
+            Driving innovation across healthcare, technology, and lifestyle through purpose driven ventures.
+        </motion.p>
+    </div>
+</div>
           </section>
         </AnimatedSection>
 
-        {/* Stats Section */}
-        <AnimatedSection>
-          <section className="self-stretch px-10 md:px-20 lg:px-40 py-10 bg-white-50 flex flex-col justify-start items-center gap-2.5">
-            <div className="w-full max-w-[1180px] flex flex-col md:flex-row justify-between items-start">
-              <div className="w-52 flex flex-col justify-start items-start gap-14">
-                <motion.h3 
-                  className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[114px]"
-                  variants={textVariants}
-                >
-                  15+
-                </motion.h3>
-                <motion.p 
-                  className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed"
-                  variants={textVariants}
-                >
-                  Years in Service
-                </motion.p>
-              </div>
-              <div className="flex flex-col justify-start items-start gap-14">
-                <motion.h3 
-                  className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[114px]"
-                  variants={textVariants}
-                >
-                  120%
-                </motion.h3>
-                <motion.p 
-                  className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed"
-                  variants={textVariants}
-                >
-                  year-on-year growth
-                </motion.p>
-              </div>
-              <div className="w-64 flex flex-col justify-start items-start gap-14">
-                <motion.h3 
-                  className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[114px]"
-                  variants={textVariants}
-                >
-                  10+
-                </motion.h3>
-                <motion.p 
-                  className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed"
-                  variants={textVariants}
-                >
-                  Brands in various sectors
-                </motion.p>
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
+        {/* Stats Section - Mobile optimized without desktop changes */}
+<AnimatedSection>
+  <section className="self-stretch px-10 md:px-20 lg:px-40 py-10 bg-white-50 flex flex-col justify-start items-center gap-2.5">
+    <div className="w-full max-w-[1180px] flex flex-col md:flex-row justify-between items-start">
+      {/* First Stat - 15+ Years */}
+      <div className="w-full md:w-52 flex flex-col items-center md:items-start gap-4 md:gap-14 mb-10 md:mb-0">
+        <motion.h3 
+          className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[1.1] md:leading-[114px] text-center md:text-left"
+          variants={textVariants}
+        >
+          15+
+        </motion.h3>
+        <motion.p 
+          className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed text-center md:text-left"
+          variants={textVariants}
+        >
+          Years in Service
+        </motion.p>
+      </div>
+
+      {/* Second Stat - 120% Growth */}
+      <div className="w-full md:w-auto flex flex-col items-center md:items-start gap-4 md:gap-14 mb-10 md:mb-0">
+        <motion.h3 
+          className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[1.1] md:leading-[114px] text-center md:text-left"
+          variants={textVariants}
+        >
+          120%
+        </motion.h3>
+        <motion.p 
+          className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed text-center md:text-left"
+          variants={textVariants}
+        >
+          year-on-year growth
+        </motion.p>
+      </div>
+
+      {/* Third Stat - 10+ Brands */}
+      <div className="w-full md:w-64 flex flex-col items-center md:items-start gap-4 md:gap-14">
+        <motion.h3 
+          className="text-slate-500 text-7xl md:text-8xl lg:text-9xl font-normal leading-[1.1] md:leading-[114px] text-center md:text-left"
+          variants={textVariants}
+        >
+          10+
+        </motion.h3>
+        <motion.p 
+          className="text-slate-500 text-xl md:text-2xl font-normal leading-relaxed text-center md:text-left"
+          variants={textVariants}
+        >
+          Brands in various sectors
+        </motion.p>
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
         {/* Ventures Section */}
         <AnimatedSection>

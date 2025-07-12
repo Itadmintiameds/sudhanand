@@ -8,93 +8,85 @@ export default function About() {
     <div className="flex flex-col w-full">
       <Header />
 
-      {/* Hero Section */}
-      <section
-        className="h-[770px] px-12 pt-12 pb-16 bg-cover bg-center bg-no-repeat flex flex-col justify-end gap-10
-          max-sm:h-auto max-sm:px-4 max-sm:pt-28 max-sm:pb-8 max-sm:gap-4"
-        style={{ backgroundImage: "url('/about-head.png')" }}
-      >
-        <div className="self-stretch h-[750px] px-12 pt-12 pb-16 flex flex-col justify-end items-start gap-10
-          max-sm:h-auto max-sm:px-0 max-sm:pt-0 max-sm:pb-0 max-sm:items-center max-sm:gap-4"
-        >
-          <div className="self-stretch flex justify-between items-end
-            max-sm:flex-col max-sm:items-center max-sm:gap-4"
-          >
-            <div className="w-[523px] text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]
-              max-sm:w-full max-sm:text-4xl max-sm:leading-[1.2] max-sm:text-center max-sm:mb-4"
-            >
-              Company Profile
-            </div>
-            <div className="w-96 text-zinc-700 text-lg font-normal font-['Geist'] leading-normal
-              max-sm:w-full max-sm:text-base max-sm:text-center max-sm:px-2"
-            >
-              Empowering communities and enriching lives through impactful initiatives in healthcare, education, and well-being. We strive to ensure access to quality care, support learning, and create sustainable change for a brighter, more inclusive future lifelong.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision & Mission Section */}
-      <div className="w-full py-20 bg-orange-50 flex flex-col items-center
-        max-sm:py-10 max-sm:px-4"
-      >
-        {/* Vision */}
-        <div className="w-full flex justify-center items-start gap-8
-          max-sm:flex-col max-sm:items-center max-sm:gap-6"
-        >
-          <div className="flex-1 px-16 flex flex-col justify-center items-start gap-8
-            max-sm:px-4 max-sm:items-center max-sm:text-center max-sm:gap-4"
-          >
-            <div className="text-slate-500 text-6xl font-normal font-['Geist'] leading-[53.20px]
-              max-sm:text-3xl max-sm:leading-normal"
-            >
-              Our Vision
-            </div>
-            <div className="text-zinc-700 text-lg font-normal font-['Inter']
-              max-sm:text-base"
-            >
-              To be a transformative force across industries and borders delivering world-class solutions in healthcare, pharmaceuticals, technology, hospitality, and wellness while staying rooted in our mission to uplift communities, empower people, and inspire a future of inclusive, purpose-driven growth. By 2030, we aim to build a network of over 200 Cure+ Hospitals, bringing accessible, affordable, and quality healthcare to rural and underserved regions across Karnataka, Goa and beyond.
-            </div>
-          </div>
-          <div className="h-[540px] w-auto max-sm:h-auto max-sm:w-full max-sm:max-h-[300px] max-sm:object-contain">
-            <Image
-              src="/about/bulb.png"
-              alt="Vision illustration"
-              width={500}
-              height={540}
-              className="h-full w-auto object-contain"
-            />
-          </div>
-        </div>
-        {/* Mission */}
-        <div className="w-full flex justify-center items-start gap-8 mt-8
-          max-sm:flex-col-reverse max-sm:items-center max-sm:gap-6"
-        >
-          <div className="h-[540px] w-auto max-sm:h-auto max-sm:w-full max-sm:max-h-[300px] max-sm:object-contain">
-            <Image
-              src="/about/mission.png"
-              alt="Mission illustration"
-              width={500}
-              height={540}
-              className="h-full w-auto object-contain"
-            />
-          </div>
-          <div className="flex-1 px-16 flex flex-col justify-center items-start gap-8
-            max-sm:px-4 max-sm:items-center max-sm:text-center max-sm:gap-4"
-          >
-            <div className="text-slate-500 text-6xl font-normal font-['Geist'] leading-[53.20px]
-              max-sm:text-3xl max-sm:leading-normal"
-            >
-              Our Mission
-            </div>
-            <div className="text-zinc-700 text-lg font-normal font-['Inter']
-              max-sm:text-base"
-            >
-              To create integrated, impactful businesses that solve real-world problems whether it&apos;s through delivering compassionate healthcare, advancing accessible medicines, building technology-driven efficiencies, offering meaningful hospitality, or promoting community wellness. Every Sudhanand initiative is guided by innovation, integrity, and a commitment to social good.
-            </div>
-          </div>
-        </div>
+      {/* Hero Section - Fixed Mobile View */}
+<section
+  className="relative h-[760px] px-12 pt-12 pb-16 bg-cover bg-center bg-no-repeat
+    max-sm:h-auto max-sm:px-4 max-sm:pt-28 max-sm:pb-8"
+  style={{ backgroundImage: "url('/about-head.png')" }}
+>
+  {/* Background Image Container - Fixed Height for Mobile */}
+  <div className="absolute inset-0 max-sm:h-[200px]"></div>
+  
+  {/* Content Container - Appears below image on mobile */}
+  <div className="relative w-full h-full flex flex-col justify-end
+      max-sm:mt-[200px] max-sm:block max-sm:h-auto">
+    <div className="flex justify-between items-end
+        max-sm:flex-col max-sm:items-center max-sm:gap-6">
+      <div className="w-[523px] text-slate-500 text-9xl font-normal font-['Geist'] leading-[114px]
+          max-sm:w-full max-sm:text-5xl max-sm:leading-[1.2] max-sm:text-center">
+        Company Profile
       </div>
+      <div className="w-96 text-zinc-700 text-lg font-normal font-['Geist'] leading-normal
+          max-sm:w-full max-sm:text-base max-sm:text-center max-sm:px-4">
+        Empowering communities and enriching lives through impactful initiatives in healthcare, education, and well-being. We strive to ensure access to quality care, support learning, and create sustainable change for a brighter, more inclusive future lifelong.
+      </div>
+    </div>
+  </div>
+</section>
+
+     {/* Vision & Mission Section */}
+<div className="w-full py-12 bg-orange-50 flex flex-col items-center px-4 md:py-16 lg:px-8">
+
+  {/* Vision */}
+  <div className="w-full max-w-6xl flex flex-col md:flex-row gap-8 items-center">
+    {/* Text */}
+    <div className="flex-1 space-y-6">
+      <h2 className="text-4xl md:text-5xl font-normal text-slate-500 font-geist">
+        Our Vision
+      </h2>
+      <p className="text-lg text-zinc-700 font-inter leading-relaxed">
+        To be a transformative force across industries and borders delivering world-class solutions in healthcare, pharmaceuticals, technology, hospitality, and wellness while staying rooted in our mission to uplift communities, empower people, and inspire a future of inclusive, purpose-driven growth. By 2030, we aim to build a network of over 200 Cure+ Hospitals, bringing accessible, affordable, and quality healthcare to rural and underserved regions across Karnataka, Goa and beyond.
+      </p>
+    </div>
+
+    {/* Image */}
+    <div className="flex-1 w-full h-auto">
+      <Image
+        src="/about/bulb.png"
+        alt="Vision illustration"
+        width={800}
+        height={600}
+        className="w-full h-auto object-cover rounded-lg"
+      />
+    </div>
+  </div>
+
+  {/* Mission */}
+  <div className="w-full max-w-6xl flex flex-col md:flex-row-reverse gap-8 items-center mt-12 md:mt-16 mb-0">
+    {/* Text */}
+    <div className="flex-1 space-y-6">
+      <h2 className="text-4xl md:text-5xl font-normal text-slate-500 font-geist">
+        Our Mission
+      </h2>
+      <p className="text-lg text-zinc-700 font-inter leading-relaxed">
+  To create integrated, impactful businesses that solve real-world problems whether it&#39;s through delivering compassionate healthcare, advancing accessible medicines, building technology-driven efficiencies, offering meaningful hospitality, or promoting community wellness. Every Sudhanand initiative is guided by innovation, integrity, and a commitment to social good.
+</p>
+
+    </div>
+
+    {/* Image */}
+    <div className="flex-1 w-full h-auto">
+      <Image
+        src="/about/mission.png"
+        alt="Mission illustration"
+        width={800}
+        height={600}
+        className="w-full h-auto object-cover rounded-lg"
+      />
+    </div>
+  </div>
+</div>
+
 
       {/* Founders Section */}
       <section className="bg-orange-50 px-12 py-28 flex flex-col gap-32 items-center
