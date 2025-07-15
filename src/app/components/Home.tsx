@@ -343,7 +343,7 @@ const HomePage = () => {
       {/* Timeline Section */}
       <section className="w-full px-4 md:px-20 py-24 relative overflow-hidden">
   <Image
-    src="/home/Timeline-min.png"
+    src="/home/Timeline.png"
     alt="Background"
     fill
     className="object-cover"
@@ -351,7 +351,7 @@ const HomePage = () => {
   />
         
         {/* Background overlay with blur */}
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-md z-0"></div>
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-md z-0"></div>
         
         <div className="relative z-10">
           <h2 className="text-center text-white text-4xl md:text-5xl font-bold mb-12 md:mb-20">
