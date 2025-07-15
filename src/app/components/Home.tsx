@@ -343,7 +343,7 @@ const HomePage = () => {
       {/* Timeline Section */}
       <section className="w-full px-4 md:px-20 py-24 relative overflow-hidden">
   <Image
-    src="/home/Timeline.png"
+    src="/Timelin.jpeg"
     alt="Background"
     fill
     className="object-cover"
