@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             className="object-contain"
           />
         </div>
-        <h1 className="text-black text-3xl sm:text-5xl font-normal font-[&#39;Geist&#39;] leading-8 sm:leading-10">
+        <h1 className="text-black text-3xl sm:text-5xl font-normal font-['Geist'] leading-8 sm:leading-10">
           Sudhanand Group
         </h1>
       </div>
@@ -35,17 +35,17 @@ const Footer: React.FC = () => {
         {/* Contact Info */}
         <div className="flex flex-col gap-1.5">
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sudhanandgroup.com&su=Inquiry%20from%20Website"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:info@sudhanandgroup.com"
+
+
             className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline break-words"
           >
             info@sudhanandgroup.com
           </a>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@sudhanandgroup.com&su=Inquiry%20from%20Website"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:hello@sudhanandgroup.com"
+
+
             className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline break-words"
           >
             hello@sudhanandgroup.com

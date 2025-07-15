@@ -9,13 +9,14 @@ const HomePage = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
 
   const services = [
-    "Healthcare Service",
-    "Pharmacy Services",
-    "Blood Bank Services",
+    "Healthcare Solutions",
+    "Pharmaceuticals",
     "IT & ITES Solutions",
-    "Finance & Accounting",
     "US Home Insurance",
-    "SaaS Solutions"
+    "Hotels & Hospitality",
+    "Blood Bank Services",
+    "SaaS Solutions",
+    "Sports & Fitness"
   ];
 
   return (  
@@ -282,54 +283,72 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* What We Do Section - Fixed height issue */}
+      {/* What We Do Section */}
       <section
-        className="w-full h-auto py-8 md:py-10 bg-slate-500 flex flex-col md:flex-row justify-center items-start gap-6 md:gap-8 overflow-visible px-4 md:px-0 mx-auto"
-        style={{
-          backgroundImage: "url('/what we do.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="py-2 flex justify-center items-start w-full md:w-auto">
-          <h2 className="text-white text-2xl md:text-3xl font-medium font-geist leading-9">
-            What We Do
-          </h2>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-4 md:gap-6 w-full md:w-auto">
-          <div className="flex flex-col justify-center items-start gap-2 md:gap-3">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className={`text-white text-xl md:text-6xl font-normal font-geist leading-[1.2] md:leading-[72px] transition-all duration-300 cursor-pointer ${
-                  hoveredService === index ? "scale-105 pl-2 md:pl-4" : "scale-100"
-                }`}
-                onMouseEnter={() => setHoveredService(index)}
-                onMouseLeave={() => setHoveredService(null)}
-              >
-                {service}
-              </div>
-            ))}
-            <div className="text-neutral-400 text-3xl md:text-6xl font-normal font-geist leading-[1.2] md:leading-[72px]">
-              +More
-            </div>
-          </div>
-          <a
-            href="/business-ventures"
-            className="px-4 py-2 bg-white rounded-full flex justify-center items-center gap-2.5 hover:bg-gray-100 transition-colors w-full md:w-auto mt-4 md:mt-0"
+  className="w-full min-h-[400px] py-12 md:py-20 bg-slate-500 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 px-4 md:px-12 lg:px-24 mx-auto relative"
+  style={{
+    backgroundImage: "url('/home/what we do.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+>
+  {/* Background overlay */}
+  <div className="absolute inset-0 bg-black/30 z-0"></div>
+  
+  <div className="relative z-10 w-full max-w-6xl flex flex-col md:flex-row gap-8 md:gap-16">
+    {/* "What We Do" heading - smaller and elegant */}
+    <div className="md:w-1/4 flex items-start">
+      <h2 className="text-white text-2xl md:text-3xl font-medium font-geist tracking-wide">
+        What We Do
+      </h2>
+    </div>
+
+    {/* Services list - tight but readable */}
+    <div className="md:w-3/4 flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className={`text-white text-2xl md:text-3xl font-normal font-geist leading-snug py-1 transition-all duration-200 cursor-pointer ${
+              hoveredService === index ? "scale-[1.02] pl-1 text-white/90" : "text-white/80"
+            } hover:text-white`}
+            onMouseEnter={() => setHoveredService(index)}
+            onMouseLeave={() => setHoveredService(null)}
           >
-            <span className="text-center text-black text-base md:text-lg font-normal font-geist leading-snug">
-              See all ventures
-            </span>
-          </a>
+            {service}
+          </div>
+        ))}
+        <div className="text-neutral-300 text-2xl md:text-3xl font-normal font-geist leading-snug py-1">
+          +More
         </div>
-      </section>
+      </div>
+
+      {/* "See all ventures" button */}
+      <a
+        href="/business-ventures"
+        className="mt-8 md:mt-10 px-6 py-3 bg-white rounded-full flex justify-center items-center gap-2 hover:bg-gray-100 transition-all duration-300 w-fit"
+      >
+        <span className="text-black text-lg font-small font-geist">
+          See all ventures
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* Timeline Section */}
-      <section
-        className="w-full px-4 md:px-20 py-24 bg-cover bg-center relative"
-        style={{ backgroundImage: "url('/home/Timeline.png')" }}
-      >
+      <section className="w-full px-4 md:px-20 py-24 relative overflow-hidden">
+  <Image
+    src="/home/Timeline.png"
+    alt="Background"
+    fill
+    className="object-cover"
+    quality={100}
+  />
         
         {/* Background overlay with blur */}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-md z-0"></div>
