@@ -6,13 +6,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const BusinessPartnersPage: React.FC = () => {
-  // Scroll handler for button
-  const scrollToFooter = () => {
-    const footerElement = document.getElementById('page-footer');
-    if (footerElement) {
-      footerElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <>
