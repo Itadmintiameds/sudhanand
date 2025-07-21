@@ -77,12 +77,14 @@ export default function HospitalityPage() {
             <div className="flex flex-col gap-4 sm:gap-8 max-w-full">
               <div className="flex justify-between items-center gap-4 w-full">
                 <a
-                  href="https://sudhanandnovacandolim.com/"
+                  href="https://sudhanandnovacandolim.com/" target="_blank"
+                    rel="noopener noreferrer"
                   className="text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose hover:underline flex-1"
                 >
                   Sudhanand Candolim In Goa
                 </a>
-                <a href="https://sudhanandnovacandolim.com/" className="w-6 h-6 flex-shrink-0">
+                <a href="https://sudhanandnovacandolim.com/" target="_blank"
+                    rel="noopener noreferrer" className="w-6 h-6 flex-shrink-0">
                   <div className="relative w-full h-full">
                     <Image 
                       src="/link-icon.png" 
@@ -112,12 +114,14 @@ export default function HospitalityPage() {
             <div className="flex flex-col gap-4 sm:gap-8 max-w-full">
               <div className="flex justify-between items-center gap-4 w-full">
                 <a
-                  href="https://sudhanandfourseasons.com/"
+                  href="https://sudhanandfourseasons.com/" target="_blank"
+                    rel="noopener noreferrer"
                   className="text-slate-500 text-3xl font-normal font-['Geist'] capitalize leading-loose hover:underline flex-1"
                 >
                   Sudhanand Four Seasons in Mysore
                 </a>
-                <a href="https://sudhanandfourseasons.com/" className="w-6 h-6 flex-shrink-0">
+                <a href="https://sudhanandfourseasons.com/" target="_blank"
+                    rel="noopener noreferrer" className="w-6 h-6 flex-shrink-0">
                   <div className="relative w-full h-full">
                     <Image 
                       src="/link-icon.png" 

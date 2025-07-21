@@ -82,7 +82,7 @@ export default function CharitableTrustPage() {
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-base font-normal font-['Geist'] leading-snug">
-                  Founded in March 2013 by Dr. Arjun Sachidanand, the Dr. M. D. Sachidananda Murthy Memorial Educational Trust® began with a mission to improve education and has since expanded into healthcare. Recognized under Sections 12A and 80G of the Income Tax Act, the Trust organizes initiatives like Sudhanand Arogya Vahini, a mobile health service for underserved communities, and Cure+ Blood Bank, ensuring timely access to safe blood. The Trust remains committed to service, accessibility, and long-term impact in education and healthcare.
+                  Founded in March 2013 by Dr. Arjun Sachidanand, the Dr. M. D. Sachidananda Murthy Memorial Educational Trust® began with a mission to improve education and has since expanded into healthcare. Recognized under Sections 12A and 80G of the Income Tax Act, the Trust organizes initiatives like Sudhanand Arogya Vahini, a mobile health service for underserved communities, and CurePlus Blood Bank, ensuring timely access to safe blood. The Trust remains committed to service, accessibility, and long-term impact in education and healthcare.
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function CharitableTrustPage() {
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-base font-normal font-['Geist'] leading-snug">
-                  Cure+ Blood Bank, an initiative by Dr. M. D. Sachidananda Murthy Memorial Educational Trust®, ensures the availability of blood across rural Karnataka. Based in Mysuru, it houses 2,000 units of blood, supporting Cure+ Hospitals in remote areas. Our mobile Sudhanand Arogya Vahinis (Mobile Pathology Labs and Health Centers) facilitate swift transportation, reducing the need for long-distance travel and improving access to life-saving healthcare services in underserved communities.
+                  CurePlus Blood Bank, an initiative by Dr. M. D. Sachidananda Murthy Memorial Educational Trust®, ensures the availability of blood across rural Karnataka. Based in Mysuru, it houses 2,000 units of blood, supporting CurePlus Hospitals in remote areas. Our mobile Sudhanand Arogya Vahinis (Mobile Pathology Labs and Health Centers) facilitate swift transportation, reducing the need for long-distance travel and improving access to life-saving healthcare services in underserved communities.
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function CharitableTrustPage() {
                   </a>
                 </div>
                 <div className="self-stretch justify-start text-black text-sm lg:text-lg font-normal font-['Geist'] leading-normal">
-                  In partnership with SAS Poorna Arogya Health Care and Cure+ Hospitals, Dr. M. D. Sachidananda Murthy Memorial Trust launched the Sudhanand Arogya Vahini (SAV), a mobile healthcare unit serving rural communities. During the Covid-19 pandemic, SAV offered lab tests, telemedicine consultations, and data collection, helping patients avoid exposure and travel costs. The SAV played a crucial role in providing healthcare to those unable to access services due to travel restrictions or safety concerns.
+                  In partnership with SAS Poorna Arogya Health Care and CurePlus Hospitals, Dr. M. D. Sachidananda Murthy Memorial Trust launched the Sudhanand Arogya Vahini (SAV), a mobile healthcare unit serving rural communities. During the Covid-19 pandemic, SAV offered lab tests, telemedicine consultations, and data collection, helping patients avoid exposure and travel costs. The SAV played a crucial role in providing healthcare to those unable to access services due to travel restrictions or safety concerns.
                 </div>
               </div>
             </div>

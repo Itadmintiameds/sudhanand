@@ -43,7 +43,7 @@ export default function HealthcareVenturesPage() {
             <div className="text-slate-500 text-lg md:text-2xl font-normal">Hospitals</div>
           </div>
           <div className="flex flex-col items-center w-full md:w-1/3">
-            <div className="text-slate-500 text-5xl md:text-9xl font-normal leading-tight">5l+</div>
+            <div className="text-slate-500 text-5xl md:text-9xl font-normal leading-tight">5L+</div>
             <div className="text-slate-500 text-lg md:text-2xl font-normal">Patients served</div>
           </div>
           <div className="flex flex-col items-center w-full md:w-1/3">
@@ -68,10 +68,12 @@ export default function HealthcareVenturesPage() {
             </div>
             <div className="flex flex-col gap-2 md:gap-8">
               <div className="flex flex-col md:flex-row items-center md:items-end gap-2 md:gap-6">
-                <a href="https://www.cureplushospitals.com/" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
+                <a href="https://www.cureplushospitals.com/" target="_blank"
+                    rel="noopener noreferrer" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
                   Sudhanand Healthcare Solutions Pvt. Ltd.
                 </a>
-                <a href="https://www.cureplushospitals.com/" className="w-5 h-5 md:w-6 md:h-6 relative">
+                <a href="https://www.cureplushospitals.com/" target="_blank"
+                    rel="noopener noreferrer" className="w-5 h-5 md:w-6 md:h-6 relative">
                   <Image src="/link-icon.png" alt="Link" fill className="object-contain" />
                 </a>
               </div>
@@ -92,10 +94,12 @@ export default function HealthcareVenturesPage() {
             </div>
             <div className="flex flex-col gap-2 md:gap-8">
               <div className="flex flex-col md:flex-row items-center md:items-end gap-2 md:gap-6">
-                <a href="https://www.sudhanandpharmacies.com/" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
+                <a href="https://www.sudhanandpharmacies.com/" target="_blank"
+                    rel="noopener noreferrer" className="text-slate-500 text-xl md:text-3xl font-normal capitalize leading-loose hover:underline">
                   Sudhanand Pharmacies Pvt. Ltd.
                 </a>
-                <a href="https://www.sudhanandpharmacies.com/" className="w-5 h-5 md:w-6 md:h-6 relative">
+                <a href="https://www.sudhanandpharmacies.com/" target="_blank"
+                    rel="noopener noreferrer" className="w-5 h-5 md:w-6 md:h-6 relative">
                   <Image src="/link-icon.png" alt="Link" fill className="object-contain" />
                 </a>
               </div>

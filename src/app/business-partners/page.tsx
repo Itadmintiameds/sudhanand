@@ -92,20 +92,7 @@ const BusinessPartnersPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="w-full max-w-[1180px] flex flex-col md:flex-row justify-between items-center gap-6 mt-10 px-4 md:px-0">
-            <div className="w-full md:w-auto text-neutral-600 text-2xl md:text-3xl font-normal font-['Geist'] leading-9 text-center md:text-left">
-              Discover how we can help
-            </div>
-            <button
-              className="w-full md:w-auto px-6 py-4 bg-slate-500 rounded-full flex justify-center items-center gap-2.5 hover:bg-slate-600 transition-colors"
-              onClick={scrollToFooter}
-            >
-              <span className="text-white text-lg font-normal font-['Geist'] leading-snug">
-                Contact Us
-              </span>
-            </button>
-          </div>
+          
         </div>
       </main>
 

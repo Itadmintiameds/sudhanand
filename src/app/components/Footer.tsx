@@ -43,14 +43,6 @@ const Footer: React.FC = () => {
             info@sudhanandgroup.com
           </a>
           <a
-            href="mailto:hello@sudhanandgroup.com"
-
-
-            className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline break-words"
-          >
-            hello@sudhanandgroup.com
-          </a>
-          <a
             href="tel:+918214280152"
             className="w-64 text-black text-sm font-normal font-inter leading-snug hover:underline"
           >

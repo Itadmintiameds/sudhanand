@@ -74,7 +74,7 @@ const HomePage = () => {
           <div className="marquee-track flex items-center">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="marquee-group flex items-center gap-8 px-6">
-                <a href="https://www.sudhanandbusinesssolutions.com/">
+                <a href="https://www.sudhanandbusinesssolutions.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/SBPL 2 1.png"
                     alt="SBPL Logo"
@@ -84,7 +84,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.sudhanandpharmacies.com/">
+                <a href="https://www.sudhanandpharmacies.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/Rectangle 4.png"
                     alt="Pharmacies Logo"
@@ -94,7 +94,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.tiameds.ai/">
+                <a href="https://www.tiameds.ai/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/Rectangle 1 (1).png"
                     alt="Tiameds Logo"
@@ -104,7 +104,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.cureplushospitals.com/">
+                <a href="https://www.cureplushospitals.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/Rectangle 1.png"
                     alt="Hospitals Logo"
@@ -114,7 +114,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.cureplusbloodbank.com/">
+                <a href="https://www.cureplusbloodbank.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/Rectangle 3.png"
                     alt="Blood Bank Logo"
@@ -124,7 +124,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.sinimeds.com/">
+                <a href="https://www.sinimeds.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/sinimeds.png"
                     alt="SiniMeds Logo"
@@ -134,7 +134,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.cureplushospitals.com/">
+                <a href="https://www.cureplushospitals.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/CUREPLUS PHARMA 1.png"
                     alt="Pharma Logo"
@@ -144,7 +144,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://www.arcsportzone.com/">
+                <a href="https://www.arcsportzone.com/" target="_blank" rel="noopener noreferrer">
                   <div className="w-20 h-28 relative opacity-60 hover:opacity-100 cursor-pointer hover:scale-105 transform-gpu transition-opacity duration-300 flex items-center justify-center">
                     <Image
                       src="/home/ARC.png"
@@ -156,7 +156,7 @@ const HomePage = () => {
                     />
                   </div>
                 </a>
-                <a href="https://smt.help/">
+                <a href="https://smt.help/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/smt.png"
                     alt="SMT Logo"
@@ -166,7 +166,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://sudhanandnovacandolim.com/">
+                <a href="https://sudhanandnovacandolim.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/NOVA.png"
                     alt="Nova Logo"
@@ -176,7 +176,7 @@ const HomePage = () => {
                     style={{ width: '112px', height: '112px' }}
                   />
                 </a>
-                <a href="https://sudhanandfourseasons.com/">
+                <a href="https://sudhanandfourseasons.com/" target="_blank" rel="noopener noreferrer">
                   <Image
                     src="/home/FOUR SEASONS.png"
                     alt="Four Seasons Logo"

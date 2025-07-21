@@ -45,7 +45,7 @@ export default function About() {
         Our Vision
       </h2>
       <p className="text-lg text-zinc-700 font-inter leading-relaxed">
-        To be a transformative force across industries and borders delivering world-class solutions in healthcare, pharmaceuticals, technology, hospitality, and wellness while staying rooted in our mission to uplift communities, empower people, and inspire a future of inclusive, purpose-driven growth. By 2030, we aim to build a network of over 200 Cure+ Hospitals, bringing accessible, affordable, and quality healthcare to rural and underserved regions across Karnataka, Goa and beyond.
+        To be a transformative force across industries and borders delivering world-class solutions in healthcare, pharmaceuticals, technology, hospitality, and wellness while staying rooted in our mission to uplift communities, empower people, and inspire a future of inclusive, purpose-driven growth. By 2030, we aim to build a network of over 200 CurePlus Hospitals, bringing accessible, affordable, and quality healthcare to rural and underserved regions across Karnataka, Goa and beyond.
       </p>
     </div>
 

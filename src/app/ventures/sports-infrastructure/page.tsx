@@ -43,7 +43,7 @@ export default function SportsInfrastructurePage() {
           </div>
           <div className="w-full md:w-auto inline-flex flex-col justify-start items-center md:items-start gap-5 md:gap-14">
             <span className="text-slate-500 text-6xl md:text-7xl lg:text-9xl font-normal font-['Geist'] leading-tight lg:leading-[114px]">
-              10m+
+              10M+
             </span>
             <span className="text-slate-500 text-xl md:text-2xl font-normal font-['Geist'] leading-relaxed text-center md:text-left">
               Satisfied customers
