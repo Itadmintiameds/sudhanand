@@ -32,7 +32,7 @@ const HomePage = () => {
       >
         <Header />
         <div className="self-stretch px-4 md:px-10 inline-flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0">
-          <div className="w-full md:w-96 text-slate-500 text-3xl md:text-6xl font-bold font-['Playfair_Display']">
+          <div className="w-full md:w-96 text-slate-700 text-3xl md:text-6xl font-bold font-['Playfair_Display']">
             Sudhanand Group
           </div>
           <div className="py-4 md:py-6 flex justify-center items-center w-full md:w-96">
@@ -118,6 +118,16 @@ const HomePage = () => {
                   <Image
                     src="/home/Rectangle 3.png"
                     alt="Blood Bank Logo"
+                    width={112}
+                    height={112}
+                    className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
+                    style={{ width: '112px', height: '112px' }}
+                  />
+                </a>
+                <a href="https://www.sinimeds.com/">
+                  <Image
+                    src="/home/sinimeds.png"
+                    alt="SiniMeds Logo"
                     width={112}
                     height={112}
                     className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer hover:scale-105 transform-gpu object-contain"
@@ -343,7 +353,7 @@ const HomePage = () => {
       {/* Timeline Section */}
       <section className="w-full px-4 md:px-20 py-24 relative overflow-hidden">
   <Image
-    src="/Timelin.jpeg"
+    src="/timeline.png"
     alt="Background"
     fill
     className="object-cover"

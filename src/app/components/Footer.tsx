@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 
       {/* Tagline */}
       <div className="text-black text-base sm:text-lg font-normal font-geist leading-normal text-center sm:text-left">
-        Deep expertise, decisive execution - the hallmark of Sudhanand Group
+        Deep expertise, decisive execution - The hallmark of Sudhanand Group.
       </div>
 
       {/* Contact Info, Address, and Links */}
@@ -90,6 +90,12 @@ const Footer: React.FC = () => {
             className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline"
           >
             Business Partners
+          </Link>
+          <Link
+            href="/careers"
+            className="w-64 text-black text-sm font-normal font-geist leading-tight hover:underline"
+          >
+            Careers
           </Link>
           <Link
             href="/about"

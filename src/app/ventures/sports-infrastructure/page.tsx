@@ -100,7 +100,7 @@ export default function SportsInfrastructurePage() {
               </div>
               <div className="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-5 md:gap-14">
                 <div className="self-stretch justify-start text-black text-sm md:text-base lg:text-lg font-medium font-['Geist'] leading-normal">
-                  ARC SportZone is Mysore’s premier destination for sports, fitness, and community. More than just a sports club, we offer world-class facilities for basketball, football, badminton, tennis, cricket, and more. With expert coaches and programs focused on skill development, teamwork, endurance, and sportsmanship, we cater to all ages and skill levels. Recognized as the best in Mysore, ARC SportZone is where goals are set, friendships are made, and victories are celebrated.
+                  ARC Sportzone is Mysore’s premier destination for sports, fitness, and community. More than just a sports club, we offer world-class facilities for basketball, football, badminton, tennis, cricket, and more. With expert coaches and programs focused on skill development, teamwork, endurance, and sportsmanship, we cater to all ages and skill levels. Recognized as the best in Mysore, ARC Sportzone is where goals are set, friendships are made, and victories are celebrated.
                 </div>
               </div>
             </div>

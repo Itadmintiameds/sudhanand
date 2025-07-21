@@ -39,7 +39,7 @@ const BusinessPartnersPage: React.FC = () => {
 
           {/* Content */}
           <div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10">
-            <h1 className="text-slate-500 text-5xl md:text-9xl font-normal font-['Geist'] leading-tight md:leading-[114px] whitespace-pre-line">
+            <h1 className="text-slate-600 text-5xl md:text-9xl font-normal font-['Geist'] leading-tight md:leading-[114px] whitespace-pre-line">
               Our <br />Partners
             </h1>
             <p className="w-full md:w-[480px] text-white text-base md:text-lg font-medium font-geist leading-relaxed md:leading-normal">
