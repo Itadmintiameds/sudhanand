@@ -11,7 +11,7 @@
   "dependencies": {
     "framer-motion": "^12.23.3",
     "lucide-react": "^0.511.0",
-    "next": "15.3.2",
+    "next": "^15.5.3",
     "openai": "^4.103.0",
     "react": "^19.1.0",
     "react-chatbot-kit": "^2.2.2",
