@@ -297,7 +297,7 @@ const HomePage = () => {
     `}</style>
     
 
-    {/* Video 1 */}
+    {/* Videos Section */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/Wazu-Z27wyY?si=-uyEa6YpRI3vpupo"
@@ -307,9 +307,7 @@ const HomePage = () => {
         className="w-full h-full"
       ></iframe>
     </div>
-
     
-    {/* Video 2 */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/TkLjQyNti78?si=gwzz4P2OccscW0cg"
@@ -320,8 +318,6 @@ const HomePage = () => {
       ></iframe>
     </div>
 
-
-    {/* Video 3 */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/fE77gCpSnPM?si=dAKbVoqIIsg8AMbd"
@@ -332,8 +328,6 @@ const HomePage = () => {
       ></iframe>
     </div>
 
-
-    {/* Video 4 */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/wW_WOzha5to?rel=0"
@@ -344,8 +338,6 @@ const HomePage = () => {
       ></iframe>
     </div>
 
-
-    {/* Video 5 */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/AYV5wQw0lu4?si=PHUqgleF_0xfGVYk"
@@ -356,8 +348,6 @@ const HomePage = () => {
       ></iframe>
     </div>
 
-
-    {/* Video 6 */}
     <div className="min-w-[350px] md:min-w-[400px] relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
       <iframe
         src="https://www.youtube.com/embed/0sWf8vru8t8?si=7-a961Jge8_PQCUl"
@@ -368,7 +358,6 @@ const HomePage = () => {
       ></iframe>
     </div>
   </div>
-
 
   {/* Right Arrow - Positioned farther out */}
   <button
