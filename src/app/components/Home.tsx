@@ -1,7 +1,7 @@
 'use client';
 import Header from './Header';
 import Footer from './Footer';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 
 // Data Constants
@@ -31,12 +31,12 @@ const BRAND_LOGOS = [
 ];
 
 const VIDEOS = [
-  { src: "https://www.youtube.com/embed/Wazu-Z27wyY?si=-uyEa6YpRI3vpupo", title: "TiaMeds Team" },
-  { src: "https://www.youtube.com/embed/TkLjQyNti78?si=gwzz4P2OccscW0cg", title: "Healthcare Innovation" },
-  { src: "https://www.youtube.com/embed/fE77gCpSnPM?si=dAKbVoqIIsg8AMbd", title: "Healthcare Innovation" },
-  { src: "https://www.youtube.com/embed/wW_WOzha5to?rel=0", title: "Healthcare Innovation" },
-  { src: "https://www.youtube.com/embed/AYV5wQw0lu4?si=PHUqgleF_0xfGVYk", title: "Tech for Good" },
-  { src: "https://www.youtube.com/embed/0sWf8vru8t8?si=7-a961Jge8_PQCUl", title: "Community Impact" }
+  { src: "https://www.youtube.com/embed/Wazu-Z27wyY", title: "TiaMeds Team" },
+  { src: "https://www.youtube.com/embed/TkLjQyNti78", title: "Healthcare Innovation" },
+  { src: "https://www.youtube.com/embed/fE77gCpSnPM", title: "Healthcare Innovation" },
+  { src: "https://www.youtube.com/embed/wW_WOzha5to", title: "Healthcare Innovation" },
+  { src: "https://www.youtube.com/embed/AYV5wQw0lu4", title: "Tech for Good" },
+  { src: "https://www.youtube.com/embed/0sWf8vru8t8", title: "Community Impact" }
 ];
 
 const TIMELINE_ITEMS = [
@@ -94,6 +94,7 @@ const ArrowButton = ({ direction, onClick }: { direction: 'left' | 'right'; onCl
   <button
     className={`absolute ${direction === 'left' ? '-left-4 md:-left-8' : '-right-4 md:-right-8'} z-10 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300 backdrop-blur-md shadow-lg`}
     onClick={onClick}
+    aria-label={`Scroll ${direction}`}
   >
     <ArrowIcon direction={direction} />
   </button>
@@ -110,6 +111,8 @@ const BrandLogo = ({ brand }: { brand: typeof BRAND_LOGOS[0] }) => {
       height={brand.height}
       className="object-contain"
       style={{ width: `${brand.width}px`, height: `${brand.height}px` }}
+      priority={false}
+      loading="lazy"
     />
   );
 
@@ -149,6 +152,13 @@ const ServiceItem = ({
     } hover:text-white`}
     onMouseEnter={() => setHoveredService(index)}
     onMouseLeave={() => setHoveredService(null)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        setHoveredService(index);
+      }
+    }}
   >
     {service}
   </div>
@@ -163,23 +173,9 @@ const TimelineCard = ({
   isMobile?: boolean;
   showDownArrow?: boolean;
 }) => {
-  const cardClasses = `
-    w-full ${isMobile ? 'min-h-[120px]' : 'h-60 flex-1'} px-6 py-4 rounded-bl-2xl rounded-br-2xl 
-    outline outline-1 outline-white/40 backdrop-blur-md 
-    flex flex-col justify-center items-center gap-2
-    ${item.special ? 
-      'bg-gradient-to-b from-amber-200/20 to-amber-300/20' : 
-      'bg-black/10'}
-    group-hover:bg-black/20 transition-colors
-  `;
+  const cardClasses = `w-full ${isMobile ? 'min-h-[120px]' : 'h-60 flex-1'} px-6 py-4 rounded-bl-2xl rounded-br-2xl outline outline-1 outline-white/40 backdrop-blur-md flex flex-col justify-center items-center gap-2 ${item.special ? 'bg-gradient-to-b from-amber-200/20 to-amber-300/20' : 'bg-black/10'} group-hover:bg-black/20 transition-colors`;
 
-  const headerClasses = `
-    w-full h-16 px-2.5 py-4 rounded-tl-2xl rounded-tr-2xl 
-    outline outline-1 outline-white/40 backdrop-blur-md 
-    flex justify-center items-center
-    ${item.special ? 'bg-amber-900/30' : 'bg-black/20'}
-    group-hover:bg-black/30 transition-colors
-  `;
+  const headerClasses = `w-full h-16 px-2.5 py-4 rounded-tl-2xl rounded-tr-2xl outline outline-1 outline-white/40 backdrop-blur-md flex justify-center items-center ${item.special ? 'bg-amber-900/30' : 'bg-black/20'} group-hover:bg-black/30 transition-colors`;
 
   return (
     <div className={`${isMobile ? 'w-full max-w-md' : 'w-56'} flex flex-col justify-start items-center gap-1 relative group transition-all duration-300 ${!isMobile ? 'hover:scale-105' : ''}`}>
@@ -196,6 +192,8 @@ const TimelineCard = ({
             alt="Timeline image"
             width={112}
             height={112}
+            priority={false}
+            loading="lazy"
           />
         ) : (
           <div className="text-rose-50 text-sm font-semibold font-geist leading-tight text-center whitespace-pre-line">
@@ -210,6 +208,8 @@ const TimelineCard = ({
           alt="Down arrow"
           width={24}
           height={24}
+          priority={false}
+          loading="lazy"
         />
       )}
     </div>
@@ -220,6 +220,7 @@ const SeeAllVenturesButton = () => (
   <a
     href="/business-ventures"
     className="mt-8 md:mt-10 px-6 py-3 bg-white rounded-full flex justify-center items-center gap-2 hover:bg-gray-100 transition-all duration-300 w-fit"
+    aria-label="View all business ventures"
   >
     <span className="text-black text-lg font-small font-geist">
       See all ventures
@@ -264,9 +265,9 @@ const WhoWeAreSection = () => (
   <section className="py-16 md:py-20 bg-orange-50 flex flex-col justify-center items-center gap-10 md:gap-14 overflow-hidden px-4 md:px-0">
     <div className="w-full max-w-[1008px] flex flex-col justify-center items-start gap-6">
       <div className="flex items-center gap-3">
-        <Image src="/Group.png" alt="Left icon" width={20} height={20} />
+        <Image src="/Group.png" alt="Left icon" width={20} height={20} priority={false} loading="lazy" />
         <SectionTitle>Who We Are</SectionTitle>
-        <Image src="/Group (1).png" alt="Right icon" width={20} height={20} />
+        <Image src="/Group (1).png" alt="Right icon" width={20} height={20} priority={false} loading="lazy" />
       </div>
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
         <div className="flex-1 max-w-full md:max-w-[560px]">
@@ -340,13 +341,13 @@ const BusinessVideosSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
-  const scrollLeft = () => {
+  const scrollLeft = useCallback(() => {
     containerRef.current?.scrollBy({ left: -400, behavior: "smooth" });
-  };
+  }, []);
 
-  const scrollRight = () => {
+  const scrollRight = useCallback(() => {
     containerRef.current?.scrollBy({ left: 400, behavior: "smooth" });
-  };
+  }, []);
 
   useEffect(() => {
     const startAutoScroll = () => {
@@ -424,6 +425,7 @@ const BusinessVideosSection = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -492,7 +494,9 @@ const TimelineSection = () => {
         alt="Background"
         fill
         className="object-cover"
-        quality={100}
+        quality={90}
+        priority={true}
+        sizes="100vw"
       />
       
       <div className="absolute inset-0 bg-black/30 backdrop-blur-md z-0"></div>
@@ -515,6 +519,8 @@ const TimelineSection = () => {
                     alt="Next"
                     width={24}
                     height={24}
+                    priority={false}
+                    loading="lazy"
                   />
                 </div>
               )}
@@ -536,6 +542,8 @@ const TimelineSection = () => {
                     alt="Right arrow"
                     width={24}
                     height={24}
+                    priority={false}
+                    loading="lazy"
                   />
                 )}
               </React.Fragment>
@@ -554,6 +562,8 @@ const TimelineSection = () => {
                     alt="Left arrow"
                     width={24}
                     height={24}
+                    priority={false}
+                    loading="lazy"
                   />
                 )}
               </React.Fragment>
@@ -572,6 +582,8 @@ const TimelineSection = () => {
                     alt="Right arrow"
                     width={24}
                     height={24}
+                    priority={false}
+                    loading="lazy"
                   />
                 )}
               </React.Fragment>
@@ -597,6 +609,8 @@ const FounderSection = () => (
         alt="Founder" 
         width={320} 
         height={320} 
+        priority={true}
+        sizes="(max-width: 768px) 256px, 320px"
       />
       <div className="w-full md:w-[493px] p-6 rounded-2xl backdrop-blur-md flex flex-col justify-center items-start gap-8 md:gap-10">
         <div className="p-4 md:p-6 rounded-2xl flex flex-col justify-start items-start gap-4">
