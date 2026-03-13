@@ -1,11 +1,165 @@
 'use client';
-import React from 'react';
+
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useTheme } from '../components/DarkModeContext';
 
+// ── Easing & Variants ─────────────────────────────────────────────────────────
+const E = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const up: Variants = {
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: E } },
+};
+const left: Variants = {
+  hidden:  { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: E } },
+};
+const right: Variants = {
+  hidden:  { opacity: 0, x: 28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: E } },
+};
+const stagger: Variants = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+// ── InView Reveal ─────────────────────────────────────────────────────────────
+const Reveal = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.06 });
+  return (
+    <motion.div ref={ref} variants={stagger} initial="hidden" animate={inView ? 'visible' : 'hidden'} className={className}>
+      {children}
+    </motion.div>
+  );
+};
+
+// ── Img with skeleton ─────────────────────────────────────────────────────────
+const Img = ({
+  src, alt, fill = false, className = '', priority = false,
+  width, height, sizes = '100vw',
+}: {
+  src: string; alt: string; fill?: boolean; className?: string;
+  priority?: boolean; width?: number; height?: number; sizes?: string;
+}) => {
+  const { theme } = useTheme();
+  const [ok, setOk] = useState(false);
+  return (
+    <div className="relative w-full h-full">
+      <AnimatePresence>
+        {!ok && (
+          <motion.div key="sk" className="absolute inset-0 z-10"
+            style={{ background: theme === 'dark' ? '#1e293b' : '#e2e8f0', animation: 'sk 1.4s ease-in-out infinite' }}
+            exit={{ opacity: 0, transition: { duration: 0.4 } }} />
+        )}
+      </AnimatePresence>
+      {fill ? (
+        <Image src={src} alt={alt} fill className={`${className} transition-opacity duration-500 ${ok ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setOk(true)} priority={priority} sizes={sizes} placeholder="empty" />
+      ) : (
+        <Image src={src} alt={alt} width={width!} height={height!}
+          className={`${className} transition-opacity duration-500 ${ok ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setOk(true)} priority={priority} placeholder="empty" />
+      )}
+    </div>
+  );
+};
+
+// ── Partner Card ──────────────────────────────────────────────────────────────
+const PartnerCard = ({
+  logo, logoAlt, logoW, logoH, description, index,
+}: {
+  logo: string; logoAlt: string; logoW: number; logoH: number;
+  description: React.ReactNode; index: number;
+}) => {
+  const { theme } = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <motion.div
+      variants={index % 2 === 0 ? left : right}
+      className="flex flex-col gap-8 md:gap-10 p-8 md:p-10 rounded-2xl border transition-all duration-300"
+      style={{
+        background: dark ? 'rgba(30,41,59,0.6)' : 'rgba(255,255,255,0.8)',
+        borderColor: dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(12px)',
+      }}
+      whileHover={{
+        y: -4,
+        borderColor: dark ? 'rgba(147,197,253,0.3)' : 'rgba(37,99,235,0.2)',
+        transition: { duration: 0.3 },
+      }}
+    >
+      {/* Logo */}
+      <div className="flex items-center justify-center md:justify-start h-16">
+        <div className="relative" style={{ width: logoW, height: logoH, maxWidth: '100%' }}>
+          <Img
+            src={logo} alt={logoAlt}
+            width={logoW} height={logoH}
+            className={`object-contain w-full h-full ${dark ? 'brightness-0 invert' : ''}`}
+            priority
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="h-px w-full" style={{ background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)' }} />
+
+      {/* Description */}
+      <p className="text-sm md:text-base leading-relaxed"
+        style={{ color: dark ? '#94a3b8' : '#475569', transition: 'color 0.3s' }}>
+        {description}
+      </p>
+    </motion.div>
+  );
+};
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 const BusinessPartnersPage: React.FC = () => {
+  const { theme } = useTheme();
+  const dark = theme === 'dark';
+
+  const bg     = dark ? '#0f172a' : '#f8fafc';
+  const bgAlt  = dark ? '#1e293b' : '#eff6ff';
+  const text   = dark ? '#f1f5f9' : '#0f172a';
+  const muted  = dark ? '#94a3b8' : '#64748b';
+  const heroGrad = dark
+    ? 'linear-gradient(to bottom, rgba(15,23,42,0.15) 0%, rgba(15,23,42,0.98) 100%)'
+    : 'linear-gradient(to bottom, rgba(15,23,42,0.0) 0%, rgba(15,23,42,0.82) 100%)';
+
+  const partners = [
+    {
+      logo: '/cc.png',
+      logoAlt: 'Cabrillo Coastal',
+      logoW: 280,
+      logoH: 80,
+      description: (
+        <>
+          Sudhanand Group has partnered with <strong>Cabrillo Coastal</strong>, a specialist in property insurance for high-risk coastal areas. Together, they enhance claims processing, customer support, and service efficiency — combining Sudhanand&apos;s operational expertise with Cabrillo&apos;s commitment to quality insurance solutions.
+          <br /><br />
+          This collaboration provides integrated, reliable offerings in healthcare and property protection, ensuring accessibility and efficiency for clients. Their joint efforts drive innovation and excellence, setting new standards across both critical sectors.
+        </>
+      ),
+    },
+    {
+      logo: '/creditgram.png',
+      logoAlt: 'CreditAccess Grameen',
+      logoW: 280,
+      logoH: 80,
+      description: (
+        <>
+          <strong>CreditAccess Grameen</strong>, a leading microfinance institution in India, empowers low-income communities through financial services that enhance livelihoods and stability. Sudhanand Group provides accessible, quality healthcare to underserved populations.
+          <br /><br />
+          Together, they form a powerful partnership bridging microfinance and healthcare — promoting financial inclusion, improved medical access, and sustainable socio-economic development across rural and semi-urban India.
+        </>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -14,82 +168,81 @@ const BusinessPartnersPage: React.FC = () => {
         <meta name="description" content="Our valued business partners at Sudhanand Group" />
       </Head>
 
-      <Header />
+      <style>{`
+        @keyframes sk {
+          0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+        }
+      `}</style>
 
-      <main className="text-white">
-        {/* Hero Section with Background Image */}
-        <div
-          className="relative h-[500px] md:h-[750px] px-6 md:px-12 pt-12 pb-16 flex flex-col justify-end items-start gap-6 md:gap-10"
-          style={{
-            backgroundImage: "url('/partnerhead.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
-          }}
-        >
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/0 to-stone-950/90 z-0"></div>
+      <main style={{ backgroundColor: bg, color: text, transition: 'background-color 0.3s, color 0.3s' }}>
 
-          {/* Content */}
-          <div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10">
-            <h1 className="text-slate-600 text-5xl md:text-9xl font-normal font-['Geist'] leading-tight md:leading-[114px] whitespace-pre-line">
-              Our <br />Partners
-            </h1>
-            <p className="w-full md:w-[480px] text-white text-base md:text-lg font-medium font-geist leading-relaxed md:leading-normal">
-              At Sudhanand Group, our business partners are integral to our journey. Together, we foster innovation, share a commitment to excellence, and work collaboratively to create lasting value across healthcare, technology, hospitality, and beyond.
-            </p>
-          </div>
-        </div>
-
-        {/* Partners Section */}
-        <div className="w-full px-6 md:px-36 pt-20 md:pt-28 pb-20 md:pb-28 bg-orange-50 flex flex-col justify-center items-center gap-10">
-          <div className="w-full max-w-[1180px] border-b-[0.5px] border-neutral-600 flex flex-col md:flex-row justify-between items-start">
-            {/* Partner 1 */}
-            <div className="w-full md:w-1/2 py-10 md:py-14 border-t-[0.5px] border-neutral-600 flex flex-col justify-start items-center gap-8 md:gap-10">
-              <div className="w-full max-w-[320px] h-auto relative">
-                <Image
-                  className="w-full h-auto object-contain"
-                  src="/cc.png"
-                  alt="Cabrillo Coastal Logo"
-                  width={320}
-                  height={100}
-                  priority
-                />
-              </div>
-              <div className="w-full max-w-[400px] flex flex-col justify-center items-start gap-8 md:gap-14 px-4 md:px-0">
-                <p className="text-neutral-600 text-base md:text-lg font-normal font-['Geist'] leading-relaxed md:leading-normal">
-                  Sudhanand Group, a leader in healthcare, IT, and education services, has partnered with Cabrillo Coastal, a specialist in property insurance for high-risk coastal areas. Together, they enhance claims processing, customer support, and service efficiency by combining Sudhanand&apos;s operational expertise with Cabrillo&apos;s commitment to quality insurance solutions.
-                  <br /><br />
-                  This collaboration provides integrated, reliable offerings in healthcare and property protection, ensuring accessibility and efficiency for clients. Their joint efforts drive innovation and excellence, setting new standards across both critical sectors.
-                </p>
-              </div>
+        {/* ── HERO ── */}
+        <Reveal>
+          <section className="relative h-[420px] sm:h-[500px] md:h-[640px] flex flex-col justify-end px-6 sm:px-10 md:px-20 lg:px-40 pb-12 md:pb-16 overflow-hidden">
+            {/* BG */}
+            <div className="absolute inset-0">
+              <Img src="/partnerhead.png" alt="Business Partners" fill className="object-cover object-center" priority />
+              <div className="absolute inset-0" style={{ background: heroGrad }} />
             </div>
 
-            {/* Partner 2 */}
-            <div className="w-full md:w-1/2 py-10 md:py-14 border-t-[0.5px] border-neutral-600 flex flex-col justify-start items-center gap-8 md:gap-10">
-              <div className="w-full max-w-[320px] h-auto relative">
-                <Image
-                  className="w-full h-auto object-contain"
-                  src="/creditgram.png"
-                  alt="CreditAccess Grameen Logo"
-                  width={320}
-                  height={100}
-                  priority
-                />
-              </div>
-              <div className="w-full max-w-[400px] flex flex-col justify-center items-center gap-8 md:gap-14 px-4 md:px-0">
-                <p className="text-neutral-600 text-base md:text-lg font-normal font-['Geist'] leading-relaxed md:leading-normal text-center md:text-left">
-                  CreditAccess Grameen, a leading microfinance institution in India, empowers low-income communities through financial services that enhance livelihoods and stability. Sudhanand Group provides accessible, quality healthcare to underserved populations. Together, they form a powerful partnership bridging microfinance and healthcare, addressing critical needs in rural and semi-urban areas. This collaboration promotes financial inclusion and improved medical access, enabling communities to thrive. By combining resources and expertise, they drive sustainable socio-economic development and well-being. Their joint efforts reflect a commitment to innovation and impact, empowering individuals and families to build healthier, more financially secure futures.
-                </p>
-              </div>
-            </div>
-          </div>
+            <Header />
 
-          
-        </div>
+            {/* Text */}
+            <div className="relative z-10 flex flex-col lg:flex-row justify-between items-end gap-6 lg:gap-8">
+              <div className="flex flex-col gap-2">
+                <motion.h1
+                  className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white"
+                  variants={left}
+                >
+                  Our Partners
+                </motion.h1>
+              </div>
+              <motion.p
+                className="max-w-sm text-base md:text-lg leading-relaxed font-normal text-white/75 lg:mb-1"
+                variants={right}
+              >
+                At Sudhanand Group, our business partners are integral to our journey — fostering innovation, sharing a commitment to excellence, and creating lasting value together.
+              </motion.p>
+            </div>
+          </section>
+        </Reveal>
+
+        {/* ── PARTNERS ── */}
+        <Reveal>
+          <section
+            className="px-6 sm:px-10 md:px-20 lg:px-36 py-8 md:py-12 transition-colors duration-300"
+            style={{ backgroundColor: bgAlt }}
+          >
+            <div className="max-w-6xl mx-auto flex flex-col gap-8">
+
+              {/* Section label */}
+              <motion.div className="flex flex-col gap-3" variants={up}>
+                <p className="text-xs uppercase tracking-[0.22em] font-medium"
+                  style={{ color: dark ? '#60a5fa' : '#2563eb' }}>
+                  Collaborations
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight"
+                  style={{ color: text, transition: 'color 0.3s' }}>
+                  Trusted partnerships,<br className="hidden md:block" /> shared purpose
+                </h2>
+                <p className="text-base max-w-xl mt-1" style={{ color: muted }}>
+                  Every partnership we form is built on mutual trust, aligned values, and a shared vision to create meaningful impact.
+                </p>
+              </motion.div>
+
+              {/* Cards grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                {partners.map((p, i) => (
+                  <PartnerCard key={p.logoAlt} {...p} index={i} />
+                ))}
+              </div>
+
+            </div>
+          </section>
+        </Reveal>
+
       </main>
 
-      {/* Wrap Footer with a div having id for scrolling */}
       <div id="page-footer">
         <Footer />
       </div>
