@@ -17,11 +17,19 @@
   "companies": [
     {
       "logo": "/real-estate/stone-tower.png",
-      "name": "Stone Tower Constructions"
+      "name": "Stone Tower Constructions",
+      "desc": [
+        "Stone Tower Constructions delivers quality construction with strength and durability. We create modern spaces that combine functionality and style. Our projects focus on quality materials and expert execution. We ensure precision, transparency, and reliable project delivery.",
+        "Stone Tower Constructions — Building Strong Foundations for a Better Future."
+      ]
     },
     {
       "logo": "/real-estate/rock-solid.png",
-      "name": "Rock Solid Holdings Co., Ltd. — Thailand"
+      "name": "Rock Solid Holdings Co., Ltd. — Thailand",
+      "desc": [
+        "RockSolid Holdings LLC is engaged in real estate and construction in Pattaya, Thailand. We focus on developing quality properties designed for modern lifestyles and long-term value. Our approach combines thoughtful planning, reliable construction, and contemporary design. We aim to create strong, functional, and well-crafted spaces for residential and investment needs.",
+        "Building solid foundations for lasting opportunities."
+      ]
     }
   ],
   "dividerImage": "/real-estate/divider.jpg"
