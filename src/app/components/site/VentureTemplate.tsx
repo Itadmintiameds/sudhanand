@@ -49,7 +49,8 @@ const monogram = (name: string) =>
     .join('');
 
 // Logo artwork is drawn for white; in dark mode it sits on a white plate
-const LOGO_PLATE = 'block shrink-0 dark:bg-white dark:rounded-[1rem] dark:p-2';
+const LOGO_PLATE =
+  'block shrink-0 md:self-center md:justify-self-center dark:bg-white dark:rounded-[1rem] dark:p-2';
 const LOGO_WIDE = `${LOGO_PLATE} w-32 h-12 md:w-full md:h-16`;
 const LOGO_SQUARE = `${LOGO_PLATE} w-20 h-20 md:w-28 md:h-28`;
 
@@ -149,7 +150,7 @@ export default function VentureTemplate({ data }: Readonly<{ data: VentureData }
                           alt={c.name}
                           fill
                           sizes="14rem"
-                          className="object-contain object-left dark:object-center"
+                          className="object-contain object-left md:object-center dark:object-center"
                         />
                       </span>
                     </span>
