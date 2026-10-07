@@ -3,46 +3,8 @@
 import VentureTemplate, {
   type VentureData,
 } from '@/app/components/site/VentureTemplate';
-
-const data: VentureData = {
-  accent: 'red',
-  eyebrow: 'Healthcare services',
-  title: "It's all about caring for *people*",
-  intro:
-    'A growing network of hospitals, clinics and pharmacies bringing affordable, quality care to urban and rural Karnataka.',
-  heroImage: '/hero/healthcare.jpg',
-  statement:
-    'Good treatment should never be a matter of postcode. We build hospitals where people already live, staffed by teams who intend to stay.',
-  stats: [
-    ['18+', 'hospitals'],
-    ['10L+', 'patients served'],
-    ['40+', 'years of service'],
-  ],
-  chips: [
-    'NABH accredited',
-    'Modern diagnostics',
-    'Rural outreach',
-    'Affordable care',
-    'Pharmacy network',
-    'Emergency services',
-  ],
-  companies: [
-    {
-      logo: '/hospitality-page/cureplus.png',
-      name: 'Sudhanand Healthcare Solutions Pvt. Ltd.',
-      href: 'https://www.cureplushospitals.com/',
-      desc: 'CurePlus Hospitals is a growing network across Mysore, Chamarajanagar and Kodagu, led by the 40-bed NABH-accredited CurePlus Disha Hospital in Mysuru. The network includes 20-bed hospitals in T. Narasipura, Hassan, Bherya, H.D. Kote, Halli Mysuru, Hosur, Ramapura and Terakanambi. Offering affordable, quality care with modern diagnostics, CurePlus combines clinical excellence with compassion across urban and rural communities.',
-    },
-    {
-      logo: '/hospitality-page/SUDHANAND PHARMACIES 1.png',
-      name: 'Sudhanand Pharmacies Pvt. Ltd.',
-      href: 'https://www.sudhanandpharmacies.com/',
-      desc: 'Founded in 2023, SPPL is the pharmaceutical arm of the Sudhanand Group, committed to delivering high-quality, effective and affordable medicines. Currently offering 31 products across key therapeutic areas, SPPL continues to expand its portfolio — balancing efficacy and affordability to make reliable healthcare accessible to all.',
-    },
-  ],
-  dividerImage: '/health div.png',
-};
+import content from './content.json';
 
 export default function HealthcarePage() {
-  return <VentureTemplate data={data} />;
+  return <VentureTemplate data={content as VentureData} />;
 }

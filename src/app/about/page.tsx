@@ -2,12 +2,14 @@
 
 import { AnimatePresence, m } from 'framer-motion';
 import Image from '@/app/components/site/Img';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import { TINTS } from '@/app/components/site/accents';
 import { ChipRow } from '@/app/components/site/ChipMarquee';
 import PageHero from '@/app/components/site/PageHero';
+import PhotoMarquee from '@/app/components/site/PhotoMarquee';
+import RailButton from '@/app/components/site/RailButton';
 import {
   FadeIn,
   Reveal,
@@ -17,77 +19,14 @@ import {
 import { lockScroll, unlockScroll } from '@/app/components/site/SmoothScroll';
 import SwapButton from '@/app/components/site/SwapButton';
 import { useOverflowX } from '@/app/components/site/useOverflowX';
+import teamData from './team.json';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Pass `bio` as an array for multi-paragraph profiles.
 type Person = { role: string; name: string; img: string; bio: string | string[] };
 
-const team: Person[] = [
-  {
-    role: 'Founder & Chairman',
-    name: 'Dr. Arjun Sachidanand',
-    img: '/about/arjunsir.png',
-    bio: 'Visionary leader with a passion for healthcare and community service. Has dedicated his career to improving healthcare access for underserved populations, keeping patient care at the forefront of every initiative.',
-  },
-  {
-    role: 'Managing Director',
-    name: 'Dr. Sini Arjun',
-    img: '/about/sinimam.png',
-    bio: 'Expert in healthcare management and patient care, ensuring quality services across all facilities. A strong advocate for patient rights and community health initiatives.',
-  },
-  {
-    role: 'Chief Operating Officer',
-    name: 'Capt. Raghu Das',
-    img: '/about/capt.png',
-    bio: 'Strategic planner focused on operational excellence. A military background instilled the discipline he applies to day-to-day operations, keeping every team moving toward common goals.',
-  },
-  {
-    role: 'Chief Administrative Officer',
-    name: 'Vijay Asrani',
-    img: '/about/vijay.png',
-    bio: 'Oversees financial controls, compliance and internal audits across all verticals. Ensures effective budgeting, reporting and cost management that supports strategic growth.',
-  },
-  {
-    role: 'Senior Vice President',
-    name: 'Mr. Ram Hebbale Hiriyanna',
-    img: '/about/ram.jpg',
-    bio: 'With over 15 years of experience in business development, marketing strategy, and operations, he brings strong expertise in B2B growth, process excellence, and quality management. As Senior Vice President at Sudhanand Group, he drives operational efficiency, strategic decision-making, and sustainable organizational growth, with a strong focus on collaboration and continuous improvement.',
-  },
-  {
-    role: 'VP — New Initiatives & Investments',
-    name: 'Mr. Abhinandan S. Rao',
-    img: '/about/abhinandan.jpg',
-    bio: 'Innovative thinker driving new projects and investments. Identifies initiatives aligned with the group mission and makes sure resources go where they have the most impact.',
-  },
-  {
-    role: 'VP — Internal Audit & Finance',
-    name: 'Mr. Keshav Murthy',
-    img: '/about/keshav.jpg',
-    bio: 'Financial strategist ensuring fiscal responsibility and transparency. Oversees budgeting, auditing and compliance to the highest standards of financial integrity.',
-  },
-  {
-    role: 'VP — Local & Global Sales, Pharma Division',
-    name: 'Mr. A. S. Mohan Kumar',
-    img: '/about/mohan.jpg',
-    bio: 'A seasoned pharmaceutical professional with over 30 years of experience in pharmaceutical business management, global sales, product regulatory compliance, and international regulatory affairs, with extensive top management expertise in pharmaceutical formulations, including large-volume injectables. He brings strategic leadership and industry knowledge to drive global business growth and ensure compliance with international pharmaceutical standards.',
-  },
-  {
-    role: 'Senior Operations Manager',
-    name: 'Mr. Srinivasa C',
-    img: '/about/srinivas.png',
-    bio: 'Focused on operational efficiency and patient satisfaction. Works with clinical and administrative teams to streamline processes and improve the patient experience.',
-  },
-  {
-    role: 'Senior Manager — Purchase & Procurement',
-    name: 'Mr. Manjunath P',
-    img: '/about/manjunath.jpg',
-    bio: [
-      'Manjunath P is responsible for overseeing purchase and procurement activities across the organisation, coordinating the sourcing and timely availability of varied requirements. Working closely with Sr. Operations Manager – Srinivas, he supports efficient procurement processes, vendor coordination, cost management, and timely fulfilment of organisational needs.',
-      'In addition to his procurement responsibilities, Manjunath is also involved in managing and supporting the company’s Pharma business, contributing to its day-to-day operations, coordination, and business requirements. His role combines procurement expertise, cross-functional coordination, and practical execution to support the organisation’s operational and business objectives.',
-    ],
-  },
-];
+const team = teamData as Person[];
 
 const gallery = [
   '/about/Rectangle 52.png',
@@ -258,35 +197,7 @@ export default function AboutPage() {
 
       {/* ── Gallery ── */}
       <section className="pb-4">
-        <div className="marquee-host">
-          <div
-            className="marquee"
-            style={{ '--marquee-duration': '55s' } as React.CSSProperties}
-          >
-            {[0, 1].map((copy) => (
-              <div key={copy} className="flex items-stretch gap-3 pr-3 shrink-0">
-                {gallery.map((src, i) => (
-                  <span
-                    key={`${copy}-${src}`}
-                    className={`relative block rounded-[var(--radius-lg)] overflow-hidden shrink-0 ${
-                      i % 2 === 0
-                        ? 'w-[56vw] md:w-[22rem] h-[34vw] md:h-[14rem]'
-                        : 'w-[38vw] md:w-[14rem] h-[34vw] md:h-[14rem]'
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 56vw, 22rem"
-                      className="object-cover"
-                    />
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <PhotoMarquee images={gallery} duration={55} />
       </section>
 
       <section className="section">
@@ -319,11 +230,11 @@ function ProfileModal({
   person,
   tint,
   onClose,
-}: {
+}: Readonly<{
   person: Person | null;
   tint: string;
   onClose: () => void;
-}) {
+}>) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const isOpen = person !== null;
 
@@ -356,9 +267,12 @@ function ProfileModal({
           aria-modal="true"
           aria-labelledby="profile-name"
         >
-          <div
-            className="absolute inset-0 bg-ink/70 backdrop-blur-sm on-ink"
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-hidden
             onClick={onClose}
+            className="absolute inset-0 bg-ink/70 backdrop-blur-sm on-ink !cursor-[inherit]"
           />
 
           <m.div
@@ -414,22 +328,3 @@ function ProfileModal({
     </AnimatePresence>
   );
 }
-
-const RailButton = ({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label={dir === -1 ? 'Previous' : 'Next'}
-    className="w-12 h-12 rounded-full border border-ink flex items-center justify-center transition-colors duration-300 hover:bg-ink hover:text-paper"
-  >
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path
-        d={dir === -1 ? 'M10 3L5 8l5 5' : 'M6 3l5 5-5 5'}
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-);

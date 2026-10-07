@@ -1,0 +1,50 @@
+[
+  {
+    "id": "healthcare",
+    "name": "Healthcare",
+    "img": "/healthcare.png",
+    "accent": "red",
+    "blurb": "Hospitals, clinics and pharmacies across Karnataka.",
+    "description": "Sudhanand Healthcare Solutions and Sudhanand Pharmacies deliver advanced care — hospitals, clinics and medical equipment — to promote a healthier society."
+  },
+  {
+    "id": "technology",
+    "name": "Technology",
+    "img": "/tech.png",
+    "accent": "blue",
+    "blurb": "Software, SaaS and digital transformation.",
+    "description": "Sudhanand Business Solutions, TiaMeds Technologies and Mindworx build software, enterprise AI, digital transformation programmes and cybersecurity for the digital age."
+  },
+  {
+    "id": "hospitality",
+    "name": "Hospitality",
+    "img": "/hospitality.png",
+    "accent": "amber",
+    "blurb": "A boutique hotel and event lawns.",
+    "description": "Sudhanand Four Seasons in Mysore, Whispering Green Lawn and Utsava Lawn deliver stays and celebrations built around comfort and genuine service."
+  },
+  {
+    "id": "sports-infrastructure",
+    "name": "Sport",
+    "img": "/sports.png",
+    "accent": "green",
+    "blurb": "Modern facilities and training centres.",
+    "description": "At ARC Sportzone we build and operate modern sports facilities, stadiums and training centres that promote fitness, wellness and athletic talent."
+  },
+  {
+    "id": "real-estate",
+    "name": "Real Estate",
+    "img": "/real-estate/card.jpg",
+    "accent": "teal",
+    "blurb": "Construction and property development.",
+    "description": "Through Stone Tower Constructions and Rock Solid Holdings, we are expanding across construction, property development and real estate solutions."
+  },
+  {
+    "id": "charitable-trust",
+    "name": "Charitable Trust",
+    "img": "/charity.png",
+    "accent": "violet",
+    "blurb": "Education, blood banking and community care.",
+    "description": "Our CSR work, led by Sudhanand Educational Trust and CurePlus Blood Bank, focuses on education, healthcare and community development."
+  }
+]

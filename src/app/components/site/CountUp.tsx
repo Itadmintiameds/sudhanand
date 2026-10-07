@@ -11,10 +11,14 @@ const UNITS: Record<string, number> = {
 };
 
 const parse = (value: string) => {
-  const m = value.trim().match(/^([\d.]+)\s*(Cr|[KLM])?(.*)$/);
+  const text = value.trim();
+  const m = /^([\d.]+)\s*(Cr|[KLM])?/.exec(text);
   if (!m) return { target: 0, tail: value };
-  const [, num, unit, tail] = m;
-  return { target: Math.round(parseFloat(num) * (unit ? UNITS[unit] : 1)), tail };
+  const [head, num, unit] = m;
+  return {
+    target: Math.round(Number.parseFloat(num) * (unit ? UNITS[unit] : 1)),
+    tail: text.slice(head.length),
+  };
 };
 
 // en-IN groups the Indian way: 1,00,000 / 10,00,000 / 1,00,00,000
@@ -41,13 +45,13 @@ export default function CountUp({
   duration,
   className = '',
   style,
-}: {
+}: Readonly<{
   value: string;
   /** ms; defaults to longer for big figures so the digits stay readable */
   duration?: number;
   className?: string;
   style?: React.CSSProperties;
-}) {
+}>) {
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 

@@ -1,5 +1,12 @@
 'use client';
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -31,7 +38,7 @@ const applyTheme = (theme: Theme) => {
  * `data-theme` on <html> (see globals.css), so nothing here re-renders the
  * page — state only feeds things like the toggle's aria-pressed.
  */
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   // 'light' on the server and the first client render alike; the real theme
   // is already on <html> (inline script) and is picked up after mount.
   const [theme, setTheme] = useState<Theme>('light');
@@ -58,7 +65,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       applyTheme(next);
       setTheme(next);
       // Flush styles while transitions are off, then hand them back
-      void window.getComputedStyle(root).color;
+      window.getComputedStyle(root).getPropertyValue('color');
       requestAnimationFrame(() => root.classList.remove('theme-switching'));
     };
 
@@ -73,11 +80,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = () => useContext(ThemeContext);

@@ -3,58 +3,8 @@
 import VentureTemplate, {
   type VentureData,
 } from '@/app/components/site/VentureTemplate';
-
-const data: VentureData = {
-  accent: 'blue',
-  eyebrow: 'Technology frontier',
-  title: 'Where ideas drive *change*',
-  intro:
-    'Software, SaaS, enterprise AI and services built in-house — for healthcare, pharma, insurance and enterprise clients in India and the USA.',
-  heroImage: '/hero/technology.jpg',
-  heroPosition: '25% 12%',
-  statement:
-    'Technology is only worth building when it removes friction for someone real — a clinician, a claims handler, a patient waiting on a result.',
-  stats: [
-    ['18+', 'hospitals supported'],
-    ['10L+', 'patients served'],
-    ['100+', 'professionals across teams'],
-  ],
-  chips: [
-    'Enterprise AI',
-    'Cybersecurity',
-    'Software testing',
-    'Data science',
-    'RPA & automation',
-    'BI & analytics',
-    'Knowledge management',
-    'Digital marketing',
-  ],
-  companies: [
-    {
-      logo: '/technology-page/SBPL 2 2.png',
-      name: 'Sudhanand Business Solutions',
-      href: 'https://www.sudhanandbusinesssolutions.com/',
-      desc: 'A growing IT and ITES company with a presence in India and the USA. Since 2019, SBPL has grown from 4 employees to over 100 professionals. Our IT wing specialises in software testing and data science using Agile, Selenium, Jira and RPA. In ITES, SBPL supports pre-underwriting, claims, bookrolls, policy binding and accounting, serving top home insurance providers such as Cabrillo Coastal in the USA.',
-    },
-    {
-      logo: '/technology-page/tiameds.png',
-      name: 'TiaMeds Technologies Pvt. Ltd.',
-      href: 'https://www.tiameds.ai/',
-      desc: 'Founded in early 2024, TiaMeds is the tech arm of the Sudhanand Group, focused on developing cutting-edge in-house software for the healthcare and pharma sectors. With expertise in development, testing, data science, BI, analytics and digital marketing, the team delivers end-to-end products built for impact.',
-    },
-    {
-      logo: '/technology-page/mindworx.png',
-      name: 'Mindworx Technologies & Business Solutions Pvt. Ltd.',
-      desc: [
-        'Mindworx Technologies & Business Solutions Pvt. Ltd. builds secure, scalable AI solutions for organisations where data, security, and reliability are critical.',
-        'We combine Enterprise AI, intelligent automation, cybersecurity, knowledge management, and business technology to transform complex operations into intelligent, efficient, and traceable systems. Our solutions are designed to support a wide range of organisations, including businesses, enterprises, research institutions, government organisations, educational institutions, technology companies, space and aerospace organisations, defence and strategic sectors, and regulated industries.',
-        'We help organisations modernise their operations, improve decision-making, strengthen security, and build intelligent systems while maintaining greater control over their data, technology, and infrastructure.',
-      ],
-    },
-  ],
-  dividerImage: '/tech-div.png',
-};
+import content from './content.json';
 
 export default function TechnologyPage() {
-  return <VentureTemplate data={data} />;
+  return <VentureTemplate data={content as VentureData} />;
 }

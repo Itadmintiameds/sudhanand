@@ -26,13 +26,13 @@ export function ChipRow({
   duration = 44,
   offset = 0,
   tones = TONES,
-}: {
+}: Readonly<{
   items: string[];
   reverse?: boolean;
   duration?: number;
   offset?: number;
   tones?: string[];
-}) {
+}>) {
   return (
     <div className="marquee-host">
       <div
@@ -61,11 +61,11 @@ export default function ChipMarquee({
   rowOne,
   rowTwo,
   className = '',
-}: {
+}: Readonly<{
   rowOne: string[];
   rowTwo: string[];
   className?: string;
-}) {
+}>) {
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
       <ChipRow items={rowOne} duration={46} />

@@ -17,9 +17,9 @@ export const useAppReady = () => useContext(ReadyCtx);
 
 export default function SiteChrome({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const [ready, setReady] = useState(false);
 
   return (

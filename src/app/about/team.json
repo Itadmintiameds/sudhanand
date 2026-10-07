@@ -1,0 +1,65 @@
+[
+  {
+    "role": "Founder & Chairman",
+    "name": "Dr. Arjun Sachidanand",
+    "img": "/about/arjunsir.png",
+    "bio": "Visionary leader with a passion for healthcare and community service. Has dedicated his career to improving healthcare access for underserved populations, keeping patient care at the forefront of every initiative."
+  },
+  {
+    "role": "Managing Director",
+    "name": "Dr. Sini Arjun",
+    "img": "/about/sinimam.png",
+    "bio": "Expert in healthcare management and patient care, ensuring quality services across all facilities. A strong advocate for patient rights and community health initiatives."
+  },
+  {
+    "role": "Chief Operating Officer",
+    "name": "Capt. Raghu Das",
+    "img": "/about/capt.png",
+    "bio": "Strategic planner focused on operational excellence. A military background instilled the discipline he applies to day-to-day operations, keeping every team moving toward common goals."
+  },
+  {
+    "role": "Chief Administrative Officer",
+    "name": "Vijay Asrani",
+    "img": "/about/vijay.png",
+    "bio": "Oversees financial controls, compliance and internal audits across all verticals. Ensures effective budgeting, reporting and cost management that supports strategic growth."
+  },
+  {
+    "role": "Senior Vice President",
+    "name": "Mr. Ram Hebbale Hiriyanna",
+    "img": "/about/ram.jpg",
+    "bio": "With over 15 years of experience in business development, marketing strategy, and operations, he brings strong expertise in B2B growth, process excellence, and quality management. As Senior Vice President at Sudhanand Group, he drives operational efficiency, strategic decision-making, and sustainable organizational growth, with a strong focus on collaboration and continuous improvement."
+  },
+  {
+    "role": "VP — New Initiatives & Investments",
+    "name": "Mr. Abhinandan S. Rao",
+    "img": "/about/abhinandan.jpg",
+    "bio": "Innovative thinker driving new projects and investments. Identifies initiatives aligned with the group mission and makes sure resources go where they have the most impact."
+  },
+  {
+    "role": "VP — Internal Audit & Finance",
+    "name": "Mr. Keshav Murthy",
+    "img": "/about/keshav.jpg",
+    "bio": "Financial strategist ensuring fiscal responsibility and transparency. Oversees budgeting, auditing and compliance to the highest standards of financial integrity."
+  },
+  {
+    "role": "VP — Local & Global Sales, Pharma Division",
+    "name": "Mr. A. S. Mohan Kumar",
+    "img": "/about/mohan.jpg",
+    "bio": "A seasoned pharmaceutical professional with over 30 years of experience in pharmaceutical business management, global sales, product regulatory compliance, and international regulatory affairs, with extensive top management expertise in pharmaceutical formulations, including large-volume injectables. He brings strategic leadership and industry knowledge to drive global business growth and ensure compliance with international pharmaceutical standards."
+  },
+  {
+    "role": "Senior Operations Manager",
+    "name": "Mr. Srinivasa C",
+    "img": "/about/srinivas.png",
+    "bio": "Focused on operational efficiency and patient satisfaction. Works with clinical and administrative teams to streamline processes and improve the patient experience."
+  },
+  {
+    "role": "Senior Manager — Purchase & Procurement",
+    "name": "Mr. Manjunath P",
+    "img": "/about/manjunath.jpg",
+    "bio": [
+      "Manjunath P is responsible for overseeing purchase and procurement activities across the organisation, coordinating the sourcing and timely availability of varied requirements. Working closely with Sr. Operations Manager – Srinivas, he supports efficient procurement processes, vendor coordination, cost management, and timely fulfilment of organisational needs.",
+      "In addition to his procurement responsibilities, Manjunath is also involved in managing and supporting the company’s Pharma business, contributing to its day-to-day operations, coordination, and business requirements. His role combines procurement expertise, cross-functional coordination, and practical execution to support the organisation’s operational and business objectives."
+    ]
+  }
+]

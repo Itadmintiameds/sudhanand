@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React, { useRef } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import { ACCENTS, type Accent } from './site/accents';
+import { ACCENTS } from './site/accents';
 import ChipMarquee from './site/ChipMarquee';
 import {
   FadeIn,
@@ -14,10 +14,12 @@ import {
   ScrollHighlight,
   SplitWords,
 } from './site/Reveal';
+import RailButton from './site/RailButton';
 import { useAppReady } from './site/SiteChrome';
 import SwapButton from './site/SwapButton';
 import TypeWordmark from './site/TypeWordmark';
 import { useOverflowX } from './site/useOverflowX';
+import { VENTURES } from './site/ventures';
 import VideosSection from './site/Videos';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -106,22 +108,6 @@ const Hero = () => {
 
 /* -------------------------------------------------------- venture slider -- */
 
-// `accent` matches each venture page's own colour
-const ventureSlides: {
-  id: string;
-  name: string;
-  img: string;
-  blurb: string;
-  accent: Accent;
-}[] = [
-  { id: 'healthcare', name: 'Healthcare', img: '/healthcare.png', blurb: 'Hospitals, clinics and pharmacies across Karnataka.', accent: 'red' },
-  { id: 'technology', name: 'Technology', img: '/tech.png', blurb: 'Software, SaaS and digital transformation.', accent: 'blue' },
-  { id: 'hospitality', name: 'Hospitality', img: '/hospitality.png', blurb: 'A boutique hotel and event lawns.', accent: 'amber' },
-  { id: 'sports-infrastructure', name: 'Sport', img: '/sports.png', blurb: 'Modern facilities and training centres.', accent: 'green' },
-  { id: 'real-estate', name: 'Real Estate', img: '/real-estate/card.jpg', blurb: 'Construction and property development.', accent: 'teal' },
-  { id: 'charitable-trust', name: 'Charitable Trust', img: '/charity.png', blurb: 'Education, blood banking and community care.', accent: 'violet' },
-];
-
 const VentureSlider = () => {
   const railRef = useRef<HTMLDivElement>(null);
   // Arrows only when the cards don't all fit on screen
@@ -157,7 +143,7 @@ const VentureSlider = () => {
         // scroll-padding keeps the first card on the gutter instead of the screen edge
         style={{ paddingInline: 'var(--gutter)', scrollPaddingInline: 'var(--gutter)' }}
       >
-        {ventureSlides.map((v) => (
+        {VENTURES.map((v) => (
           <Link
             key={v.id}
             href={`/ventures/${v.id}`}
@@ -203,25 +189,6 @@ const VentureSlider = () => {
     </section>
   );
 };
-
-const RailButton = ({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label={dir === -1 ? 'Previous' : 'Next'}
-    className="w-12 h-12 rounded-full border border-ink flex items-center justify-center transition-colors duration-300 hover:bg-ink hover:text-paper"
-  >
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path
-        d={dir === -1 ? 'M10 3L5 8l5 5' : 'M6 3l5 5-5 5'}
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-);
 
 /* ------------------------------------------------------------- statement -- */
 
@@ -335,8 +302,8 @@ const brandLogos: Brand[] = [
   { src: '/brands/arc-sportzone.png', ratio: 0.76, alt: 'ARC Sportzone', href: 'https://www.arcsportzone.com/' },
   { src: '/brands/smt.png', ratio: 0.84, alt: 'SMT', href: 'https://www.smt.help/' },
   { src: '/brands/stone-tower.png', ratio: 2.75, alt: 'Stone Tower Constructions', href: '/ventures/real-estate' },
-  { alt: 'Whispering Green Lawn', tone: 'text-green', href: '/ventures/hospitality' },
-  { alt: 'Utsava Lawn', tone: 'text-amber', href: '/ventures/hospitality' },
+  { src: '/brands/whispering-green-lawn.png', ratio: 0.99, alt: 'Whispering Green Lawn', href: 'https://www.instagram.com/whispering_green_lawn/' },
+  { src: '/brands/utsava-lawn.png', ratio: 0.97, alt: 'Utsava Lawn', href: '/ventures/hospitality' },
   { src: '/brands/four-seasons.png', ratio: 5.02, alt: 'Four Seasons Mysuru', href: 'https://sudhanandfourseasons.com/' },
   { src: '/brands/rock-solid.png', ratio: 0.9, alt: 'Rock Solid Holdings', href: '/ventures/real-estate' },
 ];
@@ -353,13 +320,13 @@ const logoHeight = (ratio: number) =>
 
 // White in both themes — the artwork is drawn for a light ground
 const TILE_CLASS =
-  'on-light w-48 h-28 px-5 py-4 rounded-[1rem] bg-white flex items-center justify-center shrink-0 ring-1 ring-ink/10 transition-shadow duration-300 hover:ring-2 hover:ring-blue focus-visible:ring-2 focus-visible:ring-blue';
+  'on-light w-48 h-28 px-5 py-4 rounded-[1rem] bg-white flex items-center justify-center shrink-0 ring-1 ring-inset ring-ink/10 transition-shadow duration-300 hover:ring-2 hover:ring-red focus-visible:ring-2 focus-visible:ring-red';
 
 /**
  * One logo, linked. The marquee renders every tile twice for a seamless loop,
  * so the second copy is hidden from assistive tech and the tab order.
  */
-const BrandTile = ({ brand, duplicate }: { brand: Brand; duplicate: boolean }) => {
+const BrandTile = ({ brand, duplicate }: Readonly<{ brand: Brand; duplicate: boolean }>) => {
   const external = /^https?:\/\//.test(brand.href);
 
   const face =

@@ -84,9 +84,8 @@ const Header: React.FC = () => {
 
   // Transparent at the top (clicks pass through to the hero); once it carries
   // a background it should catch clicks rather than leak them to hidden content.
-  const bar = menuOpen
-    ? 'pointer-events-none'
-    : scrolled
+  const bar =
+    scrolled && !menuOpen
       ? 'bg-canvas/95 shadow-[0_1px_0_rgba(6,38,61,0.08)] dark:shadow-[0_1px_0_rgba(255,255,255,0.06)]'
       : 'pointer-events-none';
 

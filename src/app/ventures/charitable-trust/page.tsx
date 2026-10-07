@@ -3,53 +3,8 @@
 import VentureTemplate, {
   type VentureData,
 } from '@/app/components/site/VentureTemplate';
-
-const data: VentureData = {
-  accent: 'violet',
-  eyebrow: 'Charitable trust',
-  title: 'Committed to uplifting *lives*',
-  intro:
-    'Education, blood banking and mobile healthcare reaching the communities that formal systems miss.',
-  heroImage: '/hero/charitable-trust.jpg',
-  heroPosition: '45% 50%',
-  statement:
-    'The measure of a group is not what it earns, but what it makes possible for people who could never have paid for it.',
-  stats: [
-    ['120+', 'partner hospitals'],
-    ['19K+', 'people reached'],
-    ['180+', 'villages'],
-  ],
-  chips: [
-    'Section 12A & 80G',
-    'Mobile health units',
-    'Blood banking',
-    'Rural outreach',
-    'Education support',
-    'Telemedicine',
-  ],
-  companies: [
-    {
-      logo: '/trust-page/SMT 2.png',
-      name: 'Dr. M. D. Sachidananda Murthy Memorial Educational Trust',
-      href: 'https://www.smt.help/',
-      desc: 'Founded in March 2013 by Dr. Arjun Sachidanand, the Trust began with a mission to improve education and has since expanded into healthcare. Recognised under Sections 12A and 80G of the Income Tax Act, it runs initiatives including Sudhanand Arogya Vahini, a mobile health service for underserved communities, and CurePlus Blood Bank, ensuring timely access to safe blood.',
-    },
-    {
-      logo: '/trust-page/CUREPLUS BLOOD BANK 1.png',
-      name: 'CurePlus Blood Centre',
-      href: 'https://www.cureplusbloodbank.com/',
-      desc: 'CurePlus Blood Bank ensures the availability of blood across rural Karnataka. Based in Mysuru, it houses 2,000 units of blood, supporting CurePlus Hospitals in remote areas. Our mobile Sudhanand Arogya Vahinis facilitate swift transportation, reducing long-distance travel and improving access to life-saving healthcare in underserved communities.',
-    },
-    {
-      logo: '/trust-page/SMT 2.png',
-      name: 'Sudhanand Arogya Vahini',
-      href: 'https://www.smt.help/sav',
-      desc: 'In partnership with SAS Poorna Arogya Health Care and CurePlus Hospitals, the Trust launched Sudhanand Arogya Vahini (SAV), a mobile healthcare unit serving rural communities. During Covid-19, SAV offered lab tests, telemedicine consultations and data collection, helping patients avoid exposure and travel costs.',
-    },
-  ],
-  dividerImage: '/trust-div.png',
-};
+import content from './content.json';
 
 export default function CharitableTrustPage() {
-  return <VentureTemplate data={data} />;
+  return <VentureTemplate data={content as VentureData} />;
 }

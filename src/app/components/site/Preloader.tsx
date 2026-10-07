@@ -10,7 +10,7 @@ const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 const useIsoLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-export default function Preloader({ onDone }: { onDone: () => void }) {
+export default function Preloader({ onDone }: Readonly<{ onDone: () => void }>) {
   // Must start `true` on both server and client — reading sessionStorage in the
   // initialiser makes the first client render disagree with the SSR output and
   // React throws the whole tree away, restarting every entrance animation.
@@ -34,7 +34,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       document.body.classList.remove('is-locked');
       finish();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     frame = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(frame);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   const handleExitComplete = () => {

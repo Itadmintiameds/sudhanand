@@ -11,14 +11,7 @@ type Video = {
   hq?: boolean;
 };
 
-// The six videos from the previous site first, then the newer additions.
 const videos: Video[] = [
-  { id: 'Wazu-Z27wyY', title: 'TiaMeds Lab Module Launch at CurePlus Hospitals', channel: 'TiaMeds', hq: true },
-  { id: 'TkLjQyNti78', title: 'A New Beginning — CurePlus Hospital Mysore, New Hospital Construction Update', channel: 'CurePlus Hospitals' },
-  { id: 'fE77gCpSnPM', title: 'Our First Blood Donation Camp at CurePlus Blood Centre & ARC Hebbal', channel: 'CurePlus Hospitals', hq: true },
-  { id: 'wW_WOzha5to', title: 'SAS Poorna Arogya Program — Short Film', channel: 'Sudhanand Group' },
-  { id: 'AYV5wQw0lu4', title: 'Best Sportzone in Mysore — ARC Sportzone', channel: 'ARC Sportzone', hq: true },
-  { id: '0sWf8vru8t8', title: 'CurePlus Hospitals — Sudhanand Healthcare Solutions Pvt. Ltd.', channel: 'Sudhanand Group' },
   { id: 'zCQITOk6wGk', title: 'Dr. Arjun Sachidanand Shares the Vision Behind CurePlus Hospitals', channel: 'CurePlus Hospitals', hq: true },
   { id: '66hqcMiY02c', title: 'Dr. Madhu Srinivasarangan Reflects on the Legacy of CurePlus Hospitals', channel: 'CurePlus Hospitals' },
   { id: '1-fp_vfKXB0', title: 'A Special Message from Dr. Archana Sachidanand', channel: 'CurePlus Hospitals', hq: true },
@@ -35,7 +28,7 @@ const poster = (v: Video) =>
  * Photos are plain <img>: they are remote YouTube posters, which the site's
  * pre-rendered-WebP image loader (static export) has nothing to do with.
  */
-const Poster = ({ video, className = '' }: { video: Video; className?: string }) => (
+const Poster = ({ video, className = '' }: Readonly<{ video: Video; className?: string }>) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
     src={poster(video)}
@@ -48,8 +41,8 @@ const Poster = ({ video, className = '' }: { video: Video; className?: string })
 
 /**
  * One large player plus a playlist. The player is click-to-load — the poster
- * and play button stand in until asked, so thirteen videos cost thirteen small
- * thumbnails rather than thirteen embedded players.
+ * and play button stand in until asked, so seven videos cost seven small
+ * thumbnails rather than seven embedded players.
  */
 export default function VideosSection() {
   const [active, setActive] = useState(0);

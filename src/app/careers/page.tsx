@@ -1,13 +1,14 @@
 'use client';
 
 import Image from '@/app/components/site/Img';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import { TINTS } from '@/app/components/site/accents';
 import { ChipRow } from '@/app/components/site/ChipMarquee';
 import { useEnquiry } from '@/app/components/site/Enquiry';
 import PageHero from '@/app/components/site/PageHero';
+import PhotoMarquee from '@/app/components/site/PhotoMarquee';
 import { FadeIn, Reveal, SplitWords } from '@/app/components/site/Reveal';
 import SwapButton from '@/app/components/site/SwapButton';
 
@@ -54,13 +55,84 @@ function parseJobsFromCSV(csv: string): Job[] {
       const obj: Record<string, string | number | boolean> = {};
       headers.forEach((h, i) => {
         const v = vals[i]?.trim() ?? '';
-        if (h === 'id') obj[h] = parseInt(v, 10);
+        if (h === 'id') obj[h] = Number.parseInt(v, 10);
         else if (h === 'onsite' || h === 'fullTime') obj[h] = v.toLowerCase() === 'true';
         else obj[h] = v;
       });
       return obj as unknown as Job;
     })
     .filter((j) => j.id && j.title);
+}
+
+function Positions({
+  loading,
+  jobs,
+  onContact,
+}: Readonly<{ loading: boolean; jobs: Job[]; onContact: () => void }>) {
+  if (loading) {
+    return (
+      <div className="flex justify-center py-10">
+        <div className="h-10 w-10 rounded-full border-2 border-ink/20 border-t-ink animate-spin" />
+      </div>
+    );
+  }
+
+  if (jobs.length === 0) {
+    return (
+      <FadeIn>
+        <div className="rounded-[var(--radius-lg)] bg-sky p-8 text-center">
+          <h3 className="t-h4">No open positions at the moment</h3>
+          <p className="t-lead text-slate mt-3 max-w-md mx-auto">
+            Please check back soon, or contact us to share your profile
+            for future openings.
+          </p>
+          <SwapButton label="Contact us" onClick={onContact} className="mt-8" />
+        </div>
+      </FadeIn>
+    );
+  }
+
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+      {jobs.map((job, i) => (
+        <Reveal key={job.id} delay={(i % 3) * 0.05}>
+          <article
+            className={`h-full rounded-[var(--radius-lg)] ${TINTS[i % TINTS.length]} p-5 flex flex-col justify-between gap-4`}
+          >
+            <div>
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="t-h5 font-semibold">{job.title}</h3>
+                <span className="chip chip--paper !py-1.5 !px-3 !text-xs shrink-0">
+                  {job.category}
+                </span>
+              </div>
+              <p className="t-small mt-3 !text-ink/70">{job.exp}</p>
+              <p className="t-small !text-ink/70">{job.location}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {job.onsite && (
+                  <span className="chip chip--paper !py-1 !px-3 !text-xs">
+                    Onsite
+                  </span>
+                )}
+                {job.fullTime && (
+                  <span className="chip chip--paper !py-1 !px-3 !text-xs">
+                    Full-time
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <SwapButton
+              label="Apply now"
+              href={job.applyUrl}
+              external
+              className="self-start"
+            />
+          </article>
+        </Reveal>
+      ))}
+    </div>
+  );
 }
 
 export default function CareersPage() {
@@ -174,96 +246,13 @@ export default function CareersPage() {
             </FadeIn>
           )}
 
-          {loading ? (
-            <div className="flex justify-center py-10">
-              <div className="h-10 w-10 rounded-full border-2 border-ink/20 border-t-ink animate-spin" />
-            </div>
-          ) : filtered.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-              {filtered.map((job, i) => (
-                <Reveal key={job.id} delay={(i % 3) * 0.05}>
-                  <article
-                    className={`h-full rounded-[var(--radius-lg)] ${TINTS[i % TINTS.length]} p-5 flex flex-col justify-between gap-4`}
-                  >
-                    <div>
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="t-h5 font-semibold">{job.title}</h3>
-                        <span className="chip chip--paper !py-1.5 !px-3 !text-xs shrink-0">
-                          {job.category}
-                        </span>
-                      </div>
-                      <p className="t-small mt-3 !text-ink/70">{job.exp}</p>
-                      <p className="t-small !text-ink/70">{job.location}</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {job.onsite && (
-                          <span className="chip chip--paper !py-1 !px-3 !text-xs">
-                            Onsite
-                          </span>
-                        )}
-                        {job.fullTime && (
-                          <span className="chip chip--paper !py-1 !px-3 !text-xs">
-                            Full-time
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <SwapButton
-                      label="Apply now"
-                      href={job.applyUrl}
-                      external
-                      className="self-start"
-                    />
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          ) : (
-            <FadeIn>
-              <div className="rounded-[var(--radius-lg)] bg-sky p-8 text-center">
-                <h3 className="t-h4">No open positions at the moment</h3>
-                <p className="t-lead text-slate mt-3 max-w-md mx-auto">
-                  Please check back soon, or contact us to share your profile
-                  for future openings.
-                </p>
-                <SwapButton label="Contact us" onClick={open} className="mt-8" />
-              </div>
-            </FadeIn>
-          )}
+          <Positions loading={loading} jobs={filtered} onContact={open} />
         </div>
       </section>
 
       {/* ── Gallery ── */}
       <section className="py-6 md:py-8">
-        <div className="marquee-host">
-          <div
-            className="marquee"
-            style={{ '--marquee-duration': '50s' } as React.CSSProperties}
-          >
-            {[0, 1].map((copy) => (
-              <div key={copy} className="flex items-stretch gap-3 pr-3 shrink-0">
-                {gallery.map((src, i) => (
-                  <span
-                    key={`${copy}-${src}`}
-                    className={`relative block rounded-[var(--radius-lg)] overflow-hidden shrink-0 ${
-                      i % 2 === 0
-                        ? 'w-[56vw] md:w-[22rem] h-[34vw] md:h-[14rem]'
-                        : 'w-[38vw] md:w-[14rem] h-[34vw] md:h-[14rem]'
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 56vw, 22rem"
-                      className="object-cover"
-                    />
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <PhotoMarquee images={gallery} duration={50} />
       </section>
 
       <Footer />

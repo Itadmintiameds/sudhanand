@@ -1,11 +1,10 @@
 /** Single source for the group's contact details (modal, footer, mobile menu). */
 export const CONTACT = {
-  phone: '+91 821 428 0152',
-  phoneHref: 'tel:+918214280152',
+  phone: '0821 428 0152',
+  phoneHref: 'tel:08214280152',
   email: 'info@sudhanandgroup.com',
   emailHref: 'mailto:info@sudhanandgroup.com',
   addressLines: [
-    'Sy. No. 59, 2nd Floor,',
     'Dakshina Murthy Towers,',
     'Devanooru, Rajeevnagara 2nd Stage,',
     'Udayagiri, Mysore 570019',

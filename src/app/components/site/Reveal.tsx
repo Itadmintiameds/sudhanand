@@ -44,12 +44,12 @@ export function Reveal({
   delay = 0,
   className = '',
   distance = 24,
-}: {
+}: Readonly<{
   children: React.ReactNode;
   delay?: number;
   className?: string;
   distance?: number;
-}) {
+}>) {
   const reduced = usePrefersReducedMotion();
   if (reduced) return <div className={className}>{children}</div>;
 
@@ -71,7 +71,7 @@ export function Reveal({
 
 /* -------------------------------------------------------------- SplitWords */
 
-type Token = { text: string; accent: boolean };
+type Token = { key: string; text: string; accent: boolean };
 
 /**
  * Splits on whitespace and wraps each word in its own clipping mask so the
@@ -82,9 +82,14 @@ function tokenize(text: string): Token[] {
   return text
     .split(/\s+/)
     .filter(Boolean)
-    .map((word) => {
+    .map((word, i) => {
       const accent = word.startsWith('*') && word.endsWith('*') && word.length > 2;
-      return { text: accent ? word.slice(1, -1) : word.replace(/\*/g, ''), accent };
+      // Words can repeat, so the position is part of the key
+      return {
+        key: `${i}-${word}`,
+        text: accent ? word.slice(1, -1) : word.replaceAll('*', ''),
+        accent,
+      };
     });
 }
 
@@ -94,21 +99,21 @@ export function SplitWords({
   className = '',
   delay = 0,
   stagger = 0.02,
-}: {
+}: Readonly<{
   text: string;
   as?: React.ElementType;
   className?: string;
   delay?: number;
   stagger?: number;
-}) {
+}>) {
   const reduced = usePrefersReducedMotion();
   const tokens = tokenize(text);
 
   if (reduced) {
     return (
       <Tag className={className}>
-        {tokens.map((t, i) => (
-          <React.Fragment key={i}>
+        {tokens.map((t) => (
+          <React.Fragment key={t.key}>
             {t.accent ? <span className="accent-word">{t.text}</span> : t.text}{' '}
           </React.Fragment>
         ))}
@@ -134,8 +139,8 @@ export function SplitWords({
       viewport={VIEWPORT}
     >
       <Tag className={className}>
-        {tokens.map((t, i) => (
-          <React.Fragment key={i}>
+        {tokens.map((t) => (
+          <React.Fragment key={t.key}>
             <span
               className="reveal-mask"
               style={{
@@ -168,12 +173,12 @@ function HighlightWord({
   range,
   progress,
   reduced,
-}: {
+}: Readonly<{
   word: string;
   range: [number, number];
   progress: MotionValue<number>;
   reduced: boolean;
-}) {
+}>) {
   // Floor of 0.5 keeps the unread words legible (≥3:1 on the deep-blue panel)
   // rather than a ghost
   const opacity = useTransform(progress, range, [0.5, 1]);
@@ -192,10 +197,10 @@ function HighlightWord({
 export function ScrollHighlight({
   text,
   className = '',
-}: {
+}: Readonly<{
   text: string;
   className?: string;
-}) {
+}>) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -236,12 +241,12 @@ export function FadeIn({
   delay = 0,
   className = '',
   y = 16,
-}: {
+}: Readonly<{
   children: React.ReactNode;
   delay?: number;
   className?: string;
   y?: number;
-}) {
+}>) {
   const reduced = usePrefersReducedMotion();
   if (reduced) return <div className={className}>{children}</div>;
 
@@ -265,12 +270,12 @@ export function Stagger({
   className = '',
   stagger = 0.06,
   delay = 0,
-}: {
+}: Readonly<{
   children: React.ReactNode;
   className?: string;
   stagger?: number;
   delay?: number;
-}) {
+}>) {
   return (
     <m.div
       className={className}
@@ -290,10 +295,10 @@ export function Stagger({
 export function StaggerItem({
   children,
   className = '',
-}: {
+}: Readonly<{
   children: React.ReactNode;
   className?: string;
-}) {
+}>) {
   const reduced = usePrefersReducedMotion();
   return (
     <m.div

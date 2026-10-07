@@ -48,7 +48,7 @@ const HEROES = [
 
 await mkdir(OUT, { recursive: true });
 
-for (const h of HEROES) {
+async function cropHero(h) {
   const file = path.join(PUBLIC, h.src);
   const { width, height } = await sharp(file).metadata();
   const top = Math.round(height * h.top);
@@ -63,7 +63,9 @@ for (const h of HEROES) {
     .toFile(dest);
 
   const m = await sharp(dest).metadata();
-  console.log(
-    `[hero] ${h.out.padEnd(17)} ${m.width}×${m.height}  (aspect ${(m.width / m.height).toFixed(2)})`
-  );
+  return `[hero] ${h.out.padEnd(17)} ${m.width}×${m.height}  (aspect ${(m.width / m.height).toFixed(2)})`;
 }
+
+// Independent files, so crop them side by side; report in list order
+const report = await Promise.all(HEROES.map(cropHero));
+console.log(report.join('\n'));

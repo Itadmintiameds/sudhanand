@@ -34,14 +34,14 @@ const mtime = (file) => stat(file).then((s) => s.mtimeMs, () => 0);
 async function optimise(file, src) {
   const sourceTime = await mtime(file);
   const targets = WIDTHS.map((w) => ({ w, out: path.join(PUBLIC, variantPath(src, w)) }));
-  const stale = [];
-  for (const t of targets) if ((await mtime(t.out)) < sourceTime) stale.push(t);
+  const outTimes = await Promise.all(targets.map((t) => mtime(t.out)));
+  const stale = targets.filter((_, i) => outTimes[i] < sourceTime);
   if (stale.length === 0) return false;
 
   // Decode once at the largest size, then derive every width from that buffer
   const { data, info } = await sharp(file)
     .rotate()
-    .resize({ width: WIDTHS[WIDTHS.length - 1], withoutEnlargement: true })
+    .resize({ width: WIDTHS.at(-1), withoutEnlargement: true })
     .raw()
     .toBuffer({ resolveWithObject: true });
 
@@ -77,11 +77,12 @@ for await (const file of walk(PUBLIC)) {
 
 let done = 0;
 let next = 0;
+// Each worker takes the next job when it finishes its current one
 const worker = async () => {
-  while (next < jobs.length) {
-    const { file, src } = jobs[next++];
-    if (await optimise(file, src)) done++;
-  }
+  const job = jobs[next++];
+  if (!job) return;
+  if (await optimise(job.file, job.src)) done++;
+  await worker();
 };
 await Promise.all(
   Array.from({ length: Math.max(1, Math.min(4, availableParallelism() - 1)) }, worker)

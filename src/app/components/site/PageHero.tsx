@@ -15,7 +15,7 @@ export default function PageHero({
   image,
   imagePosition = '50% 50%',
   meta,
-}: {
+}: Readonly<{
   eyebrow: string;
   title: string;
   intro?: string;
@@ -25,7 +25,7 @@ export default function PageHero({
    *  phones, where a narrow slice of the photo is visible, it picks the slice. */
   imagePosition?: string;
   meta?: { label: string; value: string }[];
-}) {
+}>) {
   return (
     <section className="bg-canvas pt-[var(--header-h)]">
       <div className="relative mt-3 md:mt-5 mx-[var(--gutter)] rounded-[var(--radius-lg)] bg-ink text-paper on-ink overflow-hidden">

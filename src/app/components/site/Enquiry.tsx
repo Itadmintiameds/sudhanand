@@ -7,6 +7,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -26,7 +27,7 @@ const Ctx = createContext<EnquiryCtx>({
 /** Opens the contact window (every "Contact us" button on the site). */
 export const useEnquiry = () => useContext(Ctx);
 
-export function EnquiryProvider({ children }: { children: React.ReactNode }) {
+export function EnquiryProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = useCallback(() => setIsOpen(true), []);
@@ -43,8 +44,10 @@ export function EnquiryProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  const value = useMemo(() => ({ open, close, isOpen }), [open, close, isOpen]);
+
   return (
-    <Ctx.Provider value={{ open, close, isOpen }}>
+    <Ctx.Provider value={value}>
       {children}
       <ContactModal isOpen={isOpen} close={close} />
     </Ctx.Provider>
@@ -70,7 +73,7 @@ const ArrowIcon = () => (
 const rowClass =
   'group flex items-start justify-between gap-6 py-5 transition-colors duration-300';
 
-function ContactModal({ isOpen, close }: { isOpen: boolean; close: () => void }) {
+function ContactModal({ isOpen, close }: Readonly<{ isOpen: boolean; close: () => void }>) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   // Focus moves into the window on open and back to the trigger on close
@@ -94,9 +97,12 @@ function ContactModal({ isOpen, close }: { isOpen: boolean; close: () => void })
           aria-modal="true"
           aria-labelledby="contact-title"
         >
-          <div
-            className="absolute inset-0 bg-ink/70 backdrop-blur-sm on-ink"
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-hidden
             onClick={close}
+            className="absolute inset-0 bg-ink/70 backdrop-blur-sm on-ink !cursor-[inherit]"
           />
 
           <m.div

@@ -15,6 +15,8 @@ import SwapButton from './SwapButton';
 export type Company = {
   /** Omit when no logo artwork exists yet — a monogram tile stands in. */
   logo?: string;
+  /** Round or square emblems get a square slot instead of the wide wordmark one. */
+  logoSquare?: boolean;
   name: string;
   /** Omit for companies without a public website — the row renders unlinked. */
   href?: string;
@@ -46,7 +48,29 @@ const monogram = (name: string) =>
     .map((w) => w[0].toUpperCase())
     .join('');
 
-export default function VentureTemplate({ data }: { data: VentureData }) {
+// Logo artwork is drawn for white; in dark mode it sits on a white plate
+const LOGO_PLATE = 'block shrink-0 dark:bg-white dark:rounded-[1rem] dark:p-2';
+const LOGO_WIDE = `${LOGO_PLATE} w-32 h-12 md:w-full md:h-16`;
+const LOGO_SQUARE = `${LOGO_PLATE} w-20 h-20 md:w-28 md:h-28`;
+
+/** "@handle" when `href` is an Instagram profile, otherwise null. */
+const instagramHandle = (href?: string) => {
+  if (!href || !URL.canParse(href)) return null;
+  const { hostname, pathname } = new URL(href);
+  if (hostname !== 'instagram.com' && !hostname.endsWith('.instagram.com')) return null;
+  const handle = pathname.split('/').find(Boolean);
+  return handle ? `@${handle}` : null;
+};
+
+const InstagramIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
+    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+    <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+  </svg>
+);
+
+export default function VentureTemplate({ data }: Readonly<{ data: VentureData }>) {
   const { open } = useEnquiry();
   const accent = ACCENTS[data.accent];
 
@@ -114,11 +138,11 @@ export default function VentureTemplate({ data }: { data: VentureData }) {
 
           <div className="flex flex-col">
             {data.companies.map((c, i) => {
+              const instagram = instagramHandle(c.href);
               const body = (
                 <>
                   {c.logo ? (
-                    // Logo artwork is drawn for white; in dark mode it sits on a white plate
-                    <span className="block w-32 h-12 md:w-full md:h-16 shrink-0 dark:bg-white dark:rounded-[1rem] dark:p-2">
+                    <span className={c.logoSquare ? LOGO_SQUARE : LOGO_WIDE}>
                       <span className="relative block w-full h-full">
                         <Image
                           src={c.logo}
@@ -152,6 +176,13 @@ export default function VentureTemplate({ data }: { data: VentureData }) {
                           {para}
                         </p>
                       ))}
+                    {instagram && (
+                      // A span, not a link: the whole row is already the anchor
+                      <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold">
+                        <InstagramIcon />
+                        {instagram}
+                      </span>
+                    )}
                   </div>
 
                   {c.href && (

@@ -12,9 +12,9 @@ import { useEffect, useRef, useState } from 'react';
  */
 export default function PageTransition({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const pathname = usePathname();
   // Compare against the last path rather than a "first render" flag: StrictMode
   // runs effects twice in dev, which made the flag misfire on first paint.
@@ -33,7 +33,7 @@ export default function PageTransition({
     const onClick = (e: MouseEvent) => {
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as Element | null)?.closest?.('a');
-      if (!a || !a.href || a.target === '_blank' || a.hasAttribute('download')) return;
+      if (!a?.href || a.target === '_blank' || a.hasAttribute('download')) return;
       const url = new URL(a.href, window.location.href);
       if (url.origin !== window.location.origin) return;
       if (url.pathname === window.location.pathname) return;

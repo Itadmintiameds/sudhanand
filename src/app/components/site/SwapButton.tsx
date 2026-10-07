@@ -25,7 +25,7 @@ export default function SwapButton({
   dot = true,
   className = '',
   external = false,
-}: {
+}: Readonly<{
   label: string;
   hoverLabel?: string;
   href?: string;
@@ -34,7 +34,7 @@ export default function SwapButton({
   dot?: boolean;
   className?: string;
   external?: boolean;
-}) {
+}>) {
   const inner = (
     <>
       {dot && <span className="btn__dot" />}

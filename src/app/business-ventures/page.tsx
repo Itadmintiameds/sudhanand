@@ -5,75 +5,18 @@ import Link from 'next/link';
 import React from 'react';
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
-import { ACCENTS, type Accent } from '@/app/components/site/accents';
+import { ACCENTS } from '@/app/components/site/accents';
 import { ChipRow } from '@/app/components/site/ChipMarquee';
 import CountUp from '@/app/components/site/CountUp';
 import PageHero from '@/app/components/site/PageHero';
 import { FadeIn, Reveal, SplitWords } from '@/app/components/site/Reveal';
 import SwapButton from '@/app/components/site/SwapButton';
-
-// `accent` matches each venture page's own colour
-const ventures: {
-  id: string;
-  category: string;
-  description: string;
-  bgImage: string;
-  accent: Accent;
-}[] = [
-  {
-    id: 'healthcare',
-    category: 'Healthcare',
-    description:
-      'Sudhanand Healthcare Solutions and Sudhanand Pharmacies deliver advanced care — hospitals, clinics and medical equipment — to promote a healthier society.',
-    bgImage: '/healthcare.png',
-    accent: 'red',
-  },
-  {
-    id: 'technology',
-    category: 'Technology',
-    description:
-      'Sudhanand Business Solutions, TiaMeds Technologies and Mindworx build software, enterprise AI, digital transformation programmes and cybersecurity for the digital age.',
-    bgImage: '/tech.png',
-    accent: 'blue',
-  },
-  {
-    id: 'hospitality',
-    category: 'Hospitality',
-    description:
-      'Sudhanand Four Seasons in Mysore, Whispering Green Lawn and Utsava Lawn deliver stays and celebrations built around comfort and genuine service.',
-    bgImage: '/hospitality.png',
-    accent: 'amber',
-  },
-  {
-    id: 'sports-infrastructure',
-    category: 'Sport',
-    description:
-      'At ARC Sportzone we build and operate modern sports facilities, stadiums and training centres that promote fitness, wellness and athletic talent.',
-    bgImage: '/sports.png',
-    accent: 'green',
-  },
-  {
-    id: 'real-estate',
-    category: 'Real Estate',
-    description:
-      'Through Stone Tower Constructions and Rock Solid Holdings, we are expanding across construction, property development and real estate solutions.',
-    bgImage: '/real-estate/card.jpg',
-    accent: 'teal',
-  },
-  {
-    id: 'charitable-trust',
-    category: 'Charitable Trust',
-    description:
-      'Our CSR work, led by Sudhanand Educational Trust and CurePlus Blood Bank, focuses on education, healthcare and community development.',
-    bgImage: '/charity.png',
-    accent: 'violet',
-  },
-];
+import { VENTURES } from '@/app/components/site/ventures';
 
 // Three matching white cards. (They used to be solid blue, red and navy, which
 // made the one row the loudest thing on the page.)
 // The hairline keeps them visible on the dark-mode panel.
-const STAT_TONES = Array(3).fill('bg-paper border border-ink/10');
+const STAT_TONES = new Array(3).fill('bg-paper border border-ink/10');
 
 export default function BusinessVenturesPage() {
   return (
@@ -146,7 +89,7 @@ export default function BusinessVenturesPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {ventures.map((v, i) => (
+            {VENTURES.map((v, i) => (
               <Reveal key={v.id} delay={(i % 3) * 0.06}>
                 <Link
                   href={`/ventures/${v.id}`}
@@ -154,8 +97,8 @@ export default function BusinessVenturesPage() {
                 >
                   <div className="relative aspect-[16/9] overflow-hidden">
                     <Image
-                      src={v.bgImage}
-                      alt={v.category}
+                      src={v.img}
+                      alt={v.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
                       className="object-cover"
@@ -164,7 +107,7 @@ export default function BusinessVenturesPage() {
 
                   <div className="p-5">
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="t-h4">{v.category}</h3>
+                      <h3 className="t-h4">{v.name}</h3>
                       <span
                         className={`shrink-0 w-9 h-9 rounded-full border border-ink flex items-center justify-center transition-colors duration-300 ${ACCENTS[v.accent].arrowHover}`}
                       >
