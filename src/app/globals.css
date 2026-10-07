@@ -1,30 +1,726 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @import "tailwindcss";
 
+/* `dark:` follows the site toggle (data-theme on <html>), not the OS setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
---color-background: var(--background);
---color-foreground: var(--foreground);
---font-sans: var(--font-geist-sans);
---font-mono: var(--font-geist-mono);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================================
+   SUDHANAND GROUP — DESIGN SYSTEM
+   Built from the logo (red #EB3439, blue #027CC1) but used with restraint:
+   the page itself is quiet — a cool off-white (or near-black) ground, white
+   cards, deep-navy type — and colour is kept for meaning. Red is a thin accent
+   (keylines, one highlighted word, hovers); deep blue carries the big panels;
+   each sector gets a muted, dark tone instead of a bright one.
+   ========================================================================== */
+
+@theme {
+  /* — Core (flipped for dark mode further down) — */
+  /* A cool off-white ground with white cards on it: separation comes from the
+     small step between the two plus a hairline, not from a colour wash. */
+  --color-canvas: #f3f5f8;
+  --color-paper: #ffffff;
+  --color-ink: #0c2236;
+  --color-ink-deep: #07182a;
+  --color-slate: #4d6074;
+
+  /* — Brand (straight off the logo) — */
+  --color-red: #eb3439;
+  --color-red-deep: #c42a30;
+  --color-blue: #027cc1;
+  /* The big statement panels. Deep enough for white type at 8.7:1. */
+  --color-blue-deep: #0b4f7c;
+
+  /* — Sector tones: muted and dark, each 5.9:1 or better under white type.
+     (The bright brand red/blue stay for accents; these paint whole panels.) — */
+  --color-sec-red: #9c2f36;
+  --color-sec-blue: #1d5b8a;
+  --color-amber: #8a5a1e;
+  --color-green: #1f6a50;
+  --color-teal: #1d6770;
+  --color-violet: #5a4a94;
+
+  /* — Panel tints: a hint of hue over the ground, nothing more — */
+  --color-sky: #e7eff6;
+  --color-blush: #f6eaea;
+  --color-sun: #f6eee0;
+  --color-mint: #e6f0ea;
+  --color-aqua: #e3eff0;
+  --color-lilac: #ebe8f4;
+  --color-bone: #f0ece4;
+  --color-steel: #e8ecf1;
+
+  /* — Families — */
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+
+  /* — Motion — */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --header-h: 5rem;
+  --gutter: 1.25rem;
+  --shell: 84rem;
+  /* Deliberately tighter than the pillowy radii this style usually reaches
+     for — reads more precise, which suits a healthcare group. */
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+}
+
+@media (min-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --header-h: 5.75rem;
+    --gutter: 2rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 3rem;
+  }
 }
+
+/* ----------------------------------------------------------- dark mode ---- */
+
+/* Set by the toggle in the header (and the inline script in layout.tsx before
+   first paint). A near-black blue-grey ground with slightly raised cards; the
+   panel tints become the same faint hue shifts over that ground (the old
+   maroon / brown / forest-green panels were far too loud on dark). The sector
+   tones and brand accents are the same in both modes. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #0a1017;
+  --color-paper: #121b25;
+  --color-ink: #e6ecf2;
+  --color-slate: #9aa9b9;
+
+  --color-sky: #14212e;
+  --color-blush: #22191d;
+  --color-sun: #211d16;
+  --color-mint: #131f1b;
+  --color-aqua: #12212a;
+  --color-lilac: #1a1927;
+  --color-bone: #1b1a18;
+  --color-steel: #16202a;
+}
+
+/* Fixed-colour islands keep the light palette in both themes: navy blocks
+   with white type (.on-ink) and white logo plates with navy type (.on-light).
+   Values mirror the @theme defaults above. */
+[data-theme="dark"] :is(.on-ink, .on-light) {
+  --color-canvas: #f3f5f8;
+  --color-paper: #ffffff;
+  --color-ink: #0c2236;
+  --color-slate: #4d6074;
+}
+
+/* …except that on the near-black dark ground, navy #0c2236 barely separates
+   (1.2:1). Navy blocks sit a step lighter there so hero, videos and footer
+   read as raised surfaces. White type stays above 12:1. */
+[data-theme="dark"] .on-ink {
+  --color-ink: #12304c;
+}
+
+/* Lets the new palette land in one frame instead of every element running
+   its own colour transition (toggled by DarkModeContext). */
+.theme-switching,
+.theme-switching * {
+  transition: none !important;
+}
+
+/* --------------------------------------------------------------- cursor --- */
+
+/* The pointer follows the theme — black in light mode, white in dark — with
+   a 1px outline in the opposite colour so it stays visible over photos and
+   the navy blocks either way. Touch devices keep the native behaviour. */
+:root {
+  --cursor-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2.5v16.6l4.1-4 3 6.7 2.5-1.1-3-6.6h5.7z' fill='%23000' stroke='%23fff' stroke-width='2' stroke-linejoin='round' paint-order='stroke'/%3E%3C/svg%3E") 3 2, auto;
+  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M8.5 3.6a1.6 1.6 0 0 1 3.2 0v6.1a1.45 1.45 0 0 1 2.9.4 1.45 1.45 0 0 1 2.9.5 1.4 1.4 0 0 1 2.8.6v4.6c0 3.4-2.5 6-5.7 6h-2.4c-1.8 0-3-.6-4.1-1.9l-3.6-4.5a1.5 1.5 0 0 1 2.2-2l1.8 1.8z' fill='%23000' stroke='%23fff' stroke-width='2' stroke-linejoin='round' paint-order='stroke'/%3E%3Cpath d='M11.7 10.2v2.3M14.6 10.7v2.1M17.5 11.3v1.9' stroke='%23fff' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") 10 2, pointer;
+}
+
+[data-theme="dark"] {
+  --cursor-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2.5v16.6l4.1-4 3 6.7 2.5-1.1-3-6.6h5.7z' fill='%23fff' stroke='%23000' stroke-width='2' stroke-linejoin='round' paint-order='stroke'/%3E%3C/svg%3E") 3 2, auto;
+  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M8.5 3.6a1.6 1.6 0 0 1 3.2 0v6.1a1.45 1.45 0 0 1 2.9.4 1.45 1.45 0 0 1 2.9.5 1.4 1.4 0 0 1 2.8.6v4.6c0 3.4-2.5 6-5.7 6h-2.4c-1.8 0-3-.6-4.1-1.9l-3.6-4.5a1.5 1.5 0 0 1 2.2-2l1.8 1.8z' fill='%23fff' stroke='%23000' stroke-width='2' stroke-linejoin='round' paint-order='stroke'/%3E%3Cpath d='M11.7 10.2v2.3M14.6 10.7v2.1M17.5 11.3v1.9' stroke='%23000' stroke-width='.9' stroke-linecap='round'/%3E%3C/svg%3E") 10 2, pointer;
+}
+
+@media (pointer: fine) {
+  html {
+    cursor: var(--cursor-arrow);
+  }
+
+  a[href],
+  button:not(:disabled),
+  [role="button"],
+  label[for],
+  select,
+  summary {
+    cursor: var(--cursor-hand);
+  }
+
+  input,
+  textarea {
+    cursor: text;
+  }
+}
+
+/* ---------------------------------------------------------------- base ---- */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Phones: no 300ms tap delay or double-tap zoom on controls, and no grey flash
+   over a tapped link — the buttons have their own pressed states. */
+a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background: var(--color-canvas);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+/* Inner scrollers (video playlist, modals) keep their wheel input to
+   themselves instead of chaining into a jump on the page behind. */
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+/* A cross-origin iframe swallows wheel events, so the page would stop dead
+   whenever the pointer drifts over the video player mid-scroll. */
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red);
+}
+
+/* ----------------------------------------------------------- typography --- */
+
+.t-huge {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18svw;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+}
+
+@media (max-width: 767px) {
+  .t-huge {
+    font-size: 23svw;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* Wordmark sized to its container instead of the viewport, so it scales with
+   the box at any width. "Sudhanand" sets ~4.9em wide; /7 keeps it to roughly
+   70% of the box. Needs an ancestor with `@container` (container-type: inline-size). */
+.t-huge--fit {
+  font-size: calc(100cqi / 7);
+}
+
+/* Footer lockup: logo + "Sudhanand Group" on one line. The name sets ~7.8em
+   wide and the logo + gap take a little over 1em more, so /9.4 fills the box.
+   Kept a pure ratio on purpose: the CSS pipeline silently drops the rule if
+   `cqi` is mixed with `rem` inside calc(). */
+.t-huge--brand {
+  font-size: calc(100cqi / 9.4);
+}
+
+/* Hero typing wordmark (TypeWordmark). Each typeface hands in its own size as
+   --wm-fs-sm / --wm-fs-md, but the line box is one fixed height for every face,
+   so swapping fonts never moves the page. Below 640px the name wraps onto two
+   lines at the space; from 640px it stays on one. Needs an `@container`
+   ancestor (the hero's content box). Plain cqi values, no calc — the CSS
+   pipeline has dropped rules that mix cqi with other units. */
+.wm {
+  display: block;
+  font-size: var(--wm-fs-sm);
+  line-height: 19.2cqi;
+  height: 40.9cqi; /* two lines + room for descenders — exact, so no face can resize it */
+  padding-bottom: 2.5cqi;
+  white-space: pre-wrap;
+  /* Now that the photo behind is shown at full strength, a soft shadow keeps
+     thin script strokes readable over its brighter parts */
+  text-shadow: 0 2px 28px color-mix(in srgb, var(--color-ink) 55%, transparent);
+}
+
+@media (min-width: 640px) {
+  .wm {
+    font-size: var(--wm-fs-md);
+    line-height: 14.6cqi;
+    height: 15.8cqi;
+    padding-bottom: 1.2cqi;
+    white-space: pre;
+  }
+}
+
+.wm-caret {
+  display: inline-block;
+  width: max(3px, 0.045em);
+  height: 0.72em;
+  margin-left: 0.06em;
+  background: var(--color-red);
+  animation: wm-blink 1s steps(1) infinite;
+}
+
+/* Solid while keys are going down, blinking while idle */
+.wm-caret.is-typing {
+  animation: none;
+}
+
+@keyframes wm-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.t-h1 {
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.t-h2 {
+  font-weight: 700;
+  font-size: clamp(1.625rem, 3.3vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.t-h3 {
+  font-weight: 600;
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  line-height: 1.12;
+  letter-spacing: -0.026em;
+}
+
+.t-h4 {
+  font-weight: 600;
+  font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.t-h5 {
+  font-weight: 500;
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  line-height: 1.35;
+  letter-spacing: -0.018em;
+}
+
+/* Eyebrow — small caps label with the red keyline that runs through the site */
+.t-h6 {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.t-h6--rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.t-h6--rule::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  background: var(--color-red);
+  flex-shrink: 0;
+}
+
+.t-lead {
+  font-size: clamp(1rem, 1.2vw, 1.1875rem);
+  line-height: 1.6;
+}
+
+.t-small {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-slate);
+}
+
+/* Accent word inside a heading — marked with *asterisks* in SplitWords */
+.accent-word {
+  color: var(--color-red);
+}
+
+.on-ink .accent-word {
+  /* A lighter red on the navy blocks: the brand #eb3439 is only ~2:1 against
+     the photo behind a hero title, #ff6a6e is 3.5:1 or better. */
+  color: #ff6a6e;
+}
+
+/* ------------------------------------------------------------- layout ----- */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.panel {
+  background: var(--color-paper);
+  border-radius: var(--radius-lg);
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background: color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border: 0;
+}
+
+/* --------------------------------------------------------------- chips ---- */
+
+/**
+ * Chip carries a leading status dot — a small anatomical difference that
+ * keeps the capability marquee from reading as a generic tag row.
+ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5625rem 1.125rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.chip::before {
+  content: "";
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.45;
+  flex-shrink: 0;
+}
+
+.chip--sky {
+  background: var(--color-sky);
+}
+.chip--blush {
+  background: var(--color-blush);
+}
+.chip--sun {
+  background: var(--color-sun);
+}
+.chip--mint {
+  background: var(--color-mint);
+}
+.chip--lilac {
+  background: var(--color-lilac);
+}
+.chip--bone {
+  background: var(--color-bone);
+}
+.chip--steel {
+  background: var(--color-steel);
+}
+.chip--paper {
+  background: var(--color-paper);
+}
+.chip--ink {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-paper);
+}
+.chip--blue {
+  background: var(--color-blue-deep);
+  border-color: var(--color-blue-deep);
+  color: var(--color-white);
+}
+.chip--red {
+  background: var(--color-red-deep);
+  border-color: var(--color-red-deep);
+  color: var(--color-white);
+}
+
+/* ------------------------------------------------------------- buttons ---- */
+
+/**
+ * Hover-swap button: the resting label rides up and out while the hover
+ * label rises into its place. Both labels share one grid cell so the pill
+ * never changes width.
+ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6875rem;
+  padding: 0.8125rem 1.375rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  transition: background-color 0.4s var(--ease-out-expo),
+    color 0.4s var(--ease-out-expo), border-color 0.4s var(--ease-out-expo),
+    transform 0.15s var(--ease-out-expo);
+}
+
+/* Pressed state — on touch this is the only tap feedback */
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Hover rules only where a pointer can hover — on touch, :hover sticks after a
+   tap and leaves the button stuck red until something else is tapped. */
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-white);
+  }
+}
+
+/* Header Menu button on phones: tighter sideways (same 41px tap height) so
+   logo + "Sudhanand Group" + theme toggle + Menu fit a 360px screen. Sits after
+   `.btn` because both are unlayered and the later rule wins. */
+@media (max-width: 479px) {
+  .btn--compact {
+    padding-inline: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+}
+@media (hover: hover) {
+  .btn--ghost:hover {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+}
+
+.btn--paper {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-color: var(--color-paper);
+}
+@media (hover: hover) {
+  .btn--paper:hover {
+    background: var(--color-red);
+    color: var(--color-white);
+    border-color: var(--color-red);
+  }
+}
+
+.btn__swap {
+  display: grid;
+  overflow: hidden;
+  text-align: left;
+}
+
+.btn__swap > span {
+  grid-area: 1 / 1;
+  display: block;
+  transition: transform 0.5s var(--ease-out-expo),
+    opacity 0.4s var(--ease-out-expo);
+}
+
+.btn__swap > span:nth-child(2) {
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .btn:hover .btn__swap > span:nth-child(1) {
+    transform: translateY(-115%);
+    opacity: 0;
+  }
+
+  .btn:hover .btn__swap > span:nth-child(2) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.btn__dot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 9999px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* Underline that draws in from the left */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+
+@media (hover: hover) {
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* -------------------------------------------------------------- marquee --- */
+
+.marquee-host {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee--reverse {
+  animation-direction: reverse;
+}
+
+/* Pauses under a mouse so a moving logo is easy to click; not on touch, where
+   a tap would freeze the row until the next tap elsewhere. */
+@media (hover: hover) {
+  .marquee-host:hover .marquee {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* --------------------------------------------------------------- reveal --- */
+
+.reveal-mask {
+  display: block;
+  overflow: hidden;
+}
+
+/* Set by the inline script in layout.tsx on repeat visits within a session */
+[data-preloaded] .preloader {
+  display: none;
+}
+
+/* ------------------------------------------------------------ a11y/motion - */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee {
+    animation: none;
+  }
+}
+
+
+
+
+
+
+
+

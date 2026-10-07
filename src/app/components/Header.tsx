@@ -1,182 +1,264 @@
 'use client';
 
+import { AnimatePresence, m } from 'framer-motion';
+import Image from '@/app/components/site/Img';
 import Link from 'next/link';
-import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { HiPlus, HiX } from 'react-icons/hi';
-import { useTheme } from './DarkModeContext';
+import { CONTACT } from './site/contact';
+import { lockScroll, unlockScroll } from './site/SmoothScroll';
+import ThemeToggle from './site/ThemeToggle';
 
-const navLinks = [
+export const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/business-ventures', label: 'Our Ventures' },
+  { href: '/business-ventures', label: 'Ventures' },
   { href: '/business-partners', label: 'Partners' },
   { href: '/careers', label: 'Careers' },
-  { href: '/about', label: 'About Us' },
+  { href: '/about', label: 'About us' },
 ];
 
-const SunIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="5"/>
-    <line x1="12" y1="1" x2="12" y2="3"/>
-    <line x1="12" y1="21" x2="12" y2="23"/>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-    <line x1="1" y1="12" x2="3" y2="12"/>
-    <line x1="21" y1="12" x2="23" y2="12"/>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-  </svg>
-);
+const EASE = [0.76, 0, 0.24, 1] as const;
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
-const MoonIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-  </svg>
-);
+const isActive = (href: string, pathname: string) =>
+  href === '/'
+    ? pathname === '/'
+    : pathname.startsWith(href) ||
+      // venture detail pages live under /ventures/*, the index under /business-ventures
+      (href === '/business-ventures' && pathname.startsWith('/ventures/'));
 
-const ThemeToggle = ({ className = '' }: { className?: string }) => {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === 'dark';
-
-  return (
-    <button
-      onClick={toggleTheme}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`relative flex items-center justify-between w-14 h-7 rounded-full p-1 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
-        isDark
-          ? 'bg-slate-700 border border-slate-500'
-          : 'bg-orange-100 border border-orange-200'
-      } ${className}`}
-    >
-      {/* Icons */}
-      <span className={`flex items-center justify-center w-5 h-5 transition-all duration-300 ${isDark ? 'text-slate-400' : 'text-orange-400'}`}>
-        <SunIcon />
-      </span>
-      <span className={`flex items-center justify-center w-5 h-5 transition-all duration-300 ${isDark ? 'text-slate-200' : 'text-slate-300'}`}>
-        <MoonIcon />
-      </span>
-      {/* Slider pill */}
-      <span
-        className={`absolute top-0.5 w-6 h-6 rounded-full shadow-md transition-all duration-500 flex items-center justify-center ${
-          isDark
-            ? 'left-[calc(100%-1.75rem)] bg-slate-900 text-slate-200'
-            : 'left-0.5 bg-white text-orange-500'
-        }`}
-      >
-        {isDark ? <MoonIcon /> : <SunIcon />}
-      </span>
-    </button>
-  );
-};
-
-const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
+/**
+ * Frosted once the page moves. `hidden` tracks scroll direction (down = hide,
+ * up = show); the header only acts on it below lg — desktop stays put.
+ */
+function useScrollChrome() {
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    let last = window.scrollY;
+    let frame = 0;
+    const update = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      if (y < 120) setHidden(false);
+      else if (Math.abs(y - last) > 6) setHidden(y > last);
+      last = y;
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
+
+  return { scrolled, hidden };
+}
+
+const Header: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const { scrolled, hidden } = useScrollChrome();
+
+  useEffect(() => {
+    if (menuOpen) lockScroll();
+    else unlockScroll();
+  }, [menuOpen]);
+
+  // Close the overlay once the route actually changes
+  useEffect(() => setMenuOpen(false), [pathname]);
+
+  // The overlay is the only nav below lg — don't strand it open if the
+  // viewport grows past the breakpoint (e.g. a tablet rotating).
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const onChange = () => mq.matches && setMenuOpen(false);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  // Transparent at the top (clicks pass through to the hero); once it carries
+  // a background it should catch clicks rather than leak them to hidden content.
+  const bar = menuOpen
+    ? 'pointer-events-none'
+    : scrolled
+      ? 'bg-canvas/95 shadow-[0_1px_0_rgba(6,38,61,0.08)] dark:shadow-[0_1px_0_rgba(255,255,255,0.06)]'
+      : 'pointer-events-none';
 
   return (
     <>
-      {/* MOBILE HEADER */}
       <header
-        className={`md:hidden fixed top-0 left-0 w-full h-12 px-3 z-50 flex items-center
-          backdrop-blur-[20px] transition-all duration-300
-          ${isDark
-            ? 'bg-gradient-to-r from-slate-900/90 to-slate-800/90 border-b border-slate-700/50'
-            : 'bg-gradient-to-r from-white/80 to-slate-500/80'}
-          ${isScrolled ? 'shadow-md' : ''}
-        `}
-        style={{ minHeight: '48px' }}
+        // `on-ink` while the overlay is open keeps the bar's white-on-navy
+        // colours in dark mode too
+        className={`fixed top-0 left-0 w-full z-[9950] transition-[transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${bar} ${
+          hidden && !menuOpen ? 'max-lg:-translate-y-full' : ''
+        } ${menuOpen ? 'on-ink' : ''}`}
+        style={{ height: 'var(--header-h)' }}
       >
-        <div className="flex-shrink-0 w-8 h-8 relative">
-          <Image
-            src="/logo.svg"
-            alt="Sudhanand Group Logo"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold text-sm whitespace-nowrap ${isDark ? 'text-white' : 'text-black'}`}>
-          Sudhanand Group
-        </div>
-        <div className="ml-auto flex items-center gap-2">
-          <ThemeToggle />
-          <button
-            className={`text-2xl ${isDark ? 'text-white' : 'text-black'}`}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setMenuOpen((prev) => !prev)}
+        {/* lg+: three columns so the nav stays centred between logo and toggle */}
+        <div className="shell h-full flex items-center justify-between gap-2 sm:gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+          <Link
+            href="/"
+            className="pointer-events-auto flex items-center gap-2.5 py-1.5 justify-self-start"
+            aria-label="Sudhanand Group — home"
           >
-            {menuOpen ? <HiX /> : <HiPlus />}
-          </button>
-        </div>
-      </header>
-
-      {/* MOBILE NAV MENU */}
-      <div
-        className={`md:hidden fixed top-12 left-0 w-full z-40 overflow-hidden transition-all duration-300
-          ${menuOpen ? 'max-h-60 shadow-md' : 'max-h-0'}
-          ${isDark ? 'bg-slate-900 border-b border-slate-700' : 'bg-white border-b border-gray-200'}
-        `}
-      >
-        <nav className="flex flex-col py-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`px-6 py-3 font-medium transition ${
-                isDark
-                  ? 'text-slate-200 hover:bg-slate-800'
-                  : 'text-black hover:bg-gray-100'
+            <span
+              className={`relative w-9 h-9 md:w-10 md:h-10 block ${
+                menuOpen ? 'brightness-0 invert' : ''
               }`}
-              onClick={() => setMenuOpen(false)}
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-
-      {/* DESKTOP HEADER */}
-      <header
-        className={`hidden md:block fixed top-0 left-0 w-full h-16 px-12 py-4 z-50 transition-all duration-300
-          backdrop-blur-[20px]
-          ${isDark
-            ? 'bg-gradient-to-r from-slate-900/90 to-slate-800/90 border-b border-slate-700/50'
-            : 'bg-gradient-to-r from-white/80 to-slate-500/80'}
-          ${isScrolled ? 'shadow-md' : ''}
-        `}
-      >
-        <div className="w-full h-full flex justify-between items-center">
-          <Link href="/" className="relative w-10 h-10">
-            <Image
-              src="/logo.svg"
-              alt="Sudhanand Group Logo"
-              fill
-              className="object-contain"
-              priority
-            />
+              <Image src="/logo.svg" alt="" fill priority unoptimized className="object-contain" />
+            </span>
+            {/* 15px on phones so logo + name + theme + Menu fit a 360px screen */}
+            <span
+              className={`t-h5 !text-[0.9375rem] sm:!text-[length:clamp(1.0625rem,1.5vw,1.3125rem)] font-semibold leading-none whitespace-nowrap transition-colors duration-300 ${
+                menuOpen ? 'text-paper' : 'text-ink'
+              }`}
+            >
+              Sudhanand Group
+            </span>
           </Link>
-          <nav className="flex items-center gap-9 text-base font-['Geist'] leading-none">
-            {navLinks.map((link) => (
+
+          {/* Desktop: links in the bar — one click to any page */}
+          <nav
+            aria-label="Main"
+            className="pointer-events-auto hidden lg:flex items-center gap-1 rounded-full bg-paper/90 p-1"
+          >
+            {navLinks.slice(1).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors ${isDark ? 'text-slate-200 hover:text-white' : 'text-white hover:text-white/80'}`}
+                aria-current={isActive(link.href, pathname) ? 'page' : undefined}
+                className={`px-4 py-2.5 rounded-full text-[0.9375rem] font-medium leading-none transition-colors duration-300 ${
+                  isActive(link.href, pathname)
+                    ? 'bg-ink text-paper'
+                    : 'text-ink hover:bg-ink/[0.07]'
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <ThemeToggle />
           </nav>
+
+          <div className="flex items-center gap-2 justify-self-end">
+            <ThemeToggle />
+
+            {/* Below lg: full-screen overlay. Visibility lives on the wrapper:
+                `.btn` is unlayered CSS, so it beats Tailwind's `lg:hidden`
+                utility on the same node. */}
+            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                className={`pointer-events-auto btn btn--compact ${menuOpen ? 'btn--paper' : ''}`}
+              >
+                <span className="btn__dot" />
+                <span className="grid overflow-hidden text-left">
+                  <m.span
+                    className="col-start-1 row-start-1 block"
+                    animate={{ y: menuOpen ? '-115%' : '0%', opacity: menuOpen ? 0 : 1 }}
+                    transition={{ duration: 0.35, ease: EASE_OUT }}
+                  >
+                    Menu
+                  </m.span>
+                  <m.span
+                    className="col-start-1 row-start-1 block"
+                    initial={false}
+                    animate={{ y: menuOpen ? '0%' : '115%', opacity: menuOpen ? 1 : 0 }}
+                    transition={{ duration: 0.35, ease: EASE_OUT }}
+                  >
+                    Close
+                  </m.span>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </header>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <m.div
+            className="fixed inset-0 z-[9940] bg-ink text-paper on-ink flex flex-col overflow-y-auto lg:hidden"
+            data-lenis-prevent
+            initial={{ clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: 0.45, ease: EASE }}
+          >
+            <div
+              className="shell flex-1 flex flex-col justify-center gap-5 py-6 sm:gap-10 sm:py-16"
+              style={{ paddingTop: 'calc(var(--header-h) + 1rem)' }}
+            >
+              <nav className="flex flex-col" aria-label="Main">
+                {navLinks.map((link, i) => (
+                  <span key={link.href} className="reveal-mask">
+                    <m.span
+                      className="block"
+                      initial={{ y: '110%' }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.08 + i * 0.035 }}
+                    >
+                      <Link
+                        href={link.href}
+                        aria-current={isActive(link.href, pathname) ? 'page' : undefined}
+                        // Same-page taps don't change the route, so close here too
+                        onClick={() => link.href === pathname && setMenuOpen(false)}
+                        className="t-h1 block w-fit py-1.5 text-paper transition-colors duration-300 hover:text-paper"
+                      >
+                        {link.label}
+                      </Link>
+                    </m.span>
+                  </span>
+                ))}
+              </nav>
+
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className="flex flex-col gap-4 sm:gap-8"
+              >
+                <div className="h-px w-full bg-paper/25" />
+                <div className="grid sm:grid-cols-3 gap-3 sm:gap-8">
+                  <a href={CONTACT.phoneHref} className="group block">
+                    <p className="text-sm text-paper/60">Phone</p>
+                    <span className="t-h5 group-hover:text-red transition-colors duration-300">
+                      {CONTACT.phone}
+                    </span>
+                  </a>
+                  <a href={CONTACT.emailHref} className="group block">
+                    <p className="text-sm text-paper/60">Email</p>
+                    <span className="t-h5 group-hover:text-red transition-colors duration-300 break-all">
+                      {CONTACT.email}
+                    </span>
+                  </a>
+                  <a
+                    href={CONTACT.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    <p className="text-sm text-paper/60">Address</p>
+                    <span className="t-h5 group-hover:text-red transition-colors duration-300">
+                      Dakshina Murthy Towers,
+                      <br />
+                      Udayagiri, Mysore 570019
+                    </span>
+                  </a>
+                </div>
+              </m.div>
+            </div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
