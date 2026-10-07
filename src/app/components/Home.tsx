@@ -241,7 +241,7 @@ const timeline = [
   { year: '2021', lines: ['Opened our hotel, Sudhanand Four Seasons — Mysuru.'] },
   { year: '2022', lines: ['Nova Candolim by Sudhanand — Goa. Sudhanand Arogya Vahini. Animal & Dairy Farms — Yelandur.'] },
   { year: '2023', lines: ['Sudhanand Pharmacies and Distributors — Mysuru. Narasegowda Memorial Hospital — Mandya.'] },
-  { year: '2024', lines: ['Started Idea Gateway Inc. — New York. Established TiaMeds Technologies Pvt. Ltd. — Mysuru.'] },
+  { year: '2024', lines: ['Started Idea Gateway Inc. — New York.', 'Established TiaMeds Technologies Pvt. Ltd. — Mysuru.'] },
   {
     year: '2025',
     lines: [
