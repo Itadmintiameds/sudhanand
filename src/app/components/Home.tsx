@@ -231,18 +231,34 @@ const CapabilitiesMarquee = () => (
 /* --------------------------------------------------------------- journey -- */
 
 const timeline = [
-  { year: '2010', desc: 'Humble beginnings — the first step, taken in Mysuru.' },
-  { year: '2011', desc: 'Started our journey with SAS Poorna Arogya Healthcare.' },
-  { year: '2012', desc: 'Started Sachidananda Organic Farm — Nanjangud.' },
-  { year: '2013', desc: 'Dr. M. D. Sachidananda Murthy Memorial Education Trust. Sudhanand Healthcare Solutions Pvt. Ltd. — Mysuru.' },
-  { year: '2017', desc: 'Our first hospital, Disha Hospital — Mysuru. Opened Dharani Hospital — Chamarajanagara.' },
-  { year: '2018', desc: 'Started Kaveri Hospital — Kodagu, and ARC Sportzone — Mysuru.' },
-  { year: '2020', desc: 'Opened Krishna Hospital — Bettadapura. Started Sudhanand Business Solutions Pvt. Ltd.' },
-  { year: '2021', desc: 'Opened our hotel, Sudhanand Four Seasons — Mysuru.' },
-  { year: '2022', desc: 'Nova Candolim by Sudhanand — Goa. Sudhanand Arogya Vahini. Animal & Dairy Farms — Yelandur.' },
-  { year: '2023', desc: 'Sudhanand Pharmacies and Distributors — Mysuru. Narasegowda Memorial Hospital — Mandya.' },
-  { year: '2024', desc: 'Started Idea Gateway Inc. — New York. Tiameds Technologies Pvt. Ltd. — Mysuru.' },
-  { year: '2025', desc: 'Started our four new spoke hospitals. Started Sini Meds.' },
+  { year: '2010', lines: ['Humble beginnings — the first step, taken in Mysuru.'] },
+  { year: '2011', lines: ['Started our journey with SAS Poorna Arogya Healthcare.'] },
+  { year: '2012', lines: ['Started Sachidananda Organic Farm — Nanjangud.'] },
+  { year: '2013', lines: ['Dr. M. D. Sachidananda Murthy Memorial Education Trust. Sudhanand Healthcare Solutions Pvt. Ltd. — Mysuru.'] },
+  { year: '2017', lines: ['Our first hospital, Disha Hospital — Mysuru. Opened Dharani Hospital — Chamarajanagara.'] },
+  { year: '2018', lines: ['Started Kaveri Hospital — Kodagu, and ARC Sportzone — Mysuru.'] },
+  { year: '2020', lines: ['Opened Krishna Hospital — Bettadapura. Started Sudhanand Business Solutions Pvt. Ltd.'] },
+  { year: '2021', lines: ['Opened our hotel, Sudhanand Four Seasons — Mysuru.'] },
+  { year: '2022', lines: ['Nova Candolim by Sudhanand — Goa. Sudhanand Arogya Vahini. Animal & Dairy Farms — Yelandur.'] },
+  { year: '2023', lines: ['Sudhanand Pharmacies and Distributors — Mysuru. Narasegowda Memorial Hospital — Mandya.'] },
+  { year: '2024', lines: ['Started Idea Gateway Inc. — New York. Established TiaMeds Technologies Pvt. Ltd. — Mysuru.'] },
+  {
+    year: '2025',
+    lines: [
+      'Expanded our healthcare network with four new spoke hospitals.',
+      'Introduced SiniMeds RCM, strengthening our commitment to accessible healthcare solutions.',
+      'Established Stone Tower Constructions LLP — Mysuru.',
+      'Established Aviratha Ventures LLP — Mysuru.',
+    ],
+  },
+  {
+    year: '2026',
+    lines: [
+      'Established CurePlus Blood Centre — Mysuru.',
+      'Rebranded SiniMeds as Mindworx Technologies Pvt. Ltd.',
+      'Established RockSolid Holdings LLC — Pattaya, Thailand.',
+    ],
+  },
 ];
 
 const JourneySection = () => (
@@ -265,7 +281,11 @@ const JourneySection = () => (
               <span className="t-h4 text-blue transition-colors duration-300 group-hover:text-red">
                 {item.year}
               </span>
-              <p className="text-[0.9375rem] leading-relaxed text-ink/80">{item.desc}</p>
+              <div className="text-[0.9375rem] leading-relaxed text-ink/80">
+                {item.lines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
             </div>
           </Reveal>
         ))}
